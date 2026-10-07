@@ -1,0 +1,9 @@
+{
+  "id": "vault-git",
+  "name": "Vault Git",
+  "version": "1.0.0",
+  "minAppVersion": "1.4.0",
+  "description": "Commit and push or pull this Obsidian vault from the Command Palette.",
+  "author": "Anish Kumar",
+  "isDesktopOnly": true
+}

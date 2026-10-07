@@ -1,0 +1,13 @@
+.obsidian/workspace*.json
+.obsidian/cache/
+.obsidian/plugins/*/data.json
+.trash/
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
