@@ -1,25 +1,48 @@
-# QSP · Research Dashboard
+---
+cssclasses:
+  - qsp-dashboard
+---
 
-**Anish Kumar · Professor Itay Hen**
+![Quantum Studio](../references/quantum-studio.svg)
 
-> Determine how real QSP phase lists round, and how much precision is needed for reliable accuracy.
+# Quantum Studio
 
-## Start here
+Finite-precision phases in QSP · Anish Kumar & Professor Itay Hen
 
-- [[../README|Project overview]]
-- [[../references/QSP_project.pdf|Project description]]
-- [[Roadmap]]
-- [[Conventions]]
-- [[Research Log]]
+> [!focus] On the desk · Stage 01
+> **Build the foundation.** Understand the phase conventions and create a validated forward evaluator.
+>
+> Next milestone → reproduce solver response curves and document the convention in [[Conventions]].
 
-## Current focus
+> [!map] Explore the workspace
+> - [[../README|Project overview]] · goals & methods
+> - [[../references/QSP_project.pdf|Research brief]] · the original project
+> - [[Roadmap|Project roadmap]] · milestones & checkpoint
+> - [[Conventions|Convention notebook]] · algebra & solver mappings
+> - [[Research Log|Research journal]] · observations & decisions
+> - [[templates/Experiment Note|Experiment template]] · repeatable records
 
-Stage 1: understand QSP conventions and build a validated forward evaluator.
+## From phases to evidence
 
-## Research questions
+| Stage | Work | Deliverable |
+| :--- | :--- | :--- |
+| **01 / Evaluate** | Validate QSP and solver conventions | Forward evaluator + convention note |
+| **02 / Generate** | Build realistic core phase lists | Phase library + solver residuals |
+| **03 / Quantize** | Compare three rounding schemes | Rounded phases + error sequences |
+| **04 / Measure** | Separate unitary, element, and readout errors | Measurement tables |
+| **05 / Explain** | Study scaling and precision requirements | Figures + research report |
 
-1. Does error grow coherently with degree or follow square-root scaling?
-2. Do phase plateaus and rounding correlations predict the exponent?
-3. Where does maximum error occur for each metric?
-4. How much does noise shaping help on realistic phase lists?
-5. How many bits meet a given accuracy, including the 21-bit case?
+> [!pipeline] Before quantization
+> Review the convention note, solver reproductions, and regenerable phase library with Professor Hen at the Stage 2 checkpoint.
+
+## Questions that drive the work
+
+> [!question] How do errors accumulate?
+> Does the error scale linearly with degree, or like its square root? Do phase plateaus and rounding correlations explain the difference?
+
+> [!question] What can better rounding buy?
+> Where does maximum error occur? How much does noise shaping help, and how many bits are needed to meet the target accuracy—including the 21-bit case?
+
+---
+
+**Working rhythm** · Pull before editing → record the experiment → commit and push when ready.
