@@ -1,52 +1,51 @@
-/* Quantum Studio — local presentation layer over Minimal. */
+/* Consistent, restrained presentation over Minimal. */
 body.theme-dark {
-  --background-primary: #101522;
-  --background-primary-alt: #141b2b;
-  --background-secondary: #0c111d;
-  --background-secondary-alt: #111827;
-  --background-modifier-border: #273249;
-  --text-normal: #dce5f5;
-  --text-muted: #98a9c4;
-  --text-faint: #70829f;
-  --interactive-accent: #9b8afb;
-  --text-accent: #b5a8ff;
-  --text-accent-hover: #d0c7ff;
-  --h1-color: #f0edff;
-  --h2-color: #9ee5df;
-  --h3-color: #b5a8ff;
-  --blockquote-border-color: #8f80ed;
-  --background-modifier-hover: #202b40;
+  --background-primary: #1c1c1a;
+  --background-primary-alt: #23231f;
+  --background-secondary: #171815;
+  --background-secondary-alt: #20211d;
+  --background-modifier-border: #383a32;
+  --background-modifier-hover: #2c2e27;
+  --text-normal: #e6e2d7;
+  --text-muted: #b0afa1;
+  --text-faint: #818476;
+  --interactive-accent: #a5b395;
+  --text-accent: #b6c6a4;
+  --text-accent-hover: #d0ddc0;
+  --h1-color: #f0ebe0;
+  --h2-color: #c9977e;
+  --h3-color: #c9977e;
+  --h4-color: #c9977e;
+  --h5-color: #c9977e;
+  --h6-color: #c9977e;
+  --blockquote-border-color: #a5b395;
 }
-body { --file-line-width: 850px; --h1-weight: 750; --h2-weight: 650; --heading-spacing: 1.7em; }
-.workspace-tab-header.is-active { box-shadow: inset 0 -2px #9b8afb; }
-.nav-folder-title { font-weight: 650; letter-spacing: .015em; }
-.nav-file-title.is-active { background: linear-gradient(90deg, rgba(155,138,251,.19), rgba(99,211,203,.06)); border-left: 2px solid #9b8afb; }
-.nav-folder-title[data-path="notes"] { color: #b5a8ff; }
-.nav-folder-title[data-path="references"] { color: #9ee5df; }
-.nav-folder-title[data-path="src"], .nav-folder-title[data-path="experiments"] { color: #efc589; }
-.nav-folder-title[data-path="data"], .nav-folder-title[data-path="results"], .nav-folder-title[data-path="figures"] { color: #91bcf7; }
-.markdown-rendered h1 { letter-spacing: -.035em; }
-.markdown-rendered h2 { letter-spacing: -.018em; }
+body {
+  --file-line-width: 800px;
+  --h1-size: 1.9em;
+  --h2-size: 1.25em;
+  --h3-size: 1.1em;
+  --h1-weight: 650;
+  --h2-weight: 600;
+  --heading-spacing: 1.6em;
+}
+.workspace-tab-header.is-active { box-shadow: inset 0 -2px #c7ad74; }
+.nav-folder-title { font-weight: 600; color: var(--text-normal); }
+.nav-file-title.is-active {
+  background: rgba(199,173,116,.10);
+  border-left: 2px solid #c7ad74;
+}
+.markdown-rendered h1 { letter-spacing: -.025em; }
+.markdown-rendered h2 { letter-spacing: -.01em; }
 .markdown-rendered a.internal-link { text-decoration: none; }
-.markdown-rendered a.internal-link:hover { text-decoration: underline; text-underline-offset: 4px; }
-.markdown-rendered .callout { border-radius: 14px; border: 1px solid rgba(var(--callout-color),.23); padding: 17px 20px; box-shadow: 0 6px 22px rgba(0,0,0,.08); }
-.markdown-rendered .callout-title { font-size: 1em; letter-spacing: .01em; }
-.markdown-rendered .callout-content p:last-child { margin-bottom: 0; }
+.markdown-rendered a.internal-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 .qsp-dashboard .metadata-container, .qsp-dashboard .inline-title { display: none; }
-.qsp-dashboard.markdown-preview-view { background-image: radial-gradient(ellipse at 80% 0%, rgba(123,97,210,.09), transparent 50%); }
-.qsp-dashboard .markdown-preview-sizer { max-width: 1050px; }
-.qsp-dashboard img[alt="Quantum Studio"] { width: 100%; border-radius: 20px; border: 1px solid #303c58; box-shadow: 0 18px 50px rgba(0,0,0,.18); }
-.qsp-dashboard h1 { font-size: clamp(2.1em,4vw,3.3em); margin-top: .5em; margin-bottom: .2em; }
-.qsp-dashboard h1 + p { color: var(--text-muted); font-size: 1.05em; }
-.qsp-dashboard .callout[data-callout="focus"] { --callout-color: 155,138,251; --callout-icon: lucide-orbit; background: linear-gradient(115deg,rgba(155,138,251,.13),rgba(99,211,203,.05)); }
-.qsp-dashboard .callout[data-callout="map"] { --callout-color: 99,211,203; --callout-icon: lucide-compass; }
-.qsp-dashboard .callout[data-callout="pipeline"] { --callout-color: 145,188,247; --callout-icon: lucide-workflow; }
-.qsp-dashboard .callout[data-callout="question"] { --callout-color: 239,197,137; --callout-icon: lucide-sparkles; }
-.qsp-dashboard .callout[data-callout="map"] .callout-content ul { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; padding:0; list-style:none; }
-.qsp-dashboard .callout[data-callout="map"] .callout-content li { margin:0; padding:13px 15px; background:rgba(var(--callout-color),.065); border:1px solid rgba(var(--callout-color),.14); border-radius:10px; }
-.qsp-dashboard .callout[data-callout="map"] .callout-content li a { font-weight:650; }
-.qsp-dashboard table { width:100%; }
-.qsp-dashboard th { color:var(--text-muted); font-size:.8em; text-transform:uppercase; letter-spacing:.12em; }
-.qsp-dashboard td { padding-top:14px; padding-bottom:14px; }
-.qsp-dashboard hr { border-color:var(--background-modifier-border); margin:2em 0; }
-@media (max-width:600px) { .qsp-dashboard .callout[data-callout="map"] .callout-content ul { grid-template-columns:1fr; } }
+.qsp-dashboard .markdown-preview-sizer { max-width: 800px; }
+.qsp-dashboard h1 { margin-bottom: .35em; }
+.qsp-dashboard h1 + p { color: var(--text-muted); font-size: .95em; }
+.qsp-dashboard h2 { padding-bottom: .45em; border-bottom: 1px solid var(--background-modifier-border); }
+.qsp-dashboard table { width: 100%; border-collapse: collapse; font-size: .95em; }
+.qsp-dashboard th { color: var(--text-muted); font-weight: 600; background: var(--background-primary-alt); }
+.qsp-dashboard td, .qsp-dashboard th { padding: 10px 12px; border-color: var(--background-modifier-border); }
+.qsp-dashboard li { margin-bottom: .45em; }
+

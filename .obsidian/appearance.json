@@ -1,7 +1,7 @@
 {
   "cssTheme": "Minimal",
   "theme": "obsidian",
-  "accentColor": "#9b8afb",
+  "accentColor": "#a5b395",
   "baseFontSize": 17,
   "enabledCssSnippets": [
     "quantum-studio"

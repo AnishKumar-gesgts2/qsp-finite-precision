@@ -3,46 +3,34 @@ cssclasses:
   - qsp-dashboard
 ---
 
-![Quantum Studio](../references/quantum-studio.svg)
+# Finite-Precision QSP
 
-# Quantum Studio
+Anish Kumar · Professor Itay Hen
 
-Finite-precision phases in QSP · Anish Kumar & Professor Itay Hen
+Measure how rounding phase angles affects QSP accuracy and whether improved quantization reduces that error.
 
-> [!focus] On the desk · Stage 01
-> **Build the foundation.** Understand the phase conventions and create a validated forward evaluator.
->
-> Next milestone → reproduce solver response curves and document the convention in [[Conventions]].
+## Current work
 
-> [!map] Explore the workspace
-> - [[../README|Project overview]] · goals & methods
-> - [[../references/QSP_project.pdf|Research brief]] · the original project
-> - [[Roadmap|Project roadmap]] · milestones & checkpoint
-> - [[Conventions|Convention notebook]] · algebra & solver mappings
-> - [[Research Log|Research journal]] · observations & decisions
-> - [[templates/Experiment Note|Experiment template]] · repeatable records
+**Stage 1 — Forward evaluation and conventions**
 
-## From phases to evidence
+Reproduce solver response curves, validate the evaluator, and record the phase conventions in [[Conventions]]. See [[Roadmap]] for the full plan.
 
-| Stage | Work | Deliverable |
-| :--- | :--- | :--- |
-| **01 / Evaluate** | Validate QSP and solver conventions | Forward evaluator + convention note |
-| **02 / Generate** | Build realistic core phase lists | Phase library + solver residuals |
-| **03 / Quantize** | Compare three rounding schemes | Rounded phases + error sequences |
-| **04 / Measure** | Separate unitary, element, and readout errors | Measurement tables |
-| **05 / Explain** | Study scaling and precision requirements | Figures + research report |
+## Workspace
 
-> [!pipeline] Before quantization
-> Review the convention note, solver reproductions, and regenerable phase library with Professor Hen at the Stage 2 checkpoint.
+| Resource | Purpose |
+| :--- | :--- |
+| [[../README|Project overview]] | Goals, methods, and repository structure |
+| [[../references/QSP_project.pdf|Project description]] | Professor Hen’s research brief |
+| [[Conventions]] | Definitions and solver mappings |
+| [[Research Log]] | Progress, observations, and decisions |
+| [[templates/Experiment Note|Experiment note]] | Configuration, results, and interpretation |
 
-## Questions that drive the work
+## Project stages
 
-> [!question] How do errors accumulate?
-> Does the error scale linearly with degree, or like its square root? Do phase plateaus and rounding correlations explain the difference?
+1. Validate the forward evaluator and conventions.
+2. Generate the core phase library and record solver residuals.
+3. Compare the three quantization schemes.
+4. Measure unitary, matrix-element, and readout error separately.
+5. Analyze scaling and precision requirements; prepare figures and report.
 
-> [!question] What can better rounding buy?
-> Where does maximum error occur? How much does noise shaping help, and how many bits are needed to meet the target accuracy—including the 21-bit case?
-
----
-
-**Working rhythm** · Pull before editing → record the experiment → commit and push when ready.
+Review the Stage 2 outputs with Professor Hen before beginning quantization.
