@@ -1,5 +1,7 @@
 # Roadmap
 
+Learning preparation: follow [[learning/Learning Path|Learning Path]] and record understanding in [[learning/Learning Progress|Learning Progress]]. Lessons 01–06 provide the mathematical foundations, 07–09 prepare Stages 1–2, and 10–13 prepare the quantization and analysis stages. Reading a lesson does not mark an implementation milestone complete.
+
 - [ ] Read the starred background sources in the project description.
 - [ ] Stage 1: implement and validate the forward evaluator.
 - [ ] Document solver conventions in [[Conventions]].

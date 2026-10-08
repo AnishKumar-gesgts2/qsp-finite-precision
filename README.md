@@ -36,6 +36,7 @@ Extensions include scaled inversion, eigenstate/bandpass filters, degrees up to 
 | --- | --- |
 | references/ | Original project description and PDF copy |
 | notes/ | Research dashboard, conventions, decisions, and progress |
+| notes/learning/ | Lessons from mathematical foundations through QSP and finite-precision analysis |
 | src/ | Future QSP evaluation, quantization, and measurement code |
 | experiments/ | Experiment configurations and reproducibility instructions |
 | data/phases/ | Full-precision phase library and metadata |

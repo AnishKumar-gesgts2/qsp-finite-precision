@@ -9,6 +9,12 @@ Anish Kumar · Professor Itay Hen
 
 Measure how rounding phase angles affects QSP accuracy and whether improved quantization reduces that error.
 
+## Learn the project
+
+Start with [[learning/Learning Path|Learning Path]] for fourteen lessons that build from complex numbers and matrices to QSP, phase quantization, and experimental analysis. Each lesson includes explanations, worked examples, and practice questions with hidden answers.
+
+Begin at [[learning/00 - What the Project Asks|Lesson 00 — What the Project Asks]]. Track understanding in [[learning/Learning Progress|Learning Progress]] and look up notation in [[learning/Glossary|Glossary]]. For a teaching session, ask: **“Teach me the next lesson from my QSP vault, one concept and one question at a time.”**
+
 ## Current work
 
 **Stage 1 — Forward evaluation and conventions**
