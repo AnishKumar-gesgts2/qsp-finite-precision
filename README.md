@@ -30,6 +30,38 @@ The study isolates phase-storage error. Solver approximation residuals, numerica
 
 Extensions include scaled inversion, eigenstate/bandpass filters, degrees up to 2,000, decimal grids, dithering, and symmetry-preserving noise shaping. These follow a reproducible core result.
 
+## Stage map
+
+Each stage gets its own code package and README under `src/qsp_finite_precision/`, with matching checks under `tests/stageN/`. Planned paths are created when their implementation begins; shared outputs retain the existing data/results/figures layout.
+
+| Stage | Code and documentation | Scope | Status |
+| --- | --- | --- | --- |
+| 1 | [stage1/](src/qsp_finite_precision/stage1/README.md) | **Part A:** forward evaluator. **Part B:** solver comparisons and full convention validation. | Part A implemented; Part B pending |
+| 2 | `src/qsp_finite_precision/stage2/` (planned) | Target polynomials, solver phases, and metadata; phase library in `data/phases/` | Pending |
+| 3 | `src/qsp_finite_precision/stage3/` (planned) | Quantization schemes; rounded phases in `data/quantized/` | Pending |
+| 4 | `src/qsp_finite_precision/stage4/` (planned) | Error measurements; tables in `results/` | Pending |
+| 5 | `src/qsp_finite_precision/stage5/` (planned) | Scaling analysis and plots; final writing in `report/` | Pending |
+
+### Stage 1 quick start
+
+From this repository's root, install the package and run the Part A checks:
+
+```shell
+python -m pip install -e .
+python -m unittest discover -s tests/stage1 -v
+```
+
+```python
+import numpy as np
+from qsp_finite_precision.stage1 import evaluate_qsp
+
+x = np.linspace(-1, 1, 101)
+U, P = evaluate_qsp([0.2, 0.7, -0.4], x)
+# U.shape == (101, 2, 2); P.shape == (101,)
+```
+
+The [Stage 1 README](src/qsp_finite_precision/stage1/README.md) contains the Part A Mermaid pseudocode diagram, mathematical definitions, and remaining validation work.
+
 ## Repository layout
 
 | Folder | Purpose |
@@ -37,7 +69,8 @@ Extensions include scaled inversion, eigenstate/bandpass filters, degrees up to 
 | references/ | Original project description and PDF copy |
 | notes/ | Research dashboard, conventions, decisions, and progress |
 | notes/learning/ | Lessons from mathematical foundations through QSP and finite-precision analysis |
-| src/ | Future QSP evaluation, quantization, and measurement code |
+| src/qsp_finite_precision/ | Research code separated into stage packages; Stage 1 Part A currently implemented |
+| tests/ | Checks organized by stage |
 | experiments/ | Experiment configurations and reproducibility instructions |
 | data/phases/ | Full-precision phase library and metadata |
 | data/quantized/ | Rounded phase lists and rounding errors |
@@ -45,7 +78,7 @@ Extensions include scaled inversion, eigenstate/bandpass filters, degrees up to 
 | figures/ | Generated analysis figures |
 | report/ | Written research report |
 
-This repository currently contains the project setup; scientific code, measurements, and results are pending. Reproduction commands and a dependency lockfile should be added alongside the implementation.
+Stage 1 Part A is implemented with NumPy and basic evaluator checks. Solver-response comparisons, the complete convention note, experiment measurements, and scientific results are pending. Record solver versions and lock the expanded environment when adding solver comparisons.
 
 ## Project description
 

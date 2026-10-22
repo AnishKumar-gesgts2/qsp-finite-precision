@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qsp-finite-precision"
+version = "0.1.0"
+description = "Numerical study of finite-precision phases in quantum signal processing"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24,<3"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

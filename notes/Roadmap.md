@@ -4,6 +4,8 @@ Learning preparation: follow [[learning/Learning Path|Learning Path]] and record
 
 - [ ] Read the starred background sources in the project description.
 - [ ] Stage 1: implement and validate the forward evaluator.
+  - [x] Part A: implement the vectorized evaluator and basic checks. See the [Stage 1 README](../src/qsp_finite_precision/stage1/README.md) for the implementation diagram and usage.
+  - [ ] Part B: reproduce solver examples and complete mathematical/convention validation.
 - [ ] Document solver conventions in [[Conventions]].
 - [ ] Stage 2: generate and inspect the two core phase families.
 - [ ] Review the Stage 2 checkpoint with Professor Hen.

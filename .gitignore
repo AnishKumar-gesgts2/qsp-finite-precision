@@ -3,6 +3,9 @@
 .obsidian/plugins/*/data.json
 .trash/
 .venv/
+*.egg-info/
+build/
+dist/
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
