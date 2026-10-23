@@ -1,6 +1,6 @@
 # Stage 1: forward QSP evaluation and conventions
 
-**Part A implemented:** evaluate a supplied phase list at many signal inputs. **Part B pending:** reproduce 2–3 pyqsp examples, complete mathematical validation across degrees, and write the one-page pyqsp/QSPPACK convention mapping. The basic Part A checks do not establish completion of Stage 1.
+**Part A implemented:** evaluate a supplied phase list at many signal inputs. **Part B in progress:** sampled mathematical checks now pass through degree 500; reproducing 2–3 pyqsp examples and writing the one-page pyqsp/QSPPACK convention mapping remain pending. These checks do not establish completion of Stage 1.
 
 ## Part A: inputs, convention, and outputs
 
@@ -91,11 +91,33 @@ print(U.shape, P.shape)  # (101, 2, 2) (101,)
 
 The core checks cover analytic degree-zero and degree-one matrices, a degree-two polynomial, batched versus scalar trigonometric evaluation, empty input shapes, and invalid inputs. The scalar comparison uses a separate input loop and explicit entries for each combined signal/phase factor. It is an implementation check, not a solver comparison. Development verification uses Python 3.11 and NumPy 2.3.3.
 
+## Part B: mathematical checks
+
+Run the reproducible identity experiment from the repository root:
+
+```shell
+python experiments/stage1/check_identities.py
+```
+
+The [experiment script](../../../experiments/stage1/check_identities.py) writes [the results table](../../../results/stage1/mathematical_checks.csv). It checks degrees 0, 1, 2, 3, 10, 31, 100, and 500, with three random phase lists per degree (seed 20261022). Each list is evaluated at 513 Chebyshev-Lobatto inputs including both endpoints. Each degree also gets an all-zero-phase check against NumPy's Chebyshev recurrence. The random-list checks cover unitarity, the endpoint identity, boundedness, and parity: 104 recorded checks total, in addition to the six Part A unit tests.
+
+First run: all 104 checks passed using NumPy 2.3.3. Largest observed discrepancies:
+
+| Check | Discrepancy measured | Largest value |
+| --- | --- | --- |
+| Unitarity | Spectral norm of $U^\dagger U-I$ | 8.50e-14 |
+| Endpoint phase sum | Spectral norm of $U(1)-\exp(iZ\sum_j\phi_j)$ | 1.43e-14 |
+| Boundedness | Positive excess of $|P(x)|$ above 1 | 8.88e-16 |
+| Parity | Absolute difference between $P(-x)$ and $(-1)^dP(x)$ | 0 in this run |
+| Zero-phase Chebyshev identity | Absolute difference between $P_{\mathbf0}(x)$ and $T_d(x)$ | 1.64e-13 |
+
+The absolute pass threshold is a conservative 1e-10 for this experiment, not a theoretical error bound or a measured accuracy floor. These are finite sampled checks, not a proof over all phase lists and input values. Chebyshev comparison includes numerical error in the reference recurrence as well as the evaluator. Exact parity agreement is specific to this implementation and tested inputs; the table does not establish arbitrary-precision accuracy or package-convention agreement.
+
 ## Part B: remaining Stage 1 work
 
 - Reproduce 2–3 built-in pyqsp examples using identical phases, inputs, and matching readouts.
-- Check random-list unitarity, the endpoint sum identity, boundedness, parity, and the all-zero-phase Chebyshev identity across representative degrees.
-- Record numerical discrepancies, justified tolerances, response plots, and solver versions.
+- Extend mathematical checks if package comparisons reveal an unresolved issue or require a different degree range.
+- Record solver-comparison discrepancies, justified tolerances, response plots, and solver versions.
 - Complete the one-page convention note and verify the pyqsp and QSPPACK mappings before using solver phases in later stages. The project-wide tracking note is [Conventions](../../../notes/Conventions.md).
 
 ## Boundary with later stages
