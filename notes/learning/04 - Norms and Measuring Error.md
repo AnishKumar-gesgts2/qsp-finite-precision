@@ -49,7 +49,13 @@ One perturbation therefore gives a first-order matrix error, a second-order real
 ## Check your understanding
 
 1. Find $\Vert\mathrm{diag}(3,4i)\Vert_2$.
-2. For $A=\begin{pmatrix}0&1\cr 0&0\end{pmatrix}$, both eigenvalues are zero. Is its operator norm zero?
+2. Consider the matrix
+
+   $$
+   A=\begin{pmatrix}0&1\cr 0&0\end{pmatrix}.
+   $$
+
+   Both eigenvalues are zero. Is its operator norm zero?
 3. Can a computed readout error exceed the matrix-element error at the same input?
 
 > [!answer]- Check after trying

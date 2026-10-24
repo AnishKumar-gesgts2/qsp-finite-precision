@@ -24,6 +24,8 @@ Use $D(\phi)=e^{i\phi Z}$, $W(x)=xI+i\sqrt{1-x^2}X$, and the written product $D(
 
 Use inline dollar-delimited math and display equations with `$$` on separate lines. Keep matrix order, full/reduced phase lists, coefficient basis, phase units, and readout conventions explicit. Explain that a target component is not automatically a probability.
 
+Keep this notation compatible with the rendered GitHub pages as well as Obsidian. Use `\mathrm{...}` for named functions, `\Vert` for norms, and `\vert` for bars inside Markdown tables. Use `\cr` between matrix rows, `\thinspace` for thin spacing, and `\lt` for strict inequalities so Markdown does not consume punctuation or mistake an index for HTML. Put matrices in display blocks. After publishing, inspect the rendered equations for error boxes, red commands, matrix dimensions, and complete table cells; a source-only check can miss these failures. See [GitHub's math-formatting documentation](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions).
+
 For sigma-delta, $e_j=u_j-\widehat\phi_j$ and $\delta\phi_j=\widehat\phi_j-\phi_j$, so $E_k=-e_k$. Maintain unwrapped representatives for carry and partial-sum analysis. State assumptions before applying an error guarantee.
 
 ## Evidence boundaries and project scope

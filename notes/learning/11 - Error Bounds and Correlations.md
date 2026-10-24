@@ -60,7 +60,7 @@ This gives the small-error endpoint RMS scale. It is a reference model, not a th
 $$
 \mathrm{Var}\left(\sum_j\delta\phi_j\right)
 =\sum_j\mathrm{Var}(\delta\phi_j)
-+2\sum_{j<k}\mathrm{Cov}(\delta\phi_j,\delta\phi_k).
++2\sum_{j\lt k}\mathrm{Cov}(\delta\phi_j,\delta\phi_k).
 $$
 
 Positive covariance can make the sum grow much faster. Repeated phases give an intuitive mechanism for correlated deterministic errors. A plateau can also lie exactly on-grid and produce zero error, so inspect the errors themselves.
