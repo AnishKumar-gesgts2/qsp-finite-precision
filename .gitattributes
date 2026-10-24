@@ -1,4 +1,5 @@
 # Preserve hashes of the generated Stage 2 text artifacts across platforms.
+*.py text eol=lf
 /data/phases/stage2/*.json text eol=lf
 /results/stage2/*.json text eol=lf
 /results/stage2/*.csv text eol=lf
