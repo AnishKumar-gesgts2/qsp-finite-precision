@@ -2,6 +2,8 @@
 
 Prerequisites: [[07 - Why QSP Matters and Core Targets]], [[08 - The Forward Evaluator]].
 
+For the complete Stage 2 concept, required outputs, and choices still awaiting implementation, see [[../Stage 2 - Phase Library Concept|Stage 2 — Phase Library Concept]]. That guide follows Professor Hen's original description. This lesson supplies the supporting ideas; reading it does not start implementation or mark the stage complete.
+
 ## Two directions of the same problem
 
 The forward direction takes phases and evaluates a response. The inverse direction takes an admissible target polynomial and finds phases. Our research studies rounded phases produced by established inverse solvers. Writing a new inverse solver is outside the core assignment.
@@ -29,11 +31,31 @@ Suppose a solver targets $f(x)=x$ and returns full phases $(\pi/4,\pi/4)$ in our
 
 ## Saving a phase library
 
+The library is our collection of realistic, solver-generated circuits for later rounding experiments. Each case begins with a chosen target and polynomial, produces a full phase list, and ends with a checked unrounded response. The purpose is to establish a reproducible baseline whose later change can be attributed to phase storage.
+
 For each case, retain the full phase list at full double precision, target parameters and scaling, approximation domain, achieved degree, coefficient basis, solver name/version/options, convergence status, and baseline residual. Saving decimal strings should preserve binary64 round-trip values; a deliberately shortened printout is already a quantization step.
 
 Measure both the solver's coefficient/convergence residual and the evaluated target residual when available; they need not be the same metric. Full double precision is a baseline, not a promise that all stored digits are scientifically reliable.
 
 Stage 2 covers both core families at roughly logarithmic degrees from about 10 to 500. Respect parity and record achieved degrees. Phase plots should show structure such as plateaus, but structure is a hypothesis for correlation, not a measured storage-error result.
+
+## Three baseline discrepancies
+
+Let $f$ be the chosen target including its recorded amplitude scaling, $p_d$ the polynomial supplied to the solver, and $r_\Phi$ the selected real readout reconstructed from the returned full phases. On the declared application domain $\mathcal D$, record
+
+$$
+E_{\mathrm{approx}}=\max_{x\in\mathcal D}|p_d(x)-f(x)|,
+\qquad
+E_{\mathrm{synth}}=\max_{x\in\mathcal D}|r_\Phi(x)-p_d(x)|,
+$$
+
+$$
+E_{\mathrm{baseline}}=\max_{x\in\mathcal D}|r_\Phi(x)-f(x)|.
+$$
+
+The assignment asks for the distance between the realized response and target. Keeping that overall baseline plus the two components makes the meaning of “residual” explicit. Record any solver-internal coefficient residual separately, including its norm and stopping criterion. Evaluated residuals also contain floating-point evaluation error; they do not isolate arithmetic error by themselves.
+
+Later, phase-storage error compares the response from rounded phases with the response from the same original phases. The unrounded baseline's target error must not be counted again as storage error. When plotting in original-function units by reversing a recorded amplitude scale, label the conversion and retain the native circuit-unit metrics.
 
 ## Check your understanding
 

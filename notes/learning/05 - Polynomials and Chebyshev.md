@@ -46,6 +46,42 @@ $$
 
 Its monomial coefficient list is $[0,0,1]$. Its Chebyshev coefficient list is $[1/2,0,1/2]$. Passing one list into a solver expecting the other changes the requested function.
 
+## Constructing an approximation from a target function
+
+Start with a target $f(x)$ on $[-1,1]$. Choose coefficients so that
+
+$$
+p_d(x)=\sum_{k=0}^{d}c_kT_k(x)\approx f(x).
+$$
+
+The basis polynomials are fixed; the coefficients depend on the target. Using $x=\cos\theta$ changes the expression into a cosine expansion:
+
+$$
+f(\cos\theta)\approx c_0+\sum_{k=1}^{d}c_k\cos(k\theta).
+$$
+
+Cosine orthogonality isolates each weight. With the convention above (the constant coefficient is used directly), the continuous Chebyshev-series coefficients are
+
+$$
+c_0=\frac{1}{\pi}\int_0^{\pi}f(\cos\theta)\,d\theta,
+\qquad
+c_k=\frac{2}{\pi}\int_0^{\pi}f(\cos\theta)\cos(k\theta)\,d\theta
+\quad(k\ge1).
+$$
+
+Each integral measures how strongly the target lines up with one cosine wave, and therefore with one Chebyshev polynomial. Keeping coefficients through degree $d$ gives a truncated-series approximation. Sampling at suitable Chebyshev points and applying a discrete cosine transform can estimate the coefficients; Chebyshev interpolation is another practical construction. Finite-sample interpolation coefficients and the exact continuous-series coefficients are not generally identical, so record which construction was used.
+
+For example, truncating the Chebyshev series of $\cos(2x)$ at degree six gives approximately
+
+$$
+p_6(x)=0.223891T_0(x)-0.705668T_2(x)
++0.0679914T_4(x)-0.00240486T_6(x).
+$$
+
+These displayed coefficients are rounded for teaching. Only even terms appear because the target is even. For our Hamiltonian-simulation family, the Jacobi–Anger expansion supplies the coefficients using Bessel functions; see [[07 - Why QSP Matters and Core Targets]]. This example is written before any QSP amplitude scaling.
+
+After constructing a polynomial, evaluate its error against the target over the declared approximation domain, refine the degree if needed, and check global boundedness and parity before phase synthesis. A finite sampled error maximum is evidence on that grid, not a proof over the whole interval. Saving Chebyshev coefficients still does not give phase angles: the phase solver performs that next step.
+
 ## A grid that resolves endpoint behavior
 
 An endpoint-including Chebyshev grid with $N$ points is
@@ -55,7 +91,7 @@ x_\ell=\cos\left(\frac{\pi\ell}{N-1}\right),\qquad
 \ell=0,\ldots,N-1.
 $$
 
-It is uniform in $\theta$, not $x$, and places more points near $\pm1$. The assignment calls for at least $10d+1$ sample points. A maximum on that grid is still a sampled maximum; narrow peaks may require refinement. Other Chebyshev grids exist, so record which one you use.
+It is uniform in $\theta$, not $x$, and places more points near $\pm1$. Stage 4 of the assignment calls for at least $10d+1$ sample points when measuring phase-storage errors. A maximum on that grid is still a sampled maximum; narrow peaks may require refinement. Other Chebyshev grids exist, so record which one you use. A coefficient-construction grid and an error-validation grid serve different purposes and need not be identical.
 
 ## Check your understanding
 
