@@ -43,21 +43,28 @@ def prepare(source_root, output):
             raise ValueError(f"Pinned source hash mismatch: {name}")
     files["matlab_input.json"] = request_bytes
     files["crosscheck_matlab.m"] = (Path(__file__).with_name("crosscheck_matlab.m")).read_bytes()
-    files["run_stage2.m"] = b"""% Run after extracting this bundle in MATLAB or MATLAB Online.
+    files["run_stage2.m"] = b"""function run_stage2
+% Run after extracting this bundle in MATLAB or MATLAB Online.
 % All numerical inputs and original QSPPACK source are included locally.
 bundle_root = fileparts(mfilename('fullpath'));
 addpath(bundle_root);
+diary(fullfile(bundle_root, 'matlab_run.log'));
+cleanup = onCleanup(@() diary('off')); %#ok<NASGU>
+fprintf('Actual MATLAB runtime: %s\\n', version);
 crosscheck_matlab(fullfile(bundle_root, 'QSPPACK'), ...
     fullfile(bundle_root, 'matlab_input.json'), ...
     fullfile(bundle_root, 'matlab_output.json'));
+end
 """
     files["README.txt"] = b"""PREPARED MATLAB CROSS-CHECK, NOT EXECUTION EVIDENCE
 
 Extract the ZIP in MATLAB or MATLAB Online, open its folder, then run:
     run_stage2
-The console prints convergence for all 21 cases. Preserve matlab_output.json.
+The console prints convergence for 21 core cases and 8 Stage 1 readout checks.
+Preserve matlab_output.json and matlab_run.log. Completed cases are saved as
+the run proceeds; rerun run_stage2 to resume the same request after interruption.
 Copy/download that file into the project's results/stage2 folder, then run:
-    .\\.venv\\Scripts\\python.exe experiments/stage2/verify_matlab.py
+    .\\.venv\\Scripts\\python.exe experiments/stage2/publish_matlab.py
 Only a verified actual MATLAB report completes the runtime check.
 QSPPACK is included unchanged from the pinned Git commit, with its LICENSE.
 The MATLAB runner verifies six source hashes again before computation.
@@ -68,6 +75,7 @@ No account credentials or private GitHub access are included or needed.
         source_repository="https://github.com/qsppack/QSPPACK",
         source_revision=revision,
         case_count=len(request["cases"]),
+        convention_check_count=len(request["convention_cases"]),
         input_sha256=sha(request_bytes),
         files={name: sha(data) for name, data in sorted(files.items())},
     )

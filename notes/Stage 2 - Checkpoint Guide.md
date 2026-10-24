@@ -1,6 +1,6 @@
 # Stage 2 checkpoint guide
 
-**Technical status:** the Python baseline library and clean-clone regeneration are verified. **Original MATLAB QSPPACK execution remains pending access to a signed-in MATLAB session. Professor Hen's review remains pending.** Stage 3 has not started.
+**Delivery status:** the Python baseline library, data, graphs, documentation, and clean regeneration are complete. **Original MATLAB execution is recorded as unable to complete; Professor Hen's review remains pending.** Anish authorized deferral after online connection failures on 2026-10-24. Full technical completion remains false; Stage 3 has not started. See the [attempt record](../results/stage2/matlab_execution_status.json), [[Stage 2 - Delivery Note]], and [prepared publication workflow](../experiments/stage2/README.md#current-online-execution-issue).
 
 Authority: Professor Hen's [original assignment](../references/QSP_project.docx), Stage 2 and the checkpoint immediately afterward. This page collects the review evidence; it does not replace the assignment or record approval.
 
@@ -9,7 +9,7 @@ Authority: Professor Hen's [original assignment](../references/QSP_project.docx)
 | Checkpoint item | Evidence to open | Current boundary |
 | --- | --- | --- |
 | Exact QSP convention and package mapping | [Convention note](Conventions.md) | Written factor order, radians, phase counts, target readout, reduced-phase expansion, and endpoint offsets are explicit. MATLAB mapping is source-inspected; its runtime check is still pending. |
-| Reproduce each solver's own output | [Stage 1B reference graphs and error tables](../experiments/stage1/README.md), [Stage 2 manifest](../results/stage2/summary.json) | pyqsp and Python QSPPACK checks pass. Python QSPPACK is supplementary. [The original MATLAB workflow and ZIP](../experiments/stage2/README.md#original-matlab-cross-check--pending) are prepared, not executed. |
+| Reproduce each solver's own output | [Stage 1B reference graphs and error tables](../experiments/stage1/README.md), [Stage 2 manifest](../results/stage2/summary.json) | pyqsp and Python QSPPACK checks pass. Python QSPPACK is supplementary. [The original MATLAB workflow and ZIP](../experiments/stage2/README.md#original-matlab-cross-check--unable-to-complete) are prepared; actual execution was unable to complete. |
 | Regenerable core phase library, residuals, and phase plots | [All 21 case graphs, phase files, and CSVs](../data/phases/README.md), [methods](../src/qsp_finite_precision/stage2/README.md), [fresh rebuild comparison](../results/stage2/rebuild_comparison.json) | Both core families cover degrees about 10–500. A separate clone and new pinned environment regenerated every case and its graph. The original MATLAB run must still pass before all technical prerequisites are complete. |
 
 ## What the library establishes
@@ -40,10 +40,10 @@ To repeat the check, follow [the regeneration instructions](../experiments/stage
 
 ## Finish the original MATLAB check
 
-1. Obtain a MATLAB session, locally or through MATLAB Online. Current access is waiting on user sign-in.
+1. Obtain a working MATLAB session, locally or through MATLAB Online. The free account is signed in; online workspace connection and browser upload access currently need resolution.
 2. Extract [the prepared bundle](../results/stage2/qsp-stage2-matlab.zip) and run `run_stage2` in MATLAB. The bundle includes the original source, license, and all numerical inputs; no private GitHub authentication is needed inside MATLAB.
 3. Save its actual `matlab_output.json` into `results/stage2/`, then run `experiments/stage2/verify_matlab.py` with the project's Python environment.
-4. Inspect the resulting verification and update the manifest, READMEs, alignment note, and roadmap using the measured result. Preserve the actual report and any new comparison figures. Do not mark this check complete from the prepared ZIP, Python results, or an Octave run.
+4. Run the prepared `publish_matlab.py` step to verify the report and produce its CSVs, phase archives, graphs, and measured README/manifest update. Inspect these outputs, then update the alignment note and roadmap. Do not mark this check complete from the prepared ZIP, Python results, or an Octave run. Technical Stage 2 completion and the later supervisor checkpoint are tracked separately.
 
 ## Items for Professor Hen's review
 

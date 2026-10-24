@@ -149,4 +149,4 @@ Agreement to a polynomial is distinct from approximation of the underlying funct
 
 ## Boundary with later stages
 
-This stage evaluates supplied phases. Stage 2 will generate and archive solver phase lists; Stage 3 will quantize them; Stage 4 will measure errors; Stage 5 will analyze scaling. Later stages should import this evaluator rather than duplicate it. See the [project stage map](../../../README.md#stage-map).
+This stage evaluates supplied phases. Stage 2 now generates and archives the core solver phase lists. After the supervisor checkpoint, Stage 3 will quantize them, Stage 4 will measure errors, and Stage 5 will analyze scaling. The [identity-check figure](../../../figures/stage1/mathematical_checks.png) makes the existing mathematical diagnostics visible alongside their CSV. Later stages import this evaluator rather than duplicate it. See the [project stage map](../../../README.md#stage-map).

@@ -1,0 +1,28 @@
+{
+  "status": "unable_to_complete",
+  "executed": false,
+  "recorded_at_utc": "2026-10-24T07:34:19.039537+00:00",
+  "service": "MATLAB Online (basic)",
+  "failure_stage": "Workspace connection, before any MATLAB code execution",
+  "messages": [
+    "The MATLAB session you are trying to connect to is not responding. Requested service is not found.",
+    "Sorry, there was an error connecting to MATLAB Online."
+  ],
+  "recovery_attempts": [
+    "Signed in to a free basic MathWorks account",
+    "Retried New Session and returned through the MATLAB home page",
+    "Opened a fresh browser tab and session",
+    "Checked MathWorks service status: operational at the time inspected",
+    "Inspected the .session folder per official guidance; it was initially empty; no session files deleted",
+    "User manually retried and reported enabling browser file URL access",
+    "Reconnected after extension refresh; the workspace still disconnected",
+    "MATLAB Drive file chooser did not become available for bundle upload"
+  ],
+  "official_recovery_guidance": "https://www.mathworks.com/matlabcentral/answers/2035374-why-do-i-receive-the-matlab-session-you-are-trying-to-connect-to-is-not-responding-requested-servi",
+  "user_decision": "On 2026-10-24 the user authorized recording the MATLAB check as unable to complete and proceeding with cleanup.",
+  "prepared_core_cases": 21,
+  "prepared_stage1_readout_checks": 8,
+  "numerical_results": "None from original MATLAB. Python results remain separately identified.",
+  "follow_up": "Run the source-pinned bundle in a working MATLAB session, then publish and verify the genuine report.",
+  "supervisor_checkpoint": "Pending; no professor approval is inferred."
+}

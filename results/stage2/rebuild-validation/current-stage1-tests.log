@@ -1,0 +1,17 @@
+test_endpoint_shift_rotates_amplitude (test_conventions.ConventionTests.test_endpoint_shift_rotates_amplitude) ... ok
+test_even_odd_and_degree_zero_expansion (test_conventions.ConventionTests.test_even_odd_and_degree_zero_expansion) ... ok
+test_mapping_validation_and_no_mutation (test_conventions.ConventionTests.test_mapping_validation_and_no_mutation) ... ok
+test_complex_readout_and_measurement_basis (test_conventions.PyqspIntegrationTests.test_complex_readout_and_measurement_basis) ... ok
+test_symmetric_expansion_and_full_unitary (test_conventions.PyqspIntegrationTests.test_symmetric_expansion_and_full_unitary) ... ok
+test_full_reduced_real_imaginary_mapping (test_conventions.QsppackIntegrationTests.test_full_reduced_real_imaginary_mapping) ... ok
+test_batched_product_against_scalar_rotation_formulas (test_forward.ForwardTests.test_batched_product_against_scalar_rotation_formulas) ... ok
+test_degree_one_full_matrix (test_forward.ForwardTests.test_degree_one_full_matrix) ... ok
+test_degree_two_polynomial (test_forward.ForwardTests.test_degree_two_polynomial) ... ok
+test_degree_zero (test_forward.ForwardTests.test_degree_zero) ... ok
+test_empty_signal_array (test_forward.ForwardTests.test_empty_signal_array) ... ok
+test_invalid_inputs (test_forward.ForwardTests.test_invalid_inputs) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.934s
+
+OK

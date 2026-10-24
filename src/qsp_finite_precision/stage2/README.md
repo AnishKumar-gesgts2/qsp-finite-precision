@@ -1,6 +1,6 @@
 # Stage 2: full-precision core phase library
 
-The Python workflow constructs and saves realistic solver-generated phase lists for both core application families. These are unrounded baselines for later storage-error measurements. The original MATLAB QSPPACK numerical cross-check and Professor Hen's supervisor checkpoint remain pending; no Stage 3 quantization has started.
+The Python deliverables are complete: realistic solver-generated phase lists for both core application families, residuals, graphs, data, and regeneration evidence. Original MATLAB QSPPACK execution was **unable to complete** because MATLAB Online disconnected before code execution; [the attempt record](../../../results/stage2/matlab_execution_status.json) preserves that limitation. Professor Hen's supervisor checkpoint remains pending, and Stage 3 has not started.
 
 [Measured summary in the project README](../../../README.md#stage-2-measured-baseline-results) · [Browse all cases and graphs](../../../data/phases/README.md) · [Summary CSV](../../../results/stage2/library_summary.csv) · [Manifest](../../../results/stage2/summary.json) · [Reload verification](../../../results/stage2/verification.json)
 
@@ -10,18 +10,48 @@ The authoritative requirements are “Stage 2: a library of real phase lists” 
 
 ```mermaid
 flowchart TD
-    C["Configuration<br/>family, degrees, approximation settings"] --> T["Build target and Chebyshev coefficients<br/>Record scale, parity, and application domain"]
-    T --> B["Check polynomial boundedness<br/>Theta samples + between-node allowance"]
-    B --> S["Production pyqsp symmetric Newton solver<br/>Save full and reduced phases"]
-    S --> E["Stage 1 evaluator<br/>Full U and complex P on validation grid"]
-    E --> M["Separate approximation, synthesis,<br/>baseline target error, and package agreement"]
-    M --> Q["Supplementary Python QSPPACK check<br/>Real-part readout, full phases"]
-    Q --> A{"All acceptance checks pass?"}
-    A -- No --> F["Record failure in manifest<br/>No successful phase archive for this case"]
-    A -- Yes --> J["Archive binary64 phase JSON + curves CSV<br/>Record hashes and solver metadata"]
-    J --> V["Reload archives and reconstruct<br/>Verify curves, domains, metrics, and hashes"]
-    V --> R["Per-case reference graphs<br/>Library index + measurable README summary"]
-    R --> X["Pending: original MATLAB QSPPACK execution<br/>Then required review with Professor Hen"]
+    SPEC["Original assignment<br/>Two core families, degrees about 10 to 500"] --> CFG["Pinned configuration and package versions"]
+    subgraph TARGETS["Construct and record each target"]
+        CFG --> HAM["Cosine and sine<br/>Jacobi-Anger coefficients, scale 0.5, varied evolution time"]
+        CFG --> SIGN["Sign target, maximum 0.9<br/>Erf surrogate, DCT coefficients, varied excluded gap"]
+        HAM --> POLY["Save actual degree, parity, coefficients,<br/>target scale, domain, and approximation error"]
+        SIGN --> POLY
+        POLY --> BOUND["Full-interval boundedness estimate<br/>Theta grid plus between-node allowance"]
+    end
+    subgraph PYTHON["Primary baseline and Python checks"]
+        BOUND --> SOLVE["Production pyqsp symmetric Newton solver<br/>Unrounded full and reduced phases"]
+        SOLVE --> COEF["Check convergence and recompute<br/>returned-phase coefficient L1 residual"]
+        COEF --> EVAL["Local full-unitary and complex-amplitude evaluation<br/>Full validation grid and separate package audit grid"]
+        EVAL --> OWN["Same phases and inputs in pyqsp<br/>Compare complete complex amplitude"]
+        OWN --> PORT["Supplementary Python QSPPACK solve<br/>Compare its own real readout with local evaluation"]
+        PORT --> PYOK{"All Python checks pass?"}
+        PYOK -- No --> FAIL["Record failure; do not mark complete"]
+        PYOK -- Yes --> ARCH["Phase JSON, response and audit CSVs, solver logs<br/>Metadata, numerical settings, and file hashes"]
+    end
+    subgraph MATLAB["Original MATLAB QSPPACK cross-check"]
+        ARCH --> BUNDLE["Export the same coefficients and both input grids<br/>Package pinned original source and source hashes"]
+        BUNDLE --> RUNTIME["Run in actual MATLAB or MATLAB Online<br/>Verify runtime, input hash, and six source hashes"]
+        RUNTIME --> FIXTURES["Eight Stage 1 full-phase checks<br/>Four fixtures, real and imaginary target readouts"]
+        RUNTIME -- Cannot connect --> UNAVAILABLE["Record unable_to_complete and executed=false<br/>Keep prepared code separate from numerical evidence"]
+        FIXTURES --> CORE["Solve all 21 core polynomials<br/>Save MATLAB phases, native full-grid responses, and residuals"]
+        CORE --> CROSS["Reconstruct the same MATLAB phases in Python<br/>Compare native/local readouts, polynomial, target, and unitarity"]
+        CROSS --> MATOK{"Complete coverage, convergence,<br/>and numerical tolerances pass?"}
+        MATOK -- No --> FAIL
+    end
+    MATOK -- Yes --> PUB["Publish actual MATLAB CSVs, phase archives,<br/>per-case graphs, overview, and measurable README results"]
+    ARCH --> RELOAD["Reload all archived phases<br/>Recompute saved curves, domains, and metrics"]
+    RELOAD --> CLEAN["Separate-clone regeneration<br/>Match scientific source identity, phases, and curves"]
+    PUB --> AUDIT["Audit artifact hashes, data/figure coverage,<br/>documentation links, and repository status"]
+    CLEAN --> AUDIT
+    UNAVAILABLE --> AUDIT
+    AUDIT --> READY{"All technical requirements executed and passed?"}
+    READY -- Yes --> DONE["Stage 2 technical deliverables complete<br/>Only after all required executed checks pass"]
+    READY -- No --> LIMITED["Deliver validated Python work and disclose unavailable check<br/>Full technical completion remains false"]
+    DONE --> REVIEW["Separate supervisor checkpoint<br/>Conventions, solver reproduction, core library, and regeneration"]
+    LIMITED --> REVIEW
+    REVIEW --> APPROVED{"Professor review recorded?"}
+    APPROVED -- No --> WAIT["Stage 3 remains blocked"]
+    APPROVED -- Yes --> NEXT["Stage 3: quantize the same saved baseline phases"]
 ```
 
 Implementation files:
@@ -30,6 +60,9 @@ Implementation files:
 - `library.py`: production-solver calls, independent returned-phase checks, full-precision archives, residuals, and supplementary Python QSPPACK evaluation.
 - [build_library.py](../../../experiments/stage2/build_library.py): regeneration, per-case figures, tables, manifest, and summary.
 - [verify_library.py](../../../experiments/stage2/verify_library.py): re-evaluate the saved phases without repeating phase synthesis.
+- [crosscheck_matlab.m](../../../experiments/stage2/crosscheck_matlab.m): execute original QSPPACK, record eight Stage 1 full-phase readout checks and all 21 full-grid core responses, and save completed cases for resumption.
+- [verify_matlab.py](../../../experiments/stage2/verify_matlab.py): reject source/input/coverage/convergence/convention mismatches and verify actual MATLAB data on both grids.
+- [publish_matlab.py](../../../experiments/stage2/publish_matlab.py): prepared publication step for verified actual results; produces per-case CSVs, full phase archives, comparison graphs, an overview, and updated status. No MATLAB results are manufactured by this code.
 
 ## Chosen core cases
 
@@ -110,9 +143,11 @@ The overview plots residuals, target parameters, and median neighboring phase ch
 
 The [checkpoint guide](../../../notes/Stage%202%20-%20Checkpoint%20Guide.md) collects the review evidence. [Clean-clone regeneration](../../../results/stage2/rebuild_comparison.json) reproduced all 21 cases with zero differences in compared phases and curves. A [portable ZIP](../../../results/stage2/qsp-stage2-matlab.zip) now includes the original pinned QSPPACK source, license, all inputs, and the MATLAB runner for local or online use.
 
-The original MATLAB runtime is unavailable locally. [The supplied runner](../../../experiments/stage2/crosscheck_matlab.m) consumes the exported coefficients and audit inputs, checks six original MATLAB source-function hashes at the pinned revision, and saves the phases and native MATLAB responses. [The verifier](../../../experiments/stage2/verify_matlab.py) checks the returned source identity, coverage, convergence, and reconstructed response. The runner itself has not been executed here. Python QSPPACK has shared algorithmic lineage and is supplementary; it does not establish original MATLAB execution.
+The original MATLAB runtime is unavailable locally, and the free online session failed before code execution. On 2026-10-24 Anish authorized documenting this check as unable to complete and proceeding with cleanup. [The supplied runner](../../../experiments/stage2/crosscheck_matlab.m) consumes exported coefficients and both input grids, checks six original MATLAB source hashes, and is prepared to save phases and native responses. [The verifier](../../../experiments/stage2/verify_matlab.py) checks actual reports. No original MATLAB numerical results or MATLAB-derived graphs are claimed. Python QSPPACK has shared algorithmic lineage and remains supplementary.
 
-The manifest deliberately retains `stage2_complete: false`, pending original MATLAB comparison and the professor's required checkpoint. Before Stage 3, review the Stage 1 convention note, reproduced solver outputs, and this regenerable library with Professor Hen. A successful Python run does not mark that review complete.
+The manifest currently retains `stage2_complete: false`, pending original MATLAB execution. The prepared publisher sets `technical_complete` and `stage2_complete` only after the actual report passes and its data/figures are published. These fields describe technical Stage 2 completion. The supervisor checkpoint is tracked separately and must remain pending until review is recorded; `ready_for_stage3` remains false. Before Stage 3, review the Stage 1 convention note, reproduced solver outputs, and this regenerable library with Professor Hen.
+
+The successful Python checks and MATLAB cross-check have different roles from the later numerical-precision assessment. Rounding error will compare each rounded response with its **own unrounded baseline**. Existing function-approximation and solver residuals stay separate. Ordinary-precision package agreement does not certify how small a rounding effect can be resolved; the assignment's Stage 4 high-degree checks with at least 30-digit mpmath remain future work.
 
 ## Sources
 

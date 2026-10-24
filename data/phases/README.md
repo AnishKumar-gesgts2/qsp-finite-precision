@@ -2,7 +2,7 @@
 
 Generated Stage 2 Python baselines. All angles are in radians, unwrapped and unquantized, saved as round-trip binary64 JSON numbers. Only cases listed in the [manifest](../../results/stage2/summary.json) belong to this generated library.
 
-Original MATLAB QSPPACK execution and Professor Hen's checkpoint remain pending. [Methods and acceptance criteria](../../src/qsp_finite_precision/stage2/README.md) · [Regenerate / verify](../../experiments/stage2/README.md)
+Python library complete; original MATLAB cross-check unavailable in this environment; supervisor review pending. [Methods and acceptance criteria](../../src/qsp_finite_precision/stage2/README.md) · [Regenerate / verify](../../experiments/stage2/README.md)
 
 ![Library overview](../../figures/stage2/overview.png)
 

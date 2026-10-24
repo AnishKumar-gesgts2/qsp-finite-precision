@@ -1,0 +1,16 @@
+test_invalid_archive_phase_count_and_coefficients (test_library.LibraryTests.test_invalid_archive_phase_count_and_coefficients) ... ok
+test_iteration_limit_cannot_be_archived_as_success (test_library.LibraryTests.test_iteration_limit_cannot_be_archived_as_success) ... ok
+test_solver_to_saved_phases_to_response_round_trip (test_library.LibraryTests.test_solver_to_saved_phases_to_response_round_trip) ... ok
+test_verifier_rejects_tampered_archive_hash (test_library.LibraryTests.test_verifier_rejects_tampered_archive_hash) ... ok
+test_full_grid_report_verification_and_inconsistent_results (test_library.MatlabReportTests.test_full_grid_report_verification_and_inconsistent_results)
+Synthetic reports stay in a temporary directory; no runtime evidence. ... ok
+test_non_matlab_runtime_and_unmatched_source_cannot_complete_check (test_library.MatlabReportTests.test_non_matlab_runtime_and_unmatched_source_cannot_complete_check) ... ok
+test_between_node_bound_against_stationary_points (test_library.TargetTests.test_between_node_bound_against_stationary_points) ... ok
+test_invalid_family_parity_and_gap_are_rejected (test_library.TargetTests.test_invalid_family_parity_and_gap_are_rejected) ... ok
+test_jacobi_anger_even_odd_targets_and_accuracy (test_library.TargetTests.test_jacobi_anger_even_odd_targets_and_accuracy) ... ok
+test_sign_is_measured_against_sign_not_erf (test_library.TargetTests.test_sign_is_measured_against_sign_not_erf) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.192s
+
+OK

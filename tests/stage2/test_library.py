@@ -1,6 +1,7 @@
 """Scientific target/domain checks, convergence failure, and archive integrity."""
 
 import copy
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -107,6 +108,52 @@ class LibraryTests(unittest.TestCase):
 
 
 class MatlabReportTests(unittest.TestCase):
+    def test_full_grid_report_verification_and_inconsistent_results(self):
+        """Synthetic reports stay in a temporary directory; no runtime evidence."""
+        path=Path(__file__).resolve().parents[2]/"experiments/stage2/verify_matlab.py"
+        spec=importlib.util.spec_from_file_location("stage2_report_fixture",path)
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        target=build_target("cosine",10)
+        case,curves,audit,_=generate_case(target)
+        phases=case["python_qsppack"]["phases"]
+        x=curves["x"];ax=audit["x"]
+        _,P=evaluate_qsp(phases,x);_,A=evaluate_qsp(phases,ax)
+        entry=dict(case_id=case["case_id"],parity=0,coefficients=target["coefficients"][::2],
+                   audit_x=ax.tolist(),validation_x=x.tolist())
+        convention=dict(case_id="fixture__real",name="fixture",targetPre=True,typePhi="full",x=ax.tolist())
+        request=dict(source_revision="TEST_FIXTURE",expected_source_hashes={"fixture":"not-runtime-evidence"},
+                     criteria=1e-12,cases=[entry],convention_cases=[convention])
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder)
+            (root/"results/stage2").mkdir(parents=True)
+            (root/"results/stage1").mkdir(parents=True)
+            (root/"data/phases/stage2").mkdir(parents=True)
+            write_case(root/f"data/phases/stage2/{case['case_id']}.json",case)
+            (root/"results/stage1/solver_comparisons.json").write_text(json.dumps(dict(examples=[dict(
+                name="fixture",degree=10,chebyshev_coefficients=target["coefficients"])])))
+            request_path=root/"results/stage2/matlab_input.json"
+            request_path.write_text(json.dumps(request))
+            output=dict(case_id=case["case_id"],full_phases=phases,audit_x=ax.tolist(),response=A.real.tolist(),
+                        validation_x=x.tolist(),validation_response=P.real.tolist(),solver_value=0.,iterations=4,
+                        targetPre=True,typePhi="full")
+            report=dict(runtime="MATLAB",runtime_version="TEST FIXTURE - NOT EXECUTION EVIDENCE",
+                        source_revision=request["source_revision"],source_hashes=request["expected_source_hashes"],
+                        input_sha256=hashlib.sha256(request_path.read_bytes()).hexdigest(),cases=[output],
+                        convention_cases=[dict(case_id="fixture__real",full_phases=phases,x=ax.tolist(),
+                                               response=A.real.tolist(),solver_value=0.,iterations=4,targetPre=True,typePhi="full")])
+            checked=module.verify_matlab(root,report)
+            self.assertTrue(checked["passed"])
+            self.assertEqual(checked["cases"][0]["evaluator_agreement"]["max_abs"],0.)
+            mutations=[lambda r:r["cases"][0]["validation_response"].__setitem__(0,.123),
+                       lambda r:r["cases"][0]["validation_x"].pop(),
+                       lambda r:r["cases"][0]["full_phases"].pop(),
+                       lambda r:r["cases"][0].__setitem__("solver_value",1e-3),
+                       lambda r:r["convention_cases"][0].__setitem__("targetPre",False),
+                       lambda r:r["cases"].append(copy.deepcopy(r["cases"][0]))]
+            for mutate in mutations:
+                bad=copy.deepcopy(report);mutate(bad)
+                with self.assertRaises(ValueError):module.verify_matlab(root,bad)
+
     def test_non_matlab_runtime_and_unmatched_source_cannot_complete_check(self):
         path=Path(__file__).resolve().parents[2]/"experiments/stage2/verify_matlab.py"
         spec=importlib.util.spec_from_file_location("stage2_verify_matlab",path)

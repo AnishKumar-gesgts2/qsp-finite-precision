@@ -9,9 +9,10 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m unittest discover -s tests/stage2 -v
 .\.venv\Scripts\python.exe experiments/stage2/build_library.py
 .\.venv\Scripts\python.exe experiments/stage2/verify_library.py
+.\.venv\Scripts\python.exe experiments/stage2/audit_repository.py
 ```
 
-The generator uses [config.json](config.json), writes only the Stage 2 library/results/figures and their documented indexes, and refreshes the Stage 2 result block in the project README. No phase quantization is performed.
+The generator uses [config.json](config.json), writes the Stage 2 library/results/figures and their documented indexes, and refreshes the Stage 2 result block in the project README. If a genuine MATLAB report exists, it also verifies/publishes the Stage 1 MATLAB cross-check data and figures. No phase quantization is performed.
 
 To reuse unchanged, hash-checked cases while regenerating figures and summaries:
 
@@ -23,7 +24,7 @@ The reuse fingerprint includes the target configuration, solver options, package
 
 ## Clean-clone regeneration check
 
-A separate clone and newly created Python environment regenerated Stage 1 and all 21 Stage 2 cases from scratch. Both test suites passed (12 Stage 1 tests and 9 Stage 2 tests), along with all 104 mathematical identity checks. The [rebuild comparison](../../results/stage2/rebuild_comparison.json) records source/version identity and differences between rebuilt phases and curves; [the checkpoint guide](../../notes/Stage%202%20-%20Checkpoint%20Guide.md) explains its scope.
+A separate clone and newly created Python environment regenerated Stage 1 and all 21 Stage 2 cases from scratch. Its test suites passed (12 Stage 1 tests and 9 Stage 2 tests), along with all 104 identity checks. The current suite adds one report-consistency test: 12 Stage 1 plus 10 Stage 2 tests, all passing. The [rebuild comparison](../../results/stage2/rebuild_comparison.json) records its tested revision, source/version identity, and phase/curve differences; [the checkpoint guide](../../notes/Stage%202%20-%20Checkpoint%20Guide.md) explains the scope.
 
 Run the commands above in a separate clone **without `--resume`**, and also regenerate Stage 1 with its [documented commands](../stage1/README.md). Then compare that clone with this library:
 
@@ -43,9 +44,9 @@ The recorded comparison uses the same computer and pinned package versions. It i
 
 Every successful archive contains all unrounded full phases, target parameters, achieved degree, coefficients, solver/version/options, convergence, and residuals. Per-case CSVs retain the reconstructed curves and the application-domain mask. Figures reverse the target scale for display only; native scaled residuals are retained separately. Sign accuracy is measured against 0.9 times sign(x) outside the recorded gap, even though the polynomial construction uses an erf surrogate.
 
-## Original MATLAB cross-check — pending
+## Original MATLAB cross-check — unable to complete
 
-No MATLAB runtime was available during the current run. The files below are a prepared cross-check workflow, not evidence that MATLAB was executed. The Python `qsppack` results do not replace this check.
+Original MATLAB execution was **unable to complete** because the free online workspace repeatedly disconnected before code ran. The user authorized documenting the limitation and proceeding with cleanup. [Execution-attempt record](../../results/stage2/matlab_execution_status.json). The files below remain a prepared workflow, not execution evidence. Python `qsppack` results do not silently replace original MATLAB.
 
 ### Portable bundle, including MATLAB Online
 
@@ -71,14 +72,32 @@ addpath('experiments/stage2');
 crosscheck_matlab('C:/path/to/original/QSPPACK');
 ```
 
-The argument is the user's actual original-QSPPACK checkout path. The runner uses `results/stage2/matlab_input.json` and writes `results/stage2/matlab_output.json`. It checks the normalized SHA256 hashes of six entry/evaluation/Newton functions against the pinned [source hashes](matlab_source_hashes.json). Those hashes identify the checked functions; use the pinned checkout for the full dependency tree as well.
+The argument is the user's actual original-QSPPACK checkout path. The runner uses `results/stage2/matlab_input.json` and writes `results/stage2/matlab_output.json`. It checks the normalized SHA256 hashes of six entry/evaluation/Newton functions against the pinned [source hashes](matlab_source_hashes.json). Those hashes identify the checked functions; use the pinned checkout for the full dependency tree as well. It runs eight supplementary Stage 1 full-phase checks (four fixtures, real and imaginary readouts) and all 21 Stage 2 core cases. Each core result includes both the package-audit responses and MATLAB's own response on the complete validation grid. Completed cases are saved after each case and reused only for the same input/source/runtime on resumption.
 
 3. Verify the actual report with Python:
 
 ```powershell
 .\.venv\Scripts\python.exe experiments/stage2/verify_matlab.py
+.\.venv\Scripts\python.exe experiments/stage2/publish_matlab.py
+.\.venv\Scripts\python.exe experiments/stage2/audit_repository.py
 ```
 
 The verifier requires a report identifying MATLAB and its version, the pinned source hashes, every requested case, finite full phases, a successful solver residual, matching audit inputs, and agreement between the original MATLAB response and our evaluator. It also reconstructs the MATLAB phases on the full validation grid. Successful verification writes `results/stage2/matlab_verification.json`.
 
-The current library manifest and READMEs intentionally keep this check pending. Once a genuine MATLAB report has passed verification, review it and update those status records explicitly; a prepared runner or a Python-generated substitute cannot mark original MATLAB execution complete. Professor Hen's checkpoint still comes before Stage 3.
+The current library manifest and READMEs explicitly record this check as unable to complete. `publish_matlab.py` is the prepared publication step: it first verifies an actual report, then writes complete MATLAB curves/error columns to CSV, a summary CSV, dedicated phase JSONs, one four-panel graph per core case, an overview, and four Stage 1 graphs. It updates the generated main/index README summaries using measured results. Its source exists before execution; that does not imply those original-MATLAB numerical outputs exist.
+
+After successful publication, `technical_complete` and `stage2_complete` mean the technical Stage 2 deliverables passed. `supervisor_checkpoint` remains pending and `ready_for_stage3` remains false. Supervisor approval is a separate event. The generator reruns this verification/publication when an actual `matlab_output.json` is present; a stale or inconsistent report fails instead of silently preserving a completion claim.
+
+## Current online execution issue
+
+On 2026-10-24, free MATLAB Online access was enabled and the account was signed in, but repeated launches failed before code execution with “Requested service is not found.” MathWorks' status page reported the service operational. [MathWorks' recovery guidance](https://www.mathworks.com/matlabcentral/answers/2035374-why-do-i-receive-the-matlab-session-you-are-trying-to-connect-to-is-not-responding-requested-servi) was checked; the account's `.session` folder was initially empty, and no session files were removed. Fresh sessions and a fresh landing page were tried. The user manually retried and reported enabling file-URL access, but workspace reconnection and the upload file chooser still failed. The user then authorized deferral. These are access failures, not numerical test results; the manifest records `unable_to_complete` and `executed: false`.
+
+## Publication-code test without MATLAB
+
+The report parser has positive/negative fixture tests in the Stage 2 suite. To exercise the full CSV/graph publication path without claiming MATLAB execution:
+
+```powershell
+.\.venv\Scripts\python.exe experiments/stage2/check_publication.py
+```
+
+This explicitly labeled test builds synthetic responses from Python data in a temporary directory, checks the publication pipeline there, and removes all fixture outputs. It never imports a simulated MATLAB report into the real library. Its separate QA record is `results/stage2/publication_code_test.json`; this is software-test evidence, not original-MATLAB numerical evidence. A genuine MATLAB run remains required to resolve the unavailable cross-check.

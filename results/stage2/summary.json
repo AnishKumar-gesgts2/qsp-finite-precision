@@ -14,9 +14,10 @@
   "python_validation_passed": true,
   "stage2_complete": false,
   "matlab_qsppack": {
-    "status": "pending",
+    "status": "unable_to_complete",
     "executed": false,
-    "input_file": "results/stage2/matlab_input.json"
+    "input_file": "results/stage2/matlab_input.json",
+    "attempt_report": "results/stage2/matlab_execution_status.json"
   },
   "supervisor_checkpoint": "pending; required before Stage 3",
   "config_sha256": "80519b3b2d3439508c2d0552ec2f652cdd11a5dc8bba6d454d71851db79682ec",
@@ -27,112 +28,112 @@
     "src/qsp_finite_precision/stage2/targets.py": "b23a2f3899c67e878c88d2f262f787d8041bab6830be394034708e8681b0d54a",
     "src/qsp_finite_precision/stage2/library.py": "9740eedf1400300bc56db828d96d0ba37add29a0c34e6d478876880dac70de64"
   },
-  "builder_sha256": "f8b1b2444ffb039fa7d00804a35ec691b73c9627ef932da4aadbf15a81d71f4a",
+  "builder_sha256": "fb84d2f2e76bd8f6711a55b64514a86650834f984b57143133254367cdfb7790",
   "cases": [
     {
       "case_id": "cosine_d0010",
       "file": "data/phases/stage2/cosine_d0010.json",
-      "sha256": "fc5834e7b80d30297177b9976a4cbf56feee4541be25ba44afc63d4af9ad7121"
+      "sha256": "475d0d5eebd8ec15546d509a823fe229142060032f2f84caf3fe8ca9a2f799fb"
     },
     {
       "case_id": "cosine_d0020",
       "file": "data/phases/stage2/cosine_d0020.json",
-      "sha256": "cb22d7044b374cf4bc8ce7c2714204626b5cd17d6b855d6eac55c228e53a2c0a"
+      "sha256": "bedbca955bee26ae04bffdabfe6e99762cc83716a72be459c3f0d554bbe856e3"
     },
     {
       "case_id": "cosine_d0040",
       "file": "data/phases/stage2/cosine_d0040.json",
-      "sha256": "8a2fb2c270d776c73730106fd3184a05b0319de5a370223ad0e8292582c3b38f"
+      "sha256": "dca7793458d5078d86bdeaec4cf293f22118505e4b5ef4e7079e88f66878629f"
     },
     {
       "case_id": "cosine_d0080",
       "file": "data/phases/stage2/cosine_d0080.json",
-      "sha256": "8b6c93cda497c587b11aef95c41ecdd55c7f01558167b737f9d3398107981f1e"
+      "sha256": "efd2af95dbc35de338302589f1c618b52881694d72df3631f6b1eaf5535a1535"
     },
     {
       "case_id": "cosine_d0160",
       "file": "data/phases/stage2/cosine_d0160.json",
-      "sha256": "c1a264e380e0e6acc6bb109565b5c0ea5679a4651732e3b619dea55d53ab8d8d"
+      "sha256": "a67c2cd67623a5016194964dff60d5363b000ce717c93d04edcf9440e5ad7cf6"
     },
     {
       "case_id": "cosine_d0320",
       "file": "data/phases/stage2/cosine_d0320.json",
-      "sha256": "7351aa28c7854182ee073af5fc199cc68281edbaca5975cdce370ebb4a61b2be"
+      "sha256": "2b5aecaffc7753de436db66615c403798a015af83283a55360671a6a44a1bd92"
     },
     {
       "case_id": "cosine_d0500",
       "file": "data/phases/stage2/cosine_d0500.json",
-      "sha256": "42e829a53d9267068d858266ca6321fbb81bfb75e5dfc1e1b06b0bb1887d68d4"
+      "sha256": "d10a8dc0591730915fbf9168d9648d267f2d1cb7e5c644987f5e430b251f007c"
     },
     {
       "case_id": "sine_d0011",
       "file": "data/phases/stage2/sine_d0011.json",
-      "sha256": "6bfae5af042c170d069edb5c6cd0d081e9842f9e660ad9eb866e3b1b9051f868"
+      "sha256": "01421c1408c3208fb337254b9cb983f21ca5d0876372e30677dc340271f630c3"
     },
     {
       "case_id": "sine_d0021",
       "file": "data/phases/stage2/sine_d0021.json",
-      "sha256": "b9c87091ddc7d43741e1e169cc28523e8b7cc142d4c37bb0f12da83a59c11122"
+      "sha256": "c74e97a8b199aa43507d6d4269056a75b3a3bd65b150bdc476ca8531f2d5de09"
     },
     {
       "case_id": "sine_d0041",
       "file": "data/phases/stage2/sine_d0041.json",
-      "sha256": "d68713b236d54780276cea3329da5fe1956cb9024b279f514634521edfea71ff"
+      "sha256": "4d900161584a1080eb2eaae3db30424d826a26787fd327c254fd48ce02a9757c"
     },
     {
       "case_id": "sine_d0081",
       "file": "data/phases/stage2/sine_d0081.json",
-      "sha256": "e8e41a3369048ad70e4cb9f566c11e51e444d6e81f1cc9e89f41f5c3cede3654"
+      "sha256": "a4bb670757c2c813c8732e66adb915279dfdf4e8d0c744b5deaaaa891ab7d37a"
     },
     {
       "case_id": "sine_d0161",
       "file": "data/phases/stage2/sine_d0161.json",
-      "sha256": "c897a6505f9a5aa5b5aad3ca23c70503674bbfcfef61954dd65e410bcc9ca23c"
+      "sha256": "86c25c2b89836ecd446406f9cc9e3338e66781cccad303d438e8ee91abdf2a1a"
     },
     {
       "case_id": "sine_d0321",
       "file": "data/phases/stage2/sine_d0321.json",
-      "sha256": "97785cdce2d8d77d8641e30c62de486c57373f92fe0d4fd1d3b3986cf7cb6b3f"
+      "sha256": "d97162184d4d87d239ac065ff9c9ae435adad4371a6f37e38d7a816bc80748ba"
     },
     {
       "case_id": "sine_d0499",
       "file": "data/phases/stage2/sine_d0499.json",
-      "sha256": "6c303cd5c61c1626893f63a471e7fa823862372d7c7592a0d5cce0ebbcc51144"
+      "sha256": "37a25710913cbd13ce3774f221c89316fb7406251fc5c586c127b9c11e9353cf"
     },
     {
       "case_id": "sign_d0011",
       "file": "data/phases/stage2/sign_d0011.json",
-      "sha256": "e295227456c3b065ce40a1d5384260c9a6f8e9b8507a2f0e11a2c85643ddfe0b"
+      "sha256": "bd21d7d435e931890a06eeddebf3875a7726442d68b2bb308087413430caa3e4"
     },
     {
       "case_id": "sign_d0021",
       "file": "data/phases/stage2/sign_d0021.json",
-      "sha256": "de6f67ef1d24869d9a8b9034def6d005f35339e12a7325203f29e1f0c122e037"
+      "sha256": "c41c14f7376324e7d8e4a3369ac5fc60f3215b1e3b505f3516d8dbb9af2430fc"
     },
     {
       "case_id": "sign_d0041",
       "file": "data/phases/stage2/sign_d0041.json",
-      "sha256": "7edeb8ace32e9bf436a2c409191dbdb774a25c3cb5d7feb9952fbb5bacbbf573"
+      "sha256": "288de83b92ba486720b99f96cb807b48cd7d76aaa3bc288e79c44c51d240a727"
     },
     {
       "case_id": "sign_d0081",
       "file": "data/phases/stage2/sign_d0081.json",
-      "sha256": "2f8c0bd40ccce668ea1590ed2ee8d03a2769dd2352f80c010714b4f1a74a6ea3"
+      "sha256": "2071dc692f6b6bcca043ce06613e26e5b8538af03175f4a17fce02ccce843177"
     },
     {
       "case_id": "sign_d0161",
       "file": "data/phases/stage2/sign_d0161.json",
-      "sha256": "0367792c68a939be7e9131509ee3fd61eb5f9b1c717c1f3fa74e8a04f527f43c"
+      "sha256": "bd4fc5d7e17dbfc890bb5dd4f3f4130aceaed69825067b8360265c896498227a"
     },
     {
       "case_id": "sign_d0321",
       "file": "data/phases/stage2/sign_d0321.json",
-      "sha256": "d3a69eb4719d1ba6b3a3fe06e6eb658b3e70c12d91961dc947df903470d89382"
+      "sha256": "628ff6fb1eacfdb77644b99e0f4644f56c58afa5ec67e5d853dcbb4defc6460f"
     },
     {
       "case_id": "sign_d0499",
       "file": "data/phases/stage2/sign_d0499.json",
-      "sha256": "85f70fde86fc5afa3226ed8cb774d20a6180b9db6246f6cd293712940ec4eaa9"
+      "sha256": "25a2835c67271a6ebfd5c39576d445dcda19f8bafdf97a47eb8c11ccd6e6c9bb"
     }
   ],
   "aggregate": {
@@ -140,5 +141,8 @@
     "pyqsp_agreement_max": 0.0,
     "coefficient_l1_max": 1.4110623877185304e-14,
     "python_qsppack_agreement_max": 0.0
-  }
+  },
+  "python_deliverables_complete": true,
+  "technical_complete": false,
+  "ready_for_stage3": false
 }

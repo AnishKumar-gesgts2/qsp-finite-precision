@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "recorded_at_utc": "2026-10-24T07:49:06.250065+00:00",
+  "scope": "Publication code smoke test using temporary synthetic Python fixtures; MATLAB NOT EXECUTED",
+  "matlab_executed": false,
+  "temporary_core_cases": 21,
+  "temporary_convention_cases": 8,
+  "temporary_graphs_verified": 26,
+  "temporary_phase_archives": 21,
+  "real_library_and_readme_unchanged": true,
+  "temporary_fixture_outputs_removed": true
+}

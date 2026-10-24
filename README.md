@@ -30,7 +30,7 @@ The study isolates phase-storage error. Solver approximation residuals, numerica
 
 **Checkpoint:** review the convention note, reproduced solver output, and regenerable core phase library with Professor Hen before beginning Stage 3.
 
-[The Stage 2 checkpoint guide](notes/Stage%202%20-%20Checkpoint%20Guide.md) collects the evidence and remaining original MATLAB requirement. A separate clone and new pinned environment regenerated all 21 Python cases: **maximum difference from the published phases and reconstructed curves was 0.0**, for both pyqsp and Python QSPPACK. [The rebuild comparison](results/stage2/rebuild_comparison.json) records the measurements; all 21 tests and 104 identity checks also passed. The [portable MATLAB bundle](results/stage2/qsp-stage2-matlab.zip) is prepared; actual MATLAB execution awaits sign-in.
+[The Stage 2 checkpoint guide](notes/Stage%202%20-%20Checkpoint%20Guide.md) collects the evidence and remaining original MATLAB requirement. A separate clone and new pinned environment regenerated all 21 Python cases: **maximum difference from the published phases and reconstructed curves was 0.0**, for both pyqsp and Python QSPPACK. [The rebuild comparison](results/stage2/rebuild_comparison.json) retains that result and its tested revision. The current **22 tests pass**, and all **104 identity checks pass**. The [artifact audit](results/stage2/artifact_audit.json) checks phase/data coverage, numerical reconstruction, hashes, 28 reference/diagnostic PNGs, and local documentation links. Original MATLAB execution is [recorded as unable to complete](results/stage2/matlab_execution_status.json); the [portable bundle](results/stage2/qsp-stage2-matlab.zip) remains ready for a working session. [Delivery note](notes/Stage%202%20-%20Delivery%20Note.md).
 
 Extensions include scaled inversion, eigenstate/bandpass filters, degrees up to 2,000, decimal grids, dithering, and symmetry-preserving noise shaping. These follow a reproducible core result.
 
@@ -41,7 +41,7 @@ Each stage gets its own code package and README under `src/qsp_finite_precision/
 | Stage | Code and documentation | Scope | Status |
 | --- | --- | --- | --- |
 | 1 | [stage1/](src/qsp_finite_precision/stage1/README.md) | **Part A:** forward evaluator. **Part B:** pyqsp comparisons and solver-convention validation. | Complete for pinned Python packages; MATLAB source mapping documented |
-| 2 | [stage2/](src/qsp_finite_precision/stage2/README.md) | Target polynomials, solver phases, and metadata; phase library in `data/phases/` | Python library verified: 21 cases; original MATLAB and supervisor checkpoint pending |
+| 2 | [stage2/](src/qsp_finite_precision/stage2/README.md) | Target polynomials, solver phases, metadata, data, and graphs | Python deliverables complete: 21 cases; original MATLAB unable to complete; supervisor checkpoint pending |
 | 3 | `src/qsp_finite_precision/stage3/` (planned) | Quantization schemes; rounded phases in `data/quantized/` | Pending |
 | 4 | `src/qsp_finite_precision/stage4/` (planned) | Error measurements; tables in `results/` | Pending |
 | 5 | `src/qsp_finite_precision/stage5/` (planned) | Scaling analysis and plots; final writing in `report/` | Pending |
@@ -86,7 +86,7 @@ All 21 returned-phase coefficient checks and supplementary Python QSPPACK checks
 
 [Stage 2 implementation and results guide](src/qsp_finite_precision/stage2/README.md) · [Browse all cases, phase plots, and response/error graphs](data/phases/README.md) · [Regeneration commands](experiments/stage2/README.md)
 
-**Remaining checkpoint:** original MATLAB QSPPACK execution is pending (a runner and input file are supplied); Python QSPPACK is supplementary. Professor Hen's required review before Stage 3 is also pending. This is a working Python baseline library, not a claim that those two checks have been completed.
+**Python Stage 2 deliverables complete; original MATLAB cross-check unable to complete.** MATLAB Online failed before code execution; [the attempt record](results/stage2/matlab_execution_status.json) documents the limitation. MATLAB test code and publication tools are prepared, not executed evidence. Professor Hen's checkpoint remains pending before Stage 3.
 
 <!-- END STAGE 2 RESULTS -->
 
@@ -106,7 +106,7 @@ All 21 returned-phase coefficient checks and supplementary Python QSPPACK checks
 | figures/ | Generated analysis figures |
 | report/ | Written research report |
 
-Stage 1 is validated against pyqsp 0.2.0 and Python QSPPACK 0.4.0, with [response overlays](figures/stage1/solver_comparisons.png), [recorded metrics](results/stage1/solver_comparisons.json), and the [convention note](notes/Conventions.md). Stage 2 now supplies a verified Python phase library and its baseline results above. MATLAB QSPPACK was source-inspected, not executed; the original MATLAB comparison and supervisor checkpoint remain pending. Quantization experiments and finite-precision scaling results have not started.
+Stage 1 is validated against pyqsp 0.2.0 and Python QSPPACK 0.4.0, with [response overlays](figures/stage1/solver_comparisons.png), [recorded metrics](results/stage1/solver_comparisons.json), and the [convention note](notes/Conventions.md). Stage 2 supplies the verified Python phase library and baseline results above. Original MATLAB QSPPACK was source-inspected, but its online execution was unable to complete; [the attempt record](results/stage2/matlab_execution_status.json) and [delivery note](notes/Stage%202%20-%20Delivery%20Note.md) preserve that limitation. The supervisor checkpoint remains pending. Quantization experiments and finite-precision scaling results have not started.
 
 ## Project description
 

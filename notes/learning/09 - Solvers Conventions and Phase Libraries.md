@@ -2,7 +2,7 @@
 
 Prerequisites: [[07 - Why QSP Matters and Core Targets]], [[08 - The Forward Evaluator]].
 
-For the complete Stage 2 concept, required outputs, and choices still awaiting implementation, see [[../Stage 2 - Phase Library Concept|Stage 2 — Phase Library Concept]]. That guide follows Professor Hen's original description. This lesson supplies the supporting ideas; reading it does not start implementation or mark the stage complete.
+For the Stage 2 concept, required outputs, recorded implementation choices, and current completion boundaries, see [[../Stage 2 - Phase Library Concept|Stage 2 — Phase Library Concept]]. That guide follows Professor Hen's original description. This lesson supplies the supporting ideas; reading it does not mark an implementation milestone or learning checkpoint complete.
 
 ## Two directions of the same problem
 

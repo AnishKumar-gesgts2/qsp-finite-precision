@@ -1,0 +1,21 @@
+{
+  "recorded_at_utc": "2026-10-24T07:49:16.757214+00:00",
+  "python_artifacts_passed": true,
+  "stage1_examples": 4,
+  "python_qsppack_mapping_checks": 16,
+  "mathematical_checks": 104,
+  "core_cases": 21,
+  "full_precision_phases": 3421,
+  "readable_pngs": 28,
+  "local_markdown_links_checked": 224,
+  "broken_local_links": [],
+  "mermaid_blocks_found": 4,
+  "matlab_bundle_integrity_passed": true,
+  "prepared_matlab_core_cases": 21,
+  "prepared_matlab_convention_checks": 8,
+  "matlab_executed": false,
+  "all_technical_requirements_passed": false,
+  "supervisor_checkpoint": "pending; required before Stage 3",
+  "ready_for_stage3": false,
+  "limits": "Local hashes, numerical reconstruction, file coverage, image integrity, and link existence. Does not establish all-input mathematical bounds, high-precision error floors, or professor approval."
+}

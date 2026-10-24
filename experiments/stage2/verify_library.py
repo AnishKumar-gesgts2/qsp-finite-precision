@@ -42,6 +42,16 @@ def verify(root):
                 if not np.isclose(actual[metric],expected[metric],rtol=1e-12,atol=1e-30):
                     raise ValueError(f"Metric mismatch: {entry['case_id']} {key} {metric}")
         verified.append(dict(case_id=entry["case_id"],phase_count=len(case["full_phases"]),validation_points=int(x.size)))
+    if "configured_cases" in manifest and (len(verified)!=manifest["configured_cases"] or manifest["failures"]):
+        raise ValueError("The configured library is incomplete or has failures")
+    for rel,digest in manifest.get("matlab_artifact_sha256",{}).items():
+        if hashlib.sha256((root/rel).read_bytes()).hexdigest()!=digest:
+            raise ValueError(f"MATLAB artifact hash mismatch: {rel}")
+    if manifest.get("stage2_complete"):
+        if not manifest.get("technical_complete") or manifest["matlab_qsppack"].get("status")!="passed":
+            raise ValueError("Stage 2 completion lacks MATLAB verification")
+        from verify_matlab import verify_matlab
+        verify_matlab(root,json.loads((root/manifest["matlab_qsppack"]["report_file"]).read_text()))
     return dict(passed=True,verified_cases=len(verified),full_precision_phases=sum(c["phase_count"] for c in verified),
                 checks="archive and artifact SHA256; full phase counts; saved-response reconstruction; target/domain and metric consistency",cases=verified)
 

@@ -2,6 +2,16 @@
 
 Use [[templates/Experiment Note|Experiment Note]] to record a reproducible experiment, or add dated progress entries here.
 
+## 2026-10-24 — Stage 2 delivery audit and original MATLAB limitation
+
+- Reread the original Stage 1–2 requirements and checkpoint. Preserved the full core project, separate error definitions, and supervisor gate before Stage 3.
+- Extended the original MATLAB runner to all 21 core validation grids and eight Stage 1 full-phase real/imaginary checks. Added per-case progress saves, resumable execution for identical input/source/runtime, and a runtime diary in the portable bundle.
+- Added a stricter report verifier and prepared CSV/phase/figure publication step. Python tests exercise successful parsing of explicitly labeled temporary fixtures and rejection of changed grids, responses, phase counts, readouts, convergence, and coverage. These tests do not constitute original MATLAB execution.
+- Free MATLAB Online repeatedly disconnected before code execution. Checked official recovery guidance and service status, retried fresh sessions, and inspected an initially empty session folder without deleting files. The user also manually retried and reported enabling browser upload access. Connection/upload problems persisted; [the attempt record](../results/stage2/matlab_execution_status.json) states `executed: false`.
+- Anish authorized marking the original MATLAB cross-check unable to complete and proceeding with cleanup. No original-MATLAB numerical output, CSV, or graph is invented. The prepared tools remain available for a working runtime.
+- Added a figure of the existing 104 Stage 1 identity checks, expanded the Stage 2 Mermaid workflow to include source/runtime checks, CSV/graph publication, failure/unavailable outcomes, regeneration, and the separate supervisor checkpoint. Added the [[Stage 2 - Delivery Note]] with the measured results, error-budget distinction, and follow-up.
+- Python phase-library deliverables are complete; original MATLAB is explicitly unavailable, full technical Stage 2 completion remains false, and professor approval/Stage 3 remain pending. The recorded clean-clone zero-difference result is retained with its exact tested revision and environment scope.
+
 ## 2026-10-23 — Stage 1B package validation
 
 - Created an isolated Python 3.11.9 validation environment and recorded its dependency lock. Used pyqsp 0.2.0, Python QSPPACK 0.4.0, NumPy 2.4.6, SciPy 1.17.1, and Matplotlib 3.11.2.

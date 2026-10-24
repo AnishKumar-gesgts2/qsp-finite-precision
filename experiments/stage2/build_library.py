@@ -10,6 +10,9 @@ import hashlib
 import importlib.metadata
 import json
 import platform
+import os
+import tempfile
+import time
 from pathlib import Path
 import sys
 
@@ -41,6 +44,26 @@ def write_columns(path, columns):
 def read_columns(path):
     table = np.genfromtxt(path, delimiter=",", names=True, encoding="utf-8")
     return {name: table[name] for name in table.dtype.names}
+
+
+def save_figure(fig, path, dpi):
+    """Publish a complete image despite short Windows file-scanner locks."""
+    path = Path(path)
+    fd, temporary = tempfile.mkstemp(suffix=".png", dir=path.parent)
+    os.close(fd)
+    try:
+        fig.savefig(temporary, dpi=dpi)
+        for attempt in range(4):
+            try:
+                os.replace(temporary, path)
+                break
+            except OSError as error:
+                if attempt == 3 or error.errno not in (13, 22):
+                    raise
+                time.sleep(.25 * (attempt + 1))
+    finally:
+        if os.path.exists(temporary):
+            os.unlink(temporary)
 
 
 def style(ax):
@@ -118,14 +141,14 @@ def plot_case(case, curves, path):
                   f"pyqsp coefficient residual (L1): {case['solver']['returned_coefficient_l1_residual']:.3e}\n"
                   f"Validation inputs: {case['grid']['total_validation_points']:,}; application inputs: {case['grid']['application_points']:,}\n"
                   f"Target scale: {scale:.8g}; polynomial construction scale: {target['polynomial_scale']:.8g}\n"
-                  "Sampled maxima; sample-weighted RMSE. No phase rounding. MATLAB check pending.",
+                  "Sampled maxima; sample-weighted RMSE. No phase rounding. MATLAB status: see manifest.",
                   transform=table_ax.transAxes,fontsize=8.4,va="bottom")
     for ax in (a,b,c):
         style(ax)
     parameters = target["parameters"]
     detail = f"tau={parameters['tau']:.6g}" if family != "sign" else f"delta={parameters['delta']:.6g}, gap={parameters['gap']:.6g}"
     fig.suptitle(f"Stage 2 | {family.title()} | degree {target['degree']} | {detail}",fontsize=15)
-    fig.savefig(path,dpi=150)
+    save_figure(fig,path,dpi=150)
     plt.close(fig)
 
 
@@ -151,11 +174,29 @@ def plot_overview(cases, path):
         style(ax)
         ax.legend(fontsize=7)
     fig.suptitle("Stage 2: unrounded core phase library",fontsize=16)
-    fig.savefig(path,dpi=160)
+    save_figure(fig,path,dpi=160)
     plt.close(fig)
 
 
-def publish_summary(manifest, cases):
+def publish_summary(manifest, cases, root=ROOT):
+    matlab = manifest.get("matlab_qsppack", {})
+    matlab_passed = matlab.get("status") == "passed" and matlab.get("executed") is True
+    if matlab_passed:
+        checkpoint = (f"**Stage 2 technical deliverables complete:** original QSPPACK ran in MATLAB {matlab['runtime_version']}; "
+                      f"{matlab['verified_cases']} core cases and {matlab['convention_checks']} Stage 1 full-phase readout checks passed. "
+                      f"Worst native MATLAB/local evaluator difference: {matlab['evaluator_max']:.3e}; "
+                      f"worst MATLAB synthesis error: {matlab['synthesis_max']:.3e}. "
+                      "[MATLAB data and graphs](results/stage2/matlab/README.md). "
+                      "**Professor Hen's supervisor checkpoint remains pending before Stage 3.**")
+    elif matlab.get("status") == "unable_to_complete":
+        checkpoint = ("**Python Stage 2 deliverables complete; original MATLAB cross-check unable to complete.** "
+                      "MATLAB Online failed before code execution; [the attempt record](results/stage2/matlab_execution_status.json) "
+                      "documents the limitation. MATLAB test code and publication tools are prepared, not executed evidence. "
+                      "Professor Hen's checkpoint remains pending before Stage 3.")
+    else:
+        checkpoint = ("**Remaining technical check:** original MATLAB QSPPACK execution is pending. "
+                      "The supplied runner/input bundle is preparation; Python QSPPACK is supplementary. "
+                      "Professor Hen's required review before Stage 3 also remains pending.")
     groups = {family:[c for c in cases if c["target"]["family"]==family] for family in FAMILIES}
     lines = ["<!-- BEGIN STAGE 2 RESULTS -->", "", "## Stage 2 measured baseline results", "",
              f"**{len(cases)}/{manifest['configured_cases']} configured cases generated and independently reloaded**; {sum(len(c['full_phases']) for c in cases):,} full-precision phases saved. No phases were quantized. The counts and metrics below come from the saved [manifest](results/stage2/summary.json) and [results CSV](results/stage2/library_summary.csv).", "",
@@ -168,8 +209,8 @@ def publish_summary(manifest, cases):
               f"All {len(cases)} returned-phase coefficient checks and supplementary Python QSPPACK checks passed. Maximum pyqsp/local complex-amplitude difference on the recorded audit grids: {manifest['aggregate']['pyqsp_agreement_max']:.3e}. Reload verification checks archive hashes, full phase counts, reconstruction, and curve/metric consistency.", "",
               "![Stage 2 overview](figures/stage2/overview.png)", "",
               "[Stage 2 implementation and results guide](src/qsp_finite_precision/stage2/README.md) · [Browse all cases, phase plots, and response/error graphs](data/phases/README.md) · [Regeneration commands](experiments/stage2/README.md)", "",
-              "**Remaining checkpoint:** original MATLAB QSPPACK execution is pending (a runner and input file are supplied); Python QSPPACK is supplementary. Professor Hen's required review before Stage 3 is also pending. This is a working Python baseline library, not a claim that those two checks have been completed.", "", "<!-- END STAGE 2 RESULTS -->"]
-    path = ROOT/"README.md"
+              checkpoint, "", "<!-- END STAGE 2 RESULTS -->"]
+    path = root/"README.md"
     content = path.read_text(encoding="utf-8")
     start,end=lines[0],lines[-1]
     block="\n".join(lines)
@@ -181,7 +222,10 @@ def publish_summary(manifest, cases):
         content=content.replace("## Repository layout",block+"\n\n## Repository layout")
     path.write_text(content,encoding="utf-8")
     index=["# Full-precision core phase library", "", "Generated Stage 2 Python baselines. All angles are in radians, unwrapped and unquantized, saved as round-trip binary64 JSON numbers. Only cases listed in the [manifest](../../results/stage2/summary.json) belong to this generated library.", "",
-           "Original MATLAB QSPPACK execution and Professor Hen's checkpoint remain pending. [Methods and acceptance criteria](../../src/qsp_finite_precision/stage2/README.md) · [Regenerate / verify](../../experiments/stage2/README.md)", "",
+           ("Original MATLAB cross-check passed; supervisor review remains pending. " if matlab_passed else
+            "Python library complete; original MATLAB cross-check unavailable in this environment; supervisor review pending. "
+            if matlab.get("status")=="unable_to_complete" else "Original MATLAB QSPPACK execution and supervisor review remain pending. ")+
+           "[Methods and acceptance criteria](../../src/qsp_finite_precision/stage2/README.md) · [Regenerate / verify](../../experiments/stage2/README.md)", "",
            "![Library overview](../../figures/stage2/overview.png)", "",
            "Each case graph includes the original target, target polynomial, phase-reconstructed response, full phase list, separate error curves, and max/RMSE table. Response curves are displayed in original-function units; figure tables and the summary below retain native scaled circuit units. For sign cases the excluded application gap is shaded.", "",
            "| Case | Degree | Parameter | Max target error | Max synthesis error | Artifacts |", "| --- | ---: | --- | ---: | ---: | --- |"]
@@ -189,6 +233,8 @@ def publish_summary(manifest, cases):
         ident=case["case_id"];t=case["target"];p=t["parameters"]
         parameter=f"tau={p['tau']:.5g}" if t["family"]!="sign" else f"gap={p['gap']:.5g}; delta={p['delta']:.5g}"
         links=f"[Phases](stage2/{ident}.json) · [Graph](../../figures/stage2/{ident}.png) · [Curves CSV](../../results/stage2/{ident}_response.csv)"
+        if matlab_passed:
+            links += f" · [MATLAB phases](stage2_matlab/{ident}.json) · [MATLAB graph](../../figures/stage2/matlab/{ident}.png) · [MATLAB CSV](../../results/stage2/matlab/{ident}_response.csv)"
         index.append(f"| {ident} | {t['degree']} | {parameter} | {case['metrics']['baseline_application']['max_abs']:.3e} | {case['metrics']['synthesis']['max_abs']:.3e} | {links} |")
     for family in FAMILIES:
         group=groups[family]
@@ -196,7 +242,7 @@ def publish_summary(manifest, cases):
             index += ["",f"## {family.title()} reference examples", ""]
             for case in [group[0],group[-1]]:
                 index += [f"### {case['case_id']}","",f"![{case['case_id']} reference graph](../../figures/stage2/{case['case_id']}.png)",""]
-    (ROOT/"data/phases/README.md").write_text("\n".join(index).rstrip()+"\n",encoding="utf-8")
+    (root/"data/phases/README.md").write_text("\n".join(index).rstrip()+"\n",encoding="utf-8")
 
 
 def main():
@@ -207,6 +253,9 @@ def main():
     config=json.loads(config_path.read_text())
     output=ROOT/"results/stage2";figures=ROOT/"figures/stage2";phase_dir=ROOT/"data/phases/stage2"
     for folder in (output,figures,phase_dir):folder.mkdir(parents=True,exist_ok=True)
+    attempt_path=output/"matlab_execution_status.json"
+    matlab_unavailable=attempt_path.exists() and not (output/"matlab_output.json").exists() and json.loads(
+        attempt_path.read_text()).get("status")=="unable_to_complete"
     versions={name:importlib.metadata.version(name) for name in ("numpy","scipy","pyqsp","qsppack","matplotlib")}
     science_sources={name:sha(ROOT/name) for name in ("src/qsp_finite_precision/stage1/forward.py","src/qsp_finite_precision/stage1/conventions.py","src/qsp_finite_precision/stage2/targets.py","src/qsp_finite_precision/stage2/library.py")}
     cases=[];rows=[];failures=[];entries=[];matlab_cases=[]
@@ -234,6 +283,10 @@ def main():
                     case["generation_fingerprint"]=fingerprint
                     case["artifact_sha256"]={p.relative_to(ROOT).as_posix():sha(p) for p in (curve_path,audit_path,log_path)}
                     write_case(path,case)
+                if matlab_unavailable:
+                    case["matlab_qsppack"]=dict(status="unable_to_complete",executed=False,
+                                                attempt_report="results/stage2/matlab_execution_status.json")
+                    write_case(path,case)
                 plot_case(case,curves,figures/f"{ident}.png")
                 cases.append(case)
                 entries.append(dict(case_id=ident,file=path.relative_to(ROOT).as_posix(),sha256=sha(path)))
@@ -252,8 +305,9 @@ def main():
                                  nearly_equal_adjacent_fraction=case["phase_structure"]["nearly_equal_adjacent_fraction"],
                                  median_phase_step=float(np.median(np.abs(np.diff(case["full_phases"])))),
                                  longest_nearly_equal_run=case["phase_structure"]["longest_nearly_equal_run"],passed=case["passed"],
-                                 matlab_executed=False))
-                matlab_cases.append(dict(case_id=ident,parity=t["parity"],coefficients=t["coefficients"][t["parity"]::2],audit_x=audit["x"].tolist()))
+                                 matlab_executed=False,matlab_status=case["matlab_qsppack"]["status"]))
+                matlab_cases.append(dict(case_id=ident,parity=t["parity"],coefficients=t["coefficients"][t["parity"]::2],
+                                         audit_x=audit["x"].tolist(),validation_x=curves["x"].tolist()))
                 print(f"{ident}: {'reused' if cached else 'generated'}; coefficient={case['solver']['returned_coefficient_l1_residual']:.2e}; synthesis={m['synthesis']['max_abs']:.2e}; target={m['baseline_application']['max_abs']:.2e}",flush=True)
             except Exception as error:
                 failures.append(dict(case_id=ident,error=f"{type(error).__name__}: {error}"))
@@ -264,8 +318,17 @@ def main():
     with (output/"library_summary.csv").open("w",newline="",encoding="utf-8") as file:
         writer=csv.DictWriter(file,fieldnames=list(rows[0]),lineterminator="\n");writer.writeheader();writer.writerows(rows)
     matlab_sources=json.loads(Path(__file__).with_name("matlab_source_hashes.json").read_text())
+    stage1=json.loads((ROOT/"results/stage1/solver_comparisons.json").read_text())
+    stage1_grid=read_columns(ROOT/"results/stage1/solver_responses.csv")["x"]
+    # The Stage 1 CSV repeats x for each example; use the documented unique grid.
+    stage1_grid=np.unique(stage1_grid)
+    convention_cases=[dict(case_id=f"{e['name']}__{'real' if real else 'imag'}",name=e["name"],
+                           parity=e["parity"],targetPre=real,typePhi="full",
+                           coefficients=e["chebyshev_coefficients"][e["parity"]::2],x=stage1_grid.tolist())
+                      for e in stage1["examples"] for real in (True,False)]
     matlab_input=dict(source_revision=config["matlab_qsppack_revision"],expected_source_hashes=matlab_sources["functions"],
-                      criteria=config["solver"]["criteria"],maxiter=config["solver"]["maxiter"],cases=matlab_cases)
+                      criteria=config["solver"]["criteria"],maxiter=config["solver"]["maxiter"],
+                      convention_cases=convention_cases,cases=matlab_cases)
     (output/"matlab_input.json").write_text(json.dumps(matlab_input,indent=2,allow_nan=False)+"\n",encoding="utf-8",newline="\n")
     plot_overview(cases,figures/"overview.png")
     manifest=dict(schema_version=1,python=platform.python_version(),versions=versions,
@@ -279,6 +342,14 @@ def main():
                                  pyqsp_agreement_max=max(c["metrics"]["pyqsp_evaluator_agreement"]["max_abs"] for c in cases),
                                  coefficient_l1_max=max(c["solver"]["returned_coefficient_l1_residual"] for c in cases),
                                  python_qsppack_agreement_max=max(c["python_qsppack"]["metrics"]["evaluator_agreement"]["max_abs"] for c in cases)))
+    attempt_path=output/"matlab_execution_status.json"
+    if attempt_path.exists() and not (output/"matlab_output.json").exists():
+        attempt=json.loads(attempt_path.read_text())
+        if attempt.get("status")=="unable_to_complete" and attempt.get("executed") is False:
+            manifest["matlab_qsppack"].update(status="unable_to_complete",attempt_report="results/stage2/matlab_execution_status.json")
+    manifest["python_deliverables_complete"]=not failures and len(cases)==manifest["configured_cases"]
+    manifest["technical_complete"]=False
+    manifest["ready_for_stage3"]=False
     (output/"summary.json").write_text(json.dumps(manifest,indent=2,allow_nan=False)+"\n",encoding="utf-8",newline="\n")
     from verify_library import verify
     verified=verify(ROOT)
@@ -286,7 +357,13 @@ def main():
     publish_summary(manifest,cases)
     if failures:
         raise SystemExit(f"{len(failures)} cases failed; see summary.json")
-    print(f"Verified {len(cases)} successful unrounded cases. MATLAB and supervisor checkpoint remain pending.")
+    report_path=output/"matlab_output.json"
+    if report_path.exists():
+        from publish_matlab import publish
+        publish(ROOT,report_path)
+        print(f"Verified {len(cases)} Python and original MATLAB cases. Supervisor checkpoint remains pending.")
+    else:
+        print(f"Verified {len(cases)} successful unrounded cases. Original MATLAB status: {manifest['matlab_qsppack']['status']}; supervisor review pending.")
 
 
 if __name__=="__main__":

@@ -1,6 +1,6 @@
 # Stage 2 — Phase Library Concept
 
-**Status: implementation authorized by Anish on 2026-10-23. The Python workflow now generates and verifies 21 core baseline cases; original MATLAB execution and the supervisor checkpoint remain pending.** See [implementation and results](../src/qsp_finite_precision/stage2/README.md), [the library index](../data/phases/README.md), and [the measurable README summary](../README.md#stage-2-measured-baseline-results). The explanations below describe the concepts and requirements; they do not establish completion of the remaining checkpoint.
+**Status: Python deliverables complete, with 21 verified core baseline cases. Original MATLAB execution was unable to complete; Anish authorized documenting that limitation on 2026-10-24. The supervisor checkpoint remains pending.** See [implementation and results](../src/qsp_finite_precision/stage2/README.md), [the library index](../data/phases/README.md), [delivery note](Stage%202%20-%20Delivery%20Note.md), and [the measurable README summary](../README.md#stage-2-measured-baseline-results). The explanations below do not establish completion of the remaining checkpoint.
 
 Source: Professor Itay Hen's [original project description](../references/QSP_project.docx), sections “Stage 2: a library of real phase lists” and “Checkpoint,” reviewed on 2026-10-23. The [PDF export](../references/QSP_project.pdf) contains the same assignment. The requirements below come from that description; proposed implementation choices are labeled separately.
 

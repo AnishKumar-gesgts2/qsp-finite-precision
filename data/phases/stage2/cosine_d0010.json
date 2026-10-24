@@ -175,8 +175,9 @@
     }
   },
   "matlab_qsppack": {
-    "status": "pending",
-    "executed": false
+    "status": "unable_to_complete",
+    "executed": false,
+    "attempt_report": "results/stage2/matlab_execution_status.json"
   },
   "acceptance": {
     "evaluator_tolerance": 1e-10,

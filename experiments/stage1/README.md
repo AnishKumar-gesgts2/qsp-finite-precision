@@ -9,12 +9,19 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r experiments/stage1/requirements.lock.txt -e ".[validation]"
 .\.venv\Scripts\python.exe -m unittest discover -s tests/stage1 -v
 .\.venv\Scripts\python.exe experiments/stage1/check_identities.py
+.\.venv\Scripts\python.exe experiments/stage1/plot_identities.py
 .\.venv\Scripts\python.exe experiments/stage1/compare_solvers.py
 ```
 
 The optional `validation` extra keeps solver and plotting dependencies out of the core evaluator. Without it, package-integration tests are explicitly skipped; that is not a full validation run.
 
 ## Comparison design
+
+### Mathematical identity checks
+
+The [identity CSV](../../results/stage1/mathematical_checks.csv) contains 104 passing checks through degree 500. The graph below reports the largest recorded discrepancy at each degree for unitarity, the endpoint phase-sum identity, the zero-phase Chebyshev identity, parity, and boundedness excess. The dashed line is the recorded acceptance threshold. Exact zeros use a labeled plotting floor; the CSV retains zero. These sampled binary64 checks support implementation validation, not an all-input proof or a numerical error-floor certificate.
+
+![Recorded Stage 1 mathematical checks](../../figures/stage1/mathematical_checks.png)
 
 `compare_solvers.py` uses the built-in `PolyCosineTX(tau=2, epsilon=1e-3)`, `PolySineTX` with the same arguments, and `PolySign(degree=15, delta=3, max_scale=0.9)` generators, plus the explicit linear diagnostic `0.5x`. It records their actual coefficients and scales. The sign generator uses an erf surrogate; the core sign-domain phase library remains Stage 2 work.
 
