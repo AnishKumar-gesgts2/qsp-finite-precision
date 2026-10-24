@@ -12,7 +12,7 @@ $$
 \Phi=(\phi_0,\phi_1,\ldots,\phi_d).
 $$
 
-There are $d+1$ angles and $d$ signal steps. Later we will see why the response is related to a degree-$d$ polynomial. We can calculate the response on an ordinary computer using $2\times2$ matrices.
+There are $d+1$ angles and $d$ signal steps. Later we will see why the response is related to a degree $d$ polynomial. We can calculate the response on an ordinary computer using $2\times2$ matrices.
 
 ## Three different questions
 

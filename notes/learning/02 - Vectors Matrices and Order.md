@@ -7,16 +7,16 @@ Prerequisites: [[01 - Complex Numbers and Phase]].
 A two-component vector is a column:
 
 $$
-v=\begin{pmatrix}a\\b\end{pmatrix},\qquad
-\|v\|_2=\sqrt{|a|^2+|b|^2}.
+v=\begin{pmatrix}a\cr b\end{pmatrix},\qquad
+\Vert v\Vert_2=\sqrt{|a|^2+|b|^2}.
 $$
 
 A matrix tells us how to mix those components:
 
 $$
-\begin{pmatrix}p&q\\r&s\end{pmatrix}
-\begin{pmatrix}a\\b\end{pmatrix}
-=\begin{pmatrix}pa+qb\\ra+sb\end{pmatrix}.
+\begin{pmatrix}p&q\cr r&s\end{pmatrix}
+\begin{pmatrix}a\cr b\end{pmatrix}
+=\begin{pmatrix}pa+qb\cr ra+sb\end{pmatrix}.
 $$
 
 The identity matrix $I$ leaves a vector unchanged. Matrix multiplication represents applying transformations in sequence. In $ABv$, apply $B$ to the state first, then $A$.
@@ -26,16 +26,16 @@ The identity matrix $I$ leaves a vector unchanged. Matrix multiplication represe
 Use
 
 $$
-X=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
-Z=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\qquad
-v=\begin{pmatrix}1\\0\end{pmatrix}.
+X=\begin{pmatrix}0&1\cr 1&0\end{pmatrix},\qquad
+Z=\begin{pmatrix}1&0\cr 0&-1\end{pmatrix},\qquad
+v=\begin{pmatrix}1\cr 0\end{pmatrix}.
 $$
 
 $X$ swaps components; $Z$ changes the sign of the second component. Therefore
 
 $$
-XZv=\begin{pmatrix}0\\1\end{pmatrix},\qquad
-ZXv=\begin{pmatrix}0\\-1\end{pmatrix}.
+XZv=\begin{pmatrix}0\cr 1\end{pmatrix},\qquad
+ZXv=\begin{pmatrix}0\cr -1\end{pmatrix}.
 $$
 
 In fact $XZ=-ZX$. We cannot reorder a matrix product as if it were a product of ordinary numbers. Reordering QSP factors changes the computation.
@@ -45,14 +45,14 @@ In fact $XZ=-ZX$. We cannot reorder a matrix product as if it were a product of 
 $A^\dagger$ means transpose $A$ and conjugate its entries. If
 
 $$
-A=\begin{pmatrix}a&b\\c&d\end{pmatrix},
-\quad A^\dagger=\begin{pmatrix}a^*&c^*\\b^*&d^*\end{pmatrix}.
+A=\begin{pmatrix}a&b\cr c&d\end{pmatrix},
+\quad A^\dagger=\begin{pmatrix}a^{\ast}&c^{\ast}\cr b^{\ast}&d^{\ast}\end{pmatrix}.
 $$
 
 A unitary matrix satisfies $U^\dagger U=I$. It preserves vector lengths:
 
 $$
-\|Uv\|_2^2=v^\dagger U^\dagger Uv=v^\dagger v=\|v\|_2^2.
+\Vert Uv\Vert_2^2=v^\dagger U^\dagger Uv=v^\dagger v=\Vert v\Vert_2^2.
 $$
 
 This is why unitary matrices are useful for quantum states: a normalized state remains normalized. A product of unitary matrices is also unitary, since $(AB)^\dagger=B^\dagger A^\dagger$.

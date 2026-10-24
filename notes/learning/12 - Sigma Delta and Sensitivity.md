@@ -8,7 +8,7 @@ Direct rounding discards each residual. First-order sigma-delta adds that residu
 
 $$
 u_j=\phi_j+e_{j-1},\quad
-\widehat\phi_j=h\,\operatorname{round}(u_j/h),\quad
+\widehat\phi_j=h\thinspace \mathrm{round}(u_j/h),\quad
 e_j=u_j-\widehat\phi_j.
 $$
 
@@ -68,7 +68,7 @@ $$
 Consequently, sigma-delta's **linearized** amplitude error is at most
 
 $$
-\frac h2\left(|g_d|+\underbrace{\sum_{j=0}^{d-1}|g_{j+1}-g_j|}_{\operatorname{TV}(g)}\right).
+\frac h2\left(|g_d|+\underbrace{\sum_{j=0}^{d-1}|g_{j+1}-g_j|}_{\mathrm{TV}(g)}\right).
 $$
 
 Smooth sensitivities make the total variation small. Rapidly changing sensitivities can defeat the interior benefit. This first-order expression does not by itself bound the complete finite-perturbation error; inspect the actual circuit differences and the linearization residual.

@@ -10,7 +10,7 @@ $$
 p(A)v=p(\lambda)v.
 $$
 
-For example, if $A=\operatorname{diag}(0.2,-0.5)$ and $p(x)=2x^2-1$, then $p(A)=\operatorname{diag}(-0.92,-0.5)$. A polynomial transforms the eigenvalues while keeping these eigenvectors.
+For example, if $A=\mathrm{diag}(0.2,-0.5)$ and $p(x)=2x^2-1$, then $p(A)=\mathrm{diag}(-0.92,-0.5)$. A polynomial transforms the eigenvalues while keeping these eigenvectors.
 
 For a Hermitian matrix, $A=V\Lambda V^\dagger$ with unitary $V$. If two scalar functions differ by at most $\epsilon$ on the spectrum, their corresponding matrix functions differ in operator norm by at most $\epsilon$. This is a spectral statement; it does not apply unchanged to arbitrary nonnormal matrices.
 
@@ -41,7 +41,7 @@ $J_k$ is a Bessel function of the first kind; you can use a library to evaluate 
 
 A sign target distinguishes positive from negative inputs. A discontinuity cannot be approximated uniformly to arbitrarily small error by a continuous polynomial across the jump. Specify a gap, such as $[-1,-\gamma]\cup[\gamma,1]$, or specify a smooth transition. The assignment scales the sign/step family to a maximum of $0.9$.
 
-Odd sign targets fit odd-parity sequences. A generic step $(1+\operatorname{sign}x)/2$ mixes even and odd parts, so it does not directly fit a single fixed-parity real response. Record the parity-compatible target construction and verify what the solver actually generates. “Sign” and “step” are application descriptions, not permission to ignore parity.
+Odd sign targets fit odd-parity sequences. A generic step $(1+\mathrm{sign}(x))/2$ mixes even and odd parts, so it does not directly fit a single fixed-parity real response. Record the parity-compatible target construction and verify what the solver actually generates. “Sign” and “step” are application descriptions, not permission to ignore parity.
 
 ## Check your understanding
 

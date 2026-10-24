@@ -5,15 +5,15 @@ Return to [[Learning Path]].
 | Symbol or term | Meaning in these lessons |
 | --- | --- |
 | $i$ | Imaginary unit, $i^2=-1$ |
-| $z^*$, $A^\dagger$ | Complex conjugate; conjugate transpose |
-| $|z|$, $\|v\|_2$ | Complex magnitude; Euclidean vector length |
-| $\|A\|_2$ | Operator/spectral norm, largest singular value |
+| $z^{\ast}$, $A^\dagger$ | Complex conjugate; conjugate transpose |
+| $\vert z\vert$, $\Vert v\Vert_2$ | Complex magnitude; Euclidean vector length |
+| $\Vert A\Vert_2$ | Operator/spectral norm, largest singular value |
 | Unitary | Matrix satisfying $U^\dagger U=I$ |
 | Hermitian | Matrix satisfying $A^\dagger=A$ |
 | Eigenvalue | $\lambda$ with $Av=\lambda v$ for some nonzero $v$ |
 | Singular value | Nonnegative square root of an eigenvalue of $A^\dagger A$ |
 | $X,Z$ | Pauli matrices: component swap and second-component sign change |
-| $|0\rangle,|1\rangle$ | Basis columns $(1,0)^T,(0,1)^T$ |
+| $\vert 0\rangle,\vert 1\rangle$ | Basis columns $(1,0)^T,(0,1)^T$ |
 | Amplitude | A complex state component; squared magnitude gives a basis probability |
 | $x$ | Scalar signal input in $[-1,1]$ |
 | $\theta$ | Signal angle $\arccos x$ |
@@ -22,7 +22,7 @@ Return to [[Learning Path]].
 | $d$ | Number of signal steps; polynomial degree is at most $d$ |
 | $\Phi$ | Full ordered phase list with $d+1$ entries |
 | $U_\Phi(x)$ | Full $2\times2$ QSP unitary |
-| $P_\Phi(x)$ | Top-left complex amplitude $\langle0|U_\Phi(x)|0\rangle$ |
+| $P_\Phi(x)$ | Top-left complex amplitude $\langle0\vert U_\Phi(x)\vert 0\rangle$ |
 | $r_\Phi(x)$ | Chosen real or imaginary part carrying a real target |
 | $f$, $p_d$ | Desired function; finite-degree polynomial approximation |
 | Baseline residual | Difference between unrounded target readout and desired function |
@@ -37,7 +37,7 @@ Return to [[Learning Path]].
 | $e_j$ | Sigma-delta carry residual $u_j-\widehat\phi_j$; not the same sign as accumulated phase error |
 | $E_k$ | Phase-error partial sum $\sum_{j=0}^k\delta\phi_j$ |
 | $g_j(x)$ | Amplitude sensitivity $\partial P_\Phi(x)/\partial\phi_j$ |
-| $\operatorname{TV}(g)$ | Sum of adjacent sensitivity differences in magnitude |
+| $\mathrm{TV}(g)$ | Sum of adjacent sensitivity differences in magnitude |
 | RMS | Root mean square; a statistical scale, not a worst-case bound |
 | Autocorrelation | Dependence between sequence entries at a specified index lag |
 | Phase plateau | A run of nearly equal phases; possible rounding-correlation mechanism |

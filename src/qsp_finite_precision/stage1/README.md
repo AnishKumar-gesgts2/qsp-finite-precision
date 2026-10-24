@@ -12,9 +12,9 @@
 For $d+1$ phases, use the $W_x$ signal / $Z$ phase convention:
 
 $$
-D(\phi)=e^{i\phi Z}=\begin{pmatrix}e^{i\phi}&0\\0&e^{-i\phi}\end{pmatrix},
+D(\phi)=e^{i\phi Z}=\begin{pmatrix}e^{i\phi}&0\cr 0&e^{-i\phi}\end{pmatrix},
 \qquad
-W(x)=\begin{pmatrix}x&i\sqrt{1-x^2}\\i\sqrt{1-x^2}&x\end{pmatrix}.
+W(x)=\begin{pmatrix}x&i\sqrt{1-x^2}\cr i\sqrt{1-x^2}&x\end{pmatrix}.
 $$
 
 $$
@@ -107,7 +107,7 @@ First run: all 104 checks passed using NumPy 2.3.3. Re-run with NumPy 2.4.6: all
 | --- | --- | --- |
 | Unitarity | Spectral norm of $U^\dagger U-I$ | 8.50e-14 |
 | Endpoint phase sum | Spectral norm of $U(1)-\exp(iZ\sum_j\phi_j)$ | 1.43e-14 |
-| Boundedness | Positive excess of $|P(x)|$ above 1 | 8.88e-16 |
+| Boundedness | Positive excess of $\vert P(x)\vert$ above 1 | 8.88e-16 |
 | Parity | Absolute difference between $P(-x)$ and $(-1)^dP(x)$ | 0 in this run |
 | Zero-phase Chebyshev identity | Absolute difference between $P_{\mathbf0}(x)$ and $T_d(x)$ | 1.64e-13 |
 

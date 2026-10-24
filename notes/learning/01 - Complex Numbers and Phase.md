@@ -4,10 +4,10 @@ Prerequisites: [[00 - What the Project Asks]], ordinary algebra, sine and cosine
 
 ## A number with two coordinates
 
-A complex number is $z=a+ib$, where $i^2=-1$. Think of $(a,b)$ as a point in a plane. Its conjugate is $z^*=a-ib$; its magnitude is its distance from the origin:
+A complex number is $z=a+ib$, where $i^2=-1$. Think of $(a,b)$ as a point in a plane. Its conjugate is $z^{\ast}=a-ib$; its magnitude is its distance from the origin:
 
 $$
-|z|=\sqrt{a^2+b^2},\qquad z^*z=|z|^2.
+|z|=\sqrt{a^2+b^2},\qquad z^{\ast}z=|z|^2.
 $$
 
 For example, $|3+4i|=5$. A complex number does not have an ordinary real-number order: “positive” is not the right concept for $3+4i$.
@@ -22,7 +22,7 @@ $$
 
 Its magnitude is one because $\cos^2\phi+\sin^2\phi=1$. Multiplying by $e^{i\phi}$ rotates a complex number by angle $\phi$ without changing its magnitude. Angles in this vault are in **radians**: $\pi$ radians is $180^\circ$.
 
-The rules $e^{i\alpha}e^{i\beta}=e^{i(\alpha+\beta)}$ and $(e^{i\phi})^*=e^{-i\phi}$ will simplify many matrix products.
+The rules $e^{i\alpha}e^{i\beta}=e^{i(\alpha+\beta)}$ and $(e^{i\phi})^{\ast}=e^{-i\phi}$ will simplify many matrix products.
 
 ## Worked example
 

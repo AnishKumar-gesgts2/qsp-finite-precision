@@ -23,7 +23,7 @@ Let $s=\sqrt{1-x^2}$. Multiplying $D(\phi_0)WD(\phi_1)$ gives
 
 $$
 U=\begin{pmatrix}
-xe^{i(\phi_0+\phi_1)}&is e^{i(\phi_0-\phi_1)}\\
+xe^{i(\phi_0+\phi_1)}&is e^{i(\phi_0-\phi_1)}\cr
 is e^{-i(\phi_0-\phi_1)}&xe^{-i(\phi_0+\phi_1)}
 \end{pmatrix}.
 $$

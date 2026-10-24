@@ -63,9 +63,9 @@ $$
 Cosine orthogonality isolates each weight. With the convention above (the constant coefficient is used directly), the continuous Chebyshev-series coefficients are
 
 $$
-c_0=\frac{1}{\pi}\int_0^{\pi}f(\cos\theta)\,d\theta,
+c_0=\frac{1}{\pi}\int_0^{\pi}f(\cos\theta)\thinspace d\theta,
 \qquad
-c_k=\frac{2}{\pi}\int_0^{\pi}f(\cos\theta)\cos(k\theta)\,d\theta
+c_k=\frac{2}{\pi}\int_0^{\pi}f(\cos\theta)\cos(k\theta)\thinspace d\theta
 \quad(k\ge1).
 $$
 

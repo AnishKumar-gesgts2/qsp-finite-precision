@@ -27,7 +27,7 @@ $$
 For pyqsp's symmetric method in our circuit convention,
 
 $$
-r_\Phi(x)=\operatorname{Im}\bigl([U_\Phi(x)]_{00}\bigr).
+r_\Phi(x)=\mathrm{Im}\bigl([U_\Phi(x)]_{00}\bigr).
 $$
 
 The full complex amplitude and full unitary remain available for later error measurements. Matching a real target does not mean the whole complex amplitude equals that target.
@@ -57,7 +57,7 @@ The assignment asks for degrees from about 10 to 500, spaced roughly logarithmic
 
 Increasing evolution time makes cosine and sine more oscillatory. A sharper sign transition is also harder to approximate. A useful sweep varies those target parameters while recording degree and residual; simply attaching a larger degree label to an unchanged polynomial does not create a distinct higher-degree target.
 
-For a sign target, the implemented application domain is $[-1,-\gamma]\cup[\gamma,1]$, with $\delta=\max(3,d/6)$ and $\gamma=2/\delta$. The chosen maximum baseline-error goal is 1e-2 in native circuit units. A smooth erf surrogate constructs the polynomial, while the application error is measured against $0.9\operatorname{sign}(x)$. A generic step mixes even and odd parts, so its construction must account for the fixed-parity QSP response. See [[learning/07 - Why QSP Matters and Core Targets]].
+For a sign target, the implemented application domain is $[-1,-\gamma]\cup[\gamma,1]$, with $\delta=\max(3,d/6)$ and $\gamma=2/\delta$. The chosen maximum baseline-error goal is 1e-2 in native circuit units. A smooth erf surrogate constructs the polynomial, while the application error is measured against $0.9\mathrm{sign}(x)$. A generic step mixes even and odd parts, so its construction must account for the fixed-parity QSP response. See [[learning/07 - Why QSP Matters and Core Targets]].
 
 ## Work needed for each library case
 

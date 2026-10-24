@@ -72,15 +72,15 @@ The [configuration](../../../experiments/stage2/config.json) requests:
 | --- | --- | --- | --- |
 | Cosine | 10, 20, 40, 80, 160, 320, 500 | Choose evolution time so the numerically summed omitted Jacobi–Anger coefficient tail is 1e-7 | $0.5\cos(\tau x)$ on $[-1,1]$ |
 | Sine | 11, 21, 41, 81, 161, 321, 499 | Same omitted-tail target, with odd degrees | $0.5\sin(\tau x)$ on $[-1,1]$ |
-| Sign | 11, 21, 41, 81, 161, 321, 499 | $\delta=\max(3,d/6)$; gap $\gamma=2/\delta$ | $0.9\operatorname{sign}(x)$ on $[-1,-\gamma]\cup[\gamma,1]$ |
+| Sign | 11, 21, 41, 81, 161, 321, 499 | $\delta=\max(3,d/6)$; gap $\gamma=2/\delta$ | $0.9\mathrm{sign}(x)$ on $[-1,-\gamma]\cup[\gamma,1]$ |
 
 Cosine and sine are the two waveforms in the Hamiltonian-simulation family; sign is the second required family. Degree parity is preserved, so the odd sequences end near 500 at 499. Leading coefficients are retained rather than padding lower-degree examples with zeros. Actual degrees, phase counts, and target parameters are stored per case.
 
 For Hamiltonian cases the coefficients come directly from Bessel-function Jacobi–Anger expansions. The omitted-tail sum is a numerical estimate over 512 omitted active-parity coefficients, not a rigorous infinite-tail certificate. Actual target errors are checked independently on the validation grid. The 0.5 scale keeps the target comfortably inside the admissible range.
 
-For sign cases the construction starts with a Chebyshev expansion of the smooth surrogate $\operatorname{erf}(\delta x)$. A DCT-II on first-kind Chebyshev nodes gives coefficients; opposite-parity coefficients are set to zero, and the degree-$d$ truncation is scaled to stay below 0.9 using the recorded global-bound estimate. Coefficients are compared with those from twice as many samples to expose finite-sampling sensitivity.
+For sign cases the construction starts with a Chebyshev expansion of the smooth surrogate $\mathrm{erf}(\delta x)$. A DCT-II on first-kind Chebyshev nodes gives coefficients; opposite-parity coefficients are set to zero, and the degree $d$ truncation is scaled to stay below 0.9 using the recorded global-bound estimate. Coefficients are compared with those from twice as many samples to expose finite-sampling sensitivity.
 
-**The sign target remains $0.9\operatorname{sign}(x)$.** Its approximation and baseline errors are measured against that discontinuous target on the gap-excluded domain, not against the erf surrogate. Gap edges are included exactly in the evaluation grid. The native target scale is 0.9; the polynomial-construction scale can be slightly smaller and is recorded separately.
+**The sign target remains $0.9\mathrm{sign}(x)$.** Its approximation and baseline errors are measured against that discontinuous target on the gap-excluded domain, not against the erf surrogate. Gap edges are included exactly in the evaluation grid. The native target scale is 0.9; the polynomial-construction scale can be slightly smaller and is recorded separately.
 
 Target difficulty changes with degree: evolution time increases and the sign gap shrinks. These are realistic family sweeps at the stated construction settings. Future degree-scaling interpretations must account for that parameter covariation; the library does not establish an isolated causal degree effect.
 
@@ -102,7 +102,7 @@ in exact arithmetic. The code uses at least 8,193 points (or $64d+1$), adds a fl
 
 ## Residuals, grids, and pass criteria
 
-Let $f$ include the desired amplitude scale, $p$ be the supplied polynomial, and $r=\operatorname{Im}P$ the pyqsp phase response. Native circuit-unit metrics are:
+Let $f$ include the desired amplitude scale, $p$ be the supplied polynomial, and $r=\mathrm{Im}(P)$ the pyqsp phase response. Native circuit-unit metrics are:
 
 - Approximation: maximum and sample-weighted RMSE of $p-f$ on the application domain.
 - Synthesis: maximum and sample-weighted RMSE of $r-p$ on the full signal interval.

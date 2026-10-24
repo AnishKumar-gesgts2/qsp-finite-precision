@@ -7,7 +7,7 @@ Prerequisites: [[04 - Norms and Measuring Error]], [[10 - Bits Grids and Roundin
 Lesson 01 gives the exact size of a changed phase factor:
 
 $$
-\|D(\phi+\delta)-D(\phi)\|_2
+\Vert D(\phi+\delta)-D(\phi)\Vert_2
 =2|\sin(\delta/2)|\le|\delta|.
 $$
 
@@ -21,7 +21,7 @@ $$
 If the surrounding factors are unitary, they do not increase the operator norm. Applying the triangle inequality and repeating this replacement one phase at a time gives
 
 $$
-\|U_{\Phi+\delta\Phi}(x)-U_\Phi(x)\|_2
+\Vert U_{\Phi+\delta\Phi}(x)-U_\Phi(x)\Vert_2
 \le\sum_{j=0}^d2|\sin(\delta\phi_j/2)|
 \le\sum_{j=0}^d|\delta\phi_j|.
 $$
@@ -34,7 +34,7 @@ At $x=1$, $W=I$. All phase factors commute and combine. Write $S=\sum_j\phi_j$ a
 
 $$
 U_\Phi(1)=D(S),\qquad
-\|U_{\Phi+\delta\Phi}(1)-U_\Phi(1)\|_2
+\Vert U_{\Phi+\delta\Phi}(1)-U_\Phi(1)\Vert_2
 =2|\sin(E/2)|.
 $$
 
@@ -58,9 +58,9 @@ $$
 This gives the small-error endpoint RMS scale. It is a reference model, not a theorem about deterministic solver-phase rounding or the maximum over an input grid. For correlated errors,
 
 $$
-\operatorname{Var}\left(\sum_j\delta\phi_j\right)
-=\sum_j\operatorname{Var}(\delta\phi_j)
-+2\sum_{j<k}\operatorname{Cov}(\delta\phi_j,\delta\phi_k).
+\mathrm{Var}\left(\sum_j\delta\phi_j\right)
+=\sum_j\mathrm{Var}(\delta\phi_j)
++2\sum_{j<k}\mathrm{Cov}(\delta\phi_j,\delta\phi_k).
 $$
 
 Positive covariance can make the sum grow much faster. Repeated phases give an intuitive mechanism for correlated deterministic errors. A plateau can also lie exactly on-grid and produce zero error, so inspect the errors themselves.

@@ -19,7 +19,7 @@ They are the desired function, finite-degree polynomial, synthesized phase list,
 
 ## Convention is part of the data
 
-Our teaching convention uses $W_x$, $D(\phi)=e^{i\phi Z}$, left-to-right construction of the written product, and top-left amplitude $P$. In the documented pyqsp `sym_qsp` convention, the target is in $\operatorname{Im}P$, not in the whole complex amplitude. This is explicitly stated in the [pyqsp README](https://github.com/ichuang/pyqsp).
+Our teaching convention uses $W_x$, $D(\phi)=e^{i\phi Z}$, left-to-right construction of the written product, and top-left amplitude $P$. In the documented pyqsp `sym_qsp` convention, the target is in $\mathrm{Im}(P)$, not in the whole complex amplitude. This is explicitly stated in the [pyqsp README](https://github.com/ichuang/pyqsp).
 
 The assignment identifies MATLAB QSPPACK as the cross-check with a real-part target convention. The newer [Python QSPPACK documentation](https://qsppack.readthedocs.io/en/latest/getting_started.html) also exposes real/imaginary and full/reduced options. Identify which implementation and version you actually use. Do not replace the planned cross-check or assume a conversion without testing it.
 
@@ -27,7 +27,7 @@ Record signal operator, phase sign and scale, ordering, indexing, full versus re
 
 ## Worked diagnostic
 
-Suppose a solver targets $f(x)=x$ and returns full phases $(\pi/4,\pi/4)$ in our example convention. Lesson 06 gives $P=ix$. Comparing $P$ directly to $x$ reports a large discrepancy; comparing $\operatorname{Im}P$ to $x$ reports zero. A wrong readout can look like a bad solver.
+Suppose a solver targets $f(x)=x$ and returns full phases $(\pi/4,\pi/4)$ in our example convention. Lesson 06 gives $P=ix$. Comparing $P$ directly to $x$ reports a large discrepancy; comparing $\mathrm{Im}(P)$ to $x$ reports zero. A wrong readout can look like a bad solver.
 
 ## Saving a phase library
 

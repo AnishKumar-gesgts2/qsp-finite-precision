@@ -13,7 +13,7 @@ $$
 Doubling the number of positions means adding one bit and halving $h$. Nearest rounding to the lattice $h\mathbb Z$ gives
 
 $$
-\widehat\phi=h\,\operatorname{round}(\phi/h),\qquad
+\widehat\phi=h\thinspace \mathrm{round}(\phi/h),\qquad
 \delta\phi=\widehat\phi-\phi,\qquad |\delta\phi|\le h/2.
 $$
 
@@ -32,7 +32,7 @@ For a full-circle 12-bit grid, $h\approx0.001534$ radians and the nearest-roundi
 **One-phase sum correction:** round the first $d$ phases, then choose the last rounded phase so the total is the nearest grid value to the original total:
 
 $$
-\widehat\phi_d=h\,\operatorname{round}\left(\frac{\sum_{j=0}^{d}\phi_j}{h}\right)
+\widehat\phi_d=h\thinspace \mathrm{round}\left(\frac{\sum_{j=0}^{d}\phi_j}{h}\right)
 -\sum_{j=0}^{d-1}\widehat\phi_j.
 $$
 

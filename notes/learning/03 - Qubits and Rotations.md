@@ -7,8 +7,8 @@ Prerequisites: [[02 - Vectors Matrices and Order]].
 The basis states are
 
 $$
-|0\rangle=\begin{pmatrix}1\\0\end{pmatrix},\qquad
-|1\rangle=\begin{pmatrix}0\\1\end{pmatrix}.
+|0\rangle=\begin{pmatrix}1\cr 0\end{pmatrix},\qquad
+|1\rangle=\begin{pmatrix}0\cr 1\end{pmatrix}.
 $$
 
 A general state is $|\psi\rangle=a|0\rangle+b|1\rangle$, with $|a|^2+|b|^2=1$. A computational-basis measurement gives $0$ with probability $|a|^2$ and $1$ with probability $|b|^2$. The amplitudes $a,b$ contain phase information that matters before measurement.
@@ -21,7 +21,7 @@ Using the Pauli $Z$ matrix from Lesson 02, define
 
 $$
 D(\phi)=e^{i\phi Z}
-=\begin{pmatrix}e^{i\phi}&0\\0&e^{-i\phi}\end{pmatrix}.
+=\begin{pmatrix}e^{i\phi}&0\cr 0&e^{-i\phi}\end{pmatrix}.
 $$
 
 It gives opposite phases to the two components. This follows either from diagonal exponentiation or from expanding the exponential series and using $Z^2=I$.
@@ -33,8 +33,8 @@ It gives opposite phases to the two components. This follows either from diagona
 Set $x=\cos\theta$, with $\theta=\arccos x$ for $x\in[-1,1]$. Since $X^2=I$, the even and odd terms of the exponential series give
 
 $$
-W(x)=e^{i\theta X}=\cos\theta\,I+i\sin\theta\,X
-=\begin{pmatrix}x&i\sqrt{1-x^2}\\i\sqrt{1-x^2}&x\end{pmatrix}.
+W(x)=e^{i\theta X}=\cos\theta\thinspace I+i\sin\theta\thinspace X
+=\begin{pmatrix}x&i\sqrt{1-x^2}\cr i\sqrt{1-x^2}&x\end{pmatrix}.
 $$
 
 The input $x$ controls this rotation. The adjustable phases control $D$. Both are unitary. QSP alternates these two kinds of transformation.
