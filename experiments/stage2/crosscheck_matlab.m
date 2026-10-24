@@ -5,6 +5,8 @@ function crosscheck_matlab(qsppack_root, input_path, output_path)
 % addpath('experiments/stage2');
 % crosscheck_matlab('C:/path/to/QSPPACK');
 
+    assert(exist('OCTAVE_VERSION', 'builtin') == 0 && ~isempty(ver('MATLAB')), ...
+        'This check requires actual MATLAB; other runtimes must not be labeled MATLAB.');
     project_root = fileparts(fileparts(fileparts(mfilename('fullpath'))));
     if nargin < 2
         input_path = fullfile(project_root, 'results', 'stage2', 'matlab_input.json');
@@ -25,6 +27,7 @@ function crosscheck_matlab(qsppack_root, input_path, output_path)
             'Source hash mismatch for %s; use the pinned original MATLAB QSPPACK revision.', name);
     end
     result = struct('runtime', 'MATLAB', 'runtime_version', version, ...
+                    'input_sha256', raw_sha256(input_path), ...
                     'source_revision', request.source_revision, 'source_hashes', actual_hashes, ...
                     'cases', struct([]));
     for k = 1:numel(request.cases)
@@ -47,6 +50,16 @@ function crosscheck_matlab(qsppack_root, input_path, output_path)
     cleanup = onCleanup(@() fclose(file)); %#ok<NASGU>
     fprintf(file, '%s\n', jsonencode(result));
     fprintf('Saved %d original MATLAB cross-checks to %s\n', numel(result.cases), output_path);
+end
+
+function digest = raw_sha256(path)
+    file = fopen(path, 'rb');
+    assert(file ~= -1, 'Cannot open MATLAB input');
+    bytes = fread(file, Inf, '*uint8');
+    fclose(file);
+    algorithm = java.security.MessageDigest.getInstance('SHA-256');
+    algorithm.update(typecast(bytes, 'int8'));
+    digest = lower(reshape(dec2hex(typecast(algorithm.digest(), 'uint8'), 2).', 1, []));
 end
 
 function digest = normalized_sha256(path)

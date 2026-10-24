@@ -1,0 +1,5 @@
+linear: degree=1; evaluator=0.000e+00; polynomial=1.110e-16; passed=True
+cosine: degree=6; evaluator=0.000e+00; polynomial=4.996e-16; passed=True
+sine: degree=7; evaluator=0.000e+00; polynomial=3.886e-16; passed=True
+smoothed_sign: degree=15; evaluator=0.000e+00; polynomial=1.776e-15; passed=True
+All 4 examples and all 16 Python QSPPACK solver mappings passed on 1025 inputs.

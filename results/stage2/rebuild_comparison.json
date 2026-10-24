@@ -1,0 +1,160 @@
+{
+  "passed": true,
+  "recorded_at_utc": "2026-10-24T06:21:06.116642+00:00",
+  "reference_revision": "9a4ff6e0661923f472aa7cc3dfebfdf55ea9c385",
+  "rebuilt_revision": "9a4ff6e0661923f472aa7cc3dfebfdf55ea9c385",
+  "scope": "Separate directory, pinned environment, same computer; numerical comparison, not cross-platform proof",
+  "compared_cases": 21,
+  "versions": {
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "pyqsp": "0.2.0",
+    "qsppack": "0.4.0",
+    "matplotlib": "3.11.2"
+  },
+  "science_source_sha256": {
+    "src/qsp_finite_precision/stage1/forward.py": "d73028da8ec4942c042bcb4c612d179e3968cb2075dac051e65c3080af6068b9",
+    "src/qsp_finite_precision/stage1/conventions.py": "c3e809d03488dba327b1705d02edc6ea77ace5e45f44e9141b59ad75aa71563e",
+    "src/qsp_finite_precision/stage2/targets.py": "b23a2f3899c67e878c88d2f262f787d8041bab6830be394034708e8681b0d54a",
+    "src/qsp_finite_precision/stage2/library.py": "9740eedf1400300bc56db828d96d0ba37add29a0c34e6d478876880dac70de64"
+  },
+  "rebuilt_manifest_sha256": "77418816e01b152bff2ee736cad64d8beb8f88b447f45df6d11bec69cb5b4e07",
+  "comparison_tolerance": 1e-12,
+  "max_pyqsp_phase_difference": 0.0,
+  "max_python_qsppack_phase_difference": 0.0,
+  "max_curve_difference": 0.0,
+  "rebuilt_aggregate": {
+    "synthesis_max": 5.007105841059456e-14,
+    "pyqsp_agreement_max": 0.0,
+    "coefficient_l1_max": 1.4110623877185304e-14,
+    "python_qsppack_agreement_max": 0.0
+  },
+  "cases": [
+    {
+      "case_id": "cosine_d0010",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "cosine_d0020",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "cosine_d0040",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "cosine_d0080",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "cosine_d0160",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "cosine_d0320",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "cosine_d0500",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "sign_d0011",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "sign_d0021",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "sign_d0041",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "sign_d0081",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "sign_d0161",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "sign_d0321",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "sign_d0499",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "sine_d0011",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "sine_d0021",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "sine_d0041",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "sine_d0081",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "sine_d0161",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "sine_d0321",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    },
+    {
+      "case_id": "sine_d0499",
+      "pyqsp_phase_max_difference": 0.0,
+      "python_qsppack_phase_max_difference": 0.0,
+      "curve_max_difference": 0.0
+    }
+  ]
+}

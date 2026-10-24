@@ -21,6 +21,18 @@ To reuse unchanged, hash-checked cases while regenerating figures and summaries:
 
 The reuse fingerprint includes the target configuration, solver options, package versions, and scientific source-file hashes. Cached curve/audit/log hashes must match; the final verifier reconstructs all saved phases again. A full regeneration may change recorded timings or last-bit numerical results on another numerical environment; byte-identical fresh outputs are not promised. Existing archived files must pass their saved hashes and reconstruction checks when verified. Generated text artifacts have LF line endings so Git conversion does not invalidate their hashes.
 
+## Clean-clone regeneration check
+
+A separate clone and newly created Python environment regenerated Stage 1 and all 21 Stage 2 cases from scratch. Both test suites passed (12 Stage 1 tests and 9 Stage 2 tests), along with all 104 mathematical identity checks. The [rebuild comparison](../../results/stage2/rebuild_comparison.json) records source/version identity and differences between rebuilt phases and curves; [the checkpoint guide](../../notes/Stage%202%20-%20Checkpoint%20Guide.md) explains its scope.
+
+Run the commands above in a separate clone **without `--resume`**, and also regenerate Stage 1 with its [documented commands](../stage1/README.md). Then compare that clone with this library:
+
+```powershell
+.\.venv\Scripts\python.exe experiments/stage2/compare_rebuild.py C:/path/to/regenerated-clone --output results/stage2/rebuild_comparison.json
+```
+
+The recorded comparison uses the same computer and pinned package versions. It is evidence of fresh regeneration, not cross-platform certification or a claim that timings and image bytes must match. Python and MATLAB source files, as well as hashed generated artifacts, use LF line endings through `.gitattributes`; this prevents Windows checkout conversion from changing their recorded source identity.
+
 ## Browse the results
 
 - [Measured README summary](../../README.md#stage-2-measured-baseline-results).
@@ -34,6 +46,22 @@ Every successful archive contains all unrounded full phases, target parameters, 
 ## Original MATLAB cross-check — pending
 
 No MATLAB runtime was available during the current run. The files below are a prepared cross-check workflow, not evidence that MATLAB was executed. The Python `qsppack` results do not replace this check.
+
+### Portable bundle, including MATLAB Online
+
+[Download the prepared ZIP](../../results/stage2/qsp-stage2-matlab.zip). It contains the unmodified original QSPPACK source tree at the pinned revision, its license, all 21 inputs, the runner, and file hashes. Extract it in MATLAB or MATLAB Online, open the `qsp-stage2-matlab` folder, and run `run_stage2`. Save the resulting `matlab_output.json` in this repository's `results/stage2/` folder and run the verifier below. The ZIP is preparation, not a MATLAB result.
+
+To regenerate the bundle from a local Git clone of original QSPPACK:
+
+```powershell
+.\.venv\Scripts\python.exe experiments/stage2/prepare_matlab.py C:/path/to/QSPPACK results/stage2/qsp-stage2-matlab.zip
+```
+
+The packager reads the pinned committed tree with Git, so uncommitted changes in the source clone are excluded. It checks all six pinned function hashes before packaging. The runner checks them again, rejects Octave rather than labeling it MATLAB, and records the exact input-file hash in its result. The verifier rejects a report from an older or altered request.
+
+MATLAB Online requires a MathWorks account. [MathWorks documents free basic access](https://www.mathworks.com/products/matlab-online/matlab-online-versions.html); sign-in is still required. Account creation and login are not part of the numerical evidence.
+
+### Existing local MATLAB installation
 
 1. Obtain the original [QSPPACK repository](https://github.com/qsppack/QSPPACK) in a separate local folder and check out revision `7bc7b7622e05039e4c2cdda7d5739e99c3752be6`.
 2. In MATLAB, with this project's folder as the current directory, run:

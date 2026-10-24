@@ -1,0 +1,6 @@
+unitarity: largest discrepancy = 8.500841e-14
+endpoint_sum: largest discrepancy = 1.431537e-14
+boundedness_excess: largest discrepancy = 8.881784e-16
+parity: largest discrepancy = 0.000000e+00
+chebyshev: largest discrepancy = 1.644240e-13
+104/104 checks passed; output: C:\Users\notso\Documents\ChatGPT\Work\qsp-stage2-clean-lf-20261023\results\stage1\mathematical_checks.csv

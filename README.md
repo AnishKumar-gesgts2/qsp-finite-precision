@@ -30,6 +30,8 @@ The study isolates phase-storage error. Solver approximation residuals, numerica
 
 **Checkpoint:** review the convention note, reproduced solver output, and regenerable core phase library with Professor Hen before beginning Stage 3.
 
+[The Stage 2 checkpoint guide](notes/Stage%202%20-%20Checkpoint%20Guide.md) collects the evidence and remaining original MATLAB requirement. A separate clone and new pinned environment regenerated all 21 Python cases: **maximum difference from the published phases and reconstructed curves was 0.0**, for both pyqsp and Python QSPPACK. [The rebuild comparison](results/stage2/rebuild_comparison.json) records the measurements; all 21 tests and 104 identity checks also passed. The [portable MATLAB bundle](results/stage2/qsp-stage2-matlab.zip) is prepared; actual MATLAB execution awaits sign-in.
+
 Extensions include scaled inversion, eigenstate/bandpass filters, degrees up to 2,000, decimal grids, dithering, and symmetry-preserving noise shaping. These follow a reproducible core result.
 
 ## Stage map

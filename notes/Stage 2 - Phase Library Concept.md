@@ -105,6 +105,8 @@ These fields are implemented in the phase archives and manifest. Response/error 
 
 ## Completion and supervisor checkpoint
 
+The [checkpoint guide](Stage%202%20-%20Checkpoint%20Guide.md) collects the implemented outputs, clean-clone regeneration evidence, and remaining original MATLAB requirement in review order.
+
 Stage 2's output is a directory of phase files with metadata for both core families across the required degree range, with residuals and representative phase plots. Failures and unexecuted checks must be recorded explicitly.
 
 Before Stage 3, Professor Hen must review:

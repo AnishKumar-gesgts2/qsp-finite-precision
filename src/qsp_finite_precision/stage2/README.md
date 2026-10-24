@@ -108,6 +108,8 @@ The overview plots residuals, target parameters, and median neighboring phase ch
 
 ## Original MATLAB QSPPACK and completion boundary
 
+The [checkpoint guide](../../../notes/Stage%202%20-%20Checkpoint%20Guide.md) collects the review evidence. [Clean-clone regeneration](../../../results/stage2/rebuild_comparison.json) reproduced all 21 cases with zero differences in compared phases and curves. A [portable ZIP](../../../results/stage2/qsp-stage2-matlab.zip) now includes the original pinned QSPPACK source, license, all inputs, and the MATLAB runner for local or online use.
+
 The original MATLAB runtime is unavailable locally. [The supplied runner](../../../experiments/stage2/crosscheck_matlab.m) consumes the exported coefficients and audit inputs, checks six original MATLAB source-function hashes at the pinned revision, and saves the phases and native MATLAB responses. [The verifier](../../../experiments/stage2/verify_matlab.py) checks the returned source identity, coverage, convergence, and reconstructed response. The runner itself has not been executed here. Python QSPPACK has shared algorithmic lineage and is supplementary; it does not establish original MATLAB execution.
 
 The manifest deliberately retains `stage2_complete: false`, pending original MATLAB comparison and the professor's required checkpoint. Before Stage 3, review the Stage 1 convention note, reproduced solver outputs, and this regenerable library with Professor Hen. A successful Python run does not mark that review complete.

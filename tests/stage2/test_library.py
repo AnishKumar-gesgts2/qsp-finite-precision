@@ -119,6 +119,9 @@ class MatlabReportTests(unittest.TestCase):
                 module.verify_matlab(root,dict(runtime="Python",runtime_version="test fixture"))
             with self.assertRaisesRegex(ValueError,"source identity"):
                 module.verify_matlab(root,dict(runtime="MATLAB",runtime_version="test fixture",source_revision="wrong"))
+            with self.assertRaisesRegex(ValueError,"input identity"):
+                module.verify_matlab(root,dict(runtime="MATLAB",runtime_version="test fixture",source_revision="expected",
+                                              source_hashes={"function":"hash"},input_sha256="stale request"))
 
 
 if __name__=="__main__":

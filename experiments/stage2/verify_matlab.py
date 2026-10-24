@@ -20,6 +20,9 @@ def verify_matlab(root, report):
         raise ValueError("Report must identify the actually used MATLAB runtime")
     if report.get("source_revision")!=request["source_revision"] or report.get("source_hashes")!=request["expected_source_hashes"]:
         raise ValueError("Original MATLAB source identity does not match")
+    input_sha256=hashlib.sha256(input_path.read_bytes()).hexdigest()
+    if report.get("input_sha256")!=input_sha256:
+        raise ValueError("MATLAB input identity does not match the current request")
     expected={entry["case_id"]:entry for entry in request["cases"]}
     outputs=report["cases"]
     if isinstance(outputs,dict):outputs=[outputs]
@@ -52,7 +55,8 @@ def verify_matlab(root, report):
             raise ValueError(f"MATLAB/local response mismatch: {ident}")
         results.append(dict(case_id=ident,evaluator_difference=agreement,synthesis_residual=residual))
     return dict(passed=True,executed=True,runtime="MATLAB",runtime_version=report["runtime_version"],
-                source_revision=report["source_revision"],input_sha256=hashlib.sha256(input_path.read_bytes()).hexdigest(),cases=results)
+                source_revision=report["source_revision"],input_sha256=input_sha256,
+                report_sha256=hashlib.sha256(json.dumps(report,sort_keys=True,allow_nan=False).encode()).hexdigest(),cases=results)
 
 
 if __name__=="__main__":
@@ -61,5 +65,5 @@ if __name__=="__main__":
     parser.add_argument("report",nargs="?",type=Path,default=root/"results/stage2/matlab_output.json")
     args=parser.parse_args()
     result=verify_matlab(root,json.loads(args.report.read_text()))
-    (root/"results/stage2/matlab_verification.json").write_text(json.dumps(result,indent=2)+"\n",encoding="utf-8")
+    (root/"results/stage2/matlab_verification.json").write_text(json.dumps(result,indent=2)+"\n",encoding="utf-8",newline="\n")
     print(json.dumps(result,indent=2))

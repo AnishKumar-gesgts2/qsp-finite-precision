@@ -39,4 +39,4 @@ The [core library index](../data/phases/README.md) now contains 21 unrounded cos
 4. Measure unitary, matrix-element, and readout error separately.
 5. Analyze scaling and precision requirements; prepare figures and report.
 
-Review the Stage 2 outputs with Professor Hen before beginning quantization.
+Use the [Stage 2 checkpoint guide](Stage%202%20-%20Checkpoint%20Guide.md) to review the evidence and remaining MATLAB sign-in/run requirement. Review the Stage 2 outputs with Professor Hen before beginning quantization.

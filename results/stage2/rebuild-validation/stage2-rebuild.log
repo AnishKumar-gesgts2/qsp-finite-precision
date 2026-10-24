@@ -1,0 +1,22 @@
+cosine_d0010: generated; coefficient=1.20e-16; synthesis=6.66e-16; target=5.00e-08
+cosine_d0020: generated; coefficient=2.53e-16; synthesis=1.17e-15; target=5.00e-08
+cosine_d0040: generated; coefficient=6.96e-16; synthesis=3.16e-15; target=5.00e-08
+cosine_d0080: generated; coefficient=6.95e-16; synthesis=5.83e-15; target=5.00e-08
+cosine_d0160: generated; coefficient=1.88e-15; synthesis=1.35e-14; target=5.00e-08
+cosine_d0320: generated; coefficient=4.31e-15; synthesis=2.95e-14; target=5.00e-08
+cosine_d0500: generated; coefficient=6.96e-15; synthesis=3.91e-14; target=5.00e-08
+sine_d0011: generated; coefficient=1.59e-16; synthesis=5.55e-16; target=5.00e-08
+sine_d0021: generated; coefficient=4.87e-16; synthesis=1.17e-15; target=5.00e-08
+sine_d0041: generated; coefficient=4.14e-16; synthesis=2.78e-15; target=5.00e-08
+sine_d0081: generated; coefficient=1.28e-15; synthesis=5.50e-15; target=5.00e-08
+sine_d0161: generated; coefficient=1.85e-15; synthesis=1.04e-14; target=4.99e-08
+sine_d0321: generated; coefficient=3.73e-15; synthesis=2.73e-14; target=5.00e-08
+sine_d0499: generated; coefficient=6.83e-15; synthesis=5.01e-14; target=5.00e-08
+sign_d0011: generated; coefficient=2.42e-16; synthesis=1.22e-15; target=4.78e-03
+sign_d0021: generated; coefficient=8.13e-16; synthesis=2.44e-15; target=4.22e-03
+sign_d0041: generated; coefficient=1.20e-15; synthesis=3.55e-15; target=4.21e-03
+sign_d0081: generated; coefficient=3.21e-15; synthesis=7.44e-15; target=4.22e-03
+sign_d0161: generated; coefficient=5.11e-15; synthesis=1.33e-14; target=4.22e-03
+sign_d0321: generated; coefficient=9.55e-15; synthesis=2.50e-14; target=4.22e-03
+sign_d0499: generated; coefficient=1.41e-14; synthesis=4.02e-14; target=4.22e-03
+Verified 21 successful unrounded cases. MATLAB and supervisor checkpoint remain pending.
