@@ -1,0 +1,12 @@
+{
+  "revision": "7bc7b7622e05039e4c2cdda7d5739e99c3752be6",
+  "normalization": "UTF-8 text with LF line endings",
+  "functions": {
+    "QSP_solver": "60735613b287d8eb4fe594b56a48587daf1ce577097ffa7afec2aaa6767f5a40",
+    "QSP_Newton": "4b143b29f4ff4c9185dd3bb9c5ee6a30e9aa82be3a7f8f567d40f943ceb3f13f",
+    "QSPGetEntry": "f785d49ccaa60f4c3024af4b5de862d2b7acf2bc4bcf43154bbb258cbebf9dfe",
+    "QSPGetUnitary": "6400aa539a92a628d710ae2520a1f2379ad12b176614b389b6e6e41a84a5d10c",
+    "rdc_phase_factor_to_full": "79dba6c3eda7e766d58065abadfccbc091e3a5b116c10cfecc80d943dd6a0a7a",
+    "F_Jacobian": "652c14a886d8b20ab7e3bc46e16873511b370c2cad7a0db608111a6afb951de4"
+  }
+}

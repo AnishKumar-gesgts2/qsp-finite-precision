@@ -1,0 +1,8 @@
+[sym_qsp] Iterative optimization to err 1.000e-12 or max_iter 100.
+iter: 001 --- err: 3.756e-01
+iter: 002 --- err: 7.923e-02
+iter: 003 --- err: 7.266e-03
+iter: 004 --- err: 7.596e-05
+iter: 005 --- err: 7.879e-09
+iter: 006 --- err: 2.068e-15
+[sym_qsp] Stop criteria satisfied.

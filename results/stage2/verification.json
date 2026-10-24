@@ -1,0 +1,113 @@
+{
+  "passed": true,
+  "verified_cases": 21,
+  "full_precision_phases": 3421,
+  "checks": "archive and artifact SHA256; full phase counts; saved-response reconstruction; target/domain and metric consistency",
+  "cases": [
+    {
+      "case_id": "cosine_d0010",
+      "phase_count": 11,
+      "validation_points": 3073
+    },
+    {
+      "case_id": "cosine_d0020",
+      "phase_count": 21,
+      "validation_points": 3073
+    },
+    {
+      "case_id": "cosine_d0040",
+      "phase_count": 41,
+      "validation_points": 3073
+    },
+    {
+      "case_id": "cosine_d0080",
+      "phase_count": 81,
+      "validation_points": 3073
+    },
+    {
+      "case_id": "cosine_d0160",
+      "phase_count": 161,
+      "validation_points": 3073
+    },
+    {
+      "case_id": "cosine_d0320",
+      "phase_count": 321,
+      "validation_points": 4225
+    },
+    {
+      "case_id": "cosine_d0500",
+      "phase_count": 501,
+      "validation_points": 6025
+    },
+    {
+      "case_id": "sine_d0011",
+      "phase_count": 12,
+      "validation_points": 3073
+    },
+    {
+      "case_id": "sine_d0021",
+      "phase_count": 22,
+      "validation_points": 3073
+    },
+    {
+      "case_id": "sine_d0041",
+      "phase_count": 42,
+      "validation_points": 3073
+    },
+    {
+      "case_id": "sine_d0081",
+      "phase_count": 82,
+      "validation_points": 3073
+    },
+    {
+      "case_id": "sine_d0161",
+      "phase_count": 162,
+      "validation_points": 3073
+    },
+    {
+      "case_id": "sine_d0321",
+      "phase_count": 322,
+      "validation_points": 4235
+    },
+    {
+      "case_id": "sine_d0499",
+      "phase_count": 500,
+      "validation_points": 6015
+    },
+    {
+      "case_id": "sign_d0011",
+      "phase_count": 12,
+      "validation_points": 3075
+    },
+    {
+      "case_id": "sign_d0021",
+      "phase_count": 22,
+      "validation_points": 3075
+    },
+    {
+      "case_id": "sign_d0041",
+      "phase_count": 42,
+      "validation_points": 3075
+    },
+    {
+      "case_id": "sign_d0081",
+      "phase_count": 82,
+      "validation_points": 3075
+    },
+    {
+      "case_id": "sign_d0161",
+      "phase_count": 162,
+      "validation_points": 3075
+    },
+    {
+      "case_id": "sign_d0321",
+      "phase_count": 322,
+      "validation_points": 4237
+    },
+    {
+      "case_id": "sign_d0499",
+      "phase_count": 500,
+      "validation_points": 6017
+    }
+  ]
+}

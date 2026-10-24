@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "case_id": "cosine_d0020",
+  "target": {
+    "family": "cosine",
+    "requested_degree": 20,
+    "degree": 20,
+    "parity": 0,
+    "coefficient_basis": "Chebyshev",
+    "signal_interval": [
+      -1.0,
+      1.0
+    ],
+    "parameters": {
+      "tau": 8.74984671727707
+    },
+    "target_scale": 0.5,
+    "polynomial_scale": 0.5,
+    "application_domain": [
+      [
+        -1.0,
+        1.0
+      ]
+    ],
+    "construction": {
+      "method": "truncated_Jacobi_Anger",
+      "omitted_tail_goal": 1e-07,
+      "estimated_unscaled_tail_l1": 9.999999999999914e-08,
+      "omitted_terms_summed": 512,
+      "rigorous_tail_bound": false
+    },
+    "baseline_accuracy_goal": 1e-06,
+    "coefficients": [
+      -0.012953947772575764,
+      0.0,
+      -0.08698931919508805,
+      0.0,
+      -0.24296414611031797,
+      0.0,
+      -0.24904055561155783,
+      0.0,
+      0.2889377510613343,
+      0.0,
+      -0.10629161464173544,
+      0.0,
+      0.02152307580058262,
+      0.0,
+      -0.002846805466996957,
+      0.0,
+      0.0002687179286816785,
+      0.0,
+      -1.9135637764958946e-05,
+      0.0,
+      1.0685391518688227e-06
+    ],
+    "boundedness": {
+      "method": "theta_grid_plus_second_derivative_bound",
+      "points": 8193,
+      "sampled_max": 0.49999994999999997,
+      "between_node_allowance": 8.466505181974732e-07,
+      "arithmetic_margin": 1.0143790563493806e-12,
+      "upper_estimate": 0.5000007966515326,
+      "interval_arithmetic": false
+    },
+    "case_id": "cosine_d0020"
+  },
+  "solver": {
+    "name": "pyqsp",
+    "method": "sym_qsp_opt.newton_solver (sym_qsp)",
+    "version": "0.2.0",
+    "criteria": 1e-12,
+    "maxiter": 100,
+    "reported_preupdate_residual": 6.23570832692039e-16,
+    "returned_coefficient_l1_residual": 2.534843503447428e-16,
+    "iterations": 4,
+    "converged": true,
+    "seconds": 0.00790729999425821
+  },
+  "convention": {
+    "signal": "Wx",
+    "phase": "exp(i phi Z)",
+    "order": "D0 W D1 ... W Dd",
+    "readout": "imag(U[0,0])",
+    "phases": "full",
+    "units": "radians",
+    "wrapped": false,
+    "quantized": false
+  },
+  "full_phases": [
+    5.682184163779798e-07,
+    -1.0183052561554771e-05,
+    0.00014302454023207726,
+    -0.0015156315265898548,
+    0.011463551197229709,
+    -0.056593861266069585,
+    0.15256670855691812,
+    -0.12833049101917035,
+    -0.1275540844032568,
+    -0.044709207420570274,
+    -0.011959566925729371,
+    -0.044709207420570274,
+    -0.1275540844032568,
+    -0.12833049101917035,
+    0.15256670855691812,
+    -0.056593861266069585,
+    0.011463551197229709,
+    -0.0015156315265898548,
+    0.00014302454023207726,
+    -1.0183052561554771e-05,
+    5.682184163779798e-07
+  ],
+  "reduced_phases": [
+    -0.005979783462864686,
+    -0.044709207420570274,
+    -0.1275540844032568,
+    -0.12833049101917035,
+    0.15256670855691812,
+    -0.056593861266069585,
+    0.011463551197229709,
+    -0.0015156315265898548,
+    0.00014302454023207726,
+    -1.0183052561554771e-05,
+    5.682184163779798e-07
+  ],
+  "grid": {
+    "chebyshev_lobatto_points": 2049,
+    "total_validation_points": 3073,
+    "application_points": 3073,
+    "additional_points": "uniform midpoints and exact sign-gap edges",
+    "audit_points": 193,
+    "maxima": "sampled",
+    "rmse": "equal weight over stated sampled points; not a domain integral"
+  },
+  "metrics": {
+    "approximation": {
+      "max_abs": 5.000000002919336e-08,
+      "rmse": 3.4212100591647254e-08
+    },
+    "synthesis": {
+      "max_abs": 1.1657341758564144e-15,
+      "rmse": 3.8467249496076466e-16
+    },
+    "baseline_application": {
+      "max_abs": 5.0000000362260266e-08,
+      "rmse": 3.421210059581858e-08
+    },
+    "pyqsp_evaluator_agreement": {
+      "max_abs": 0.0,
+      "rmse": 0.0
+    },
+    "unitarity_max": 4.9994197944176995e-15,
+    "phase_symmetry_max": 0.0,
+    "sampled_polynomial_max": 0.49999994999999997,
+    "sampled_amplitude_max": 0.9999999999999993
+  },
+  "phase_structure": {
+    "adjacent_threshold_radians": 1e-08,
+    "nearly_equal_adjacent_fraction": 0.0,
+    "longest_nearly_equal_run": 1,
+    "interpretation": "descriptive only; no rounding/correlation conclusion"
+  },
+  "python_qsppack": {
+    "version": "0.4.0",
+    "method": "Newton",
+    "targetPre": true,
+    "typePhi": "full",
+    "phases": [
+      0.7853975951790318,
+      1.0183052561562759e-05,
+      -0.00014302454023207325,
+      0.0015156315265898578,
+      -0.011463551197229707,
+      0.05659386126606957,
+      -0.15256670855691806,
+      0.1283304910191703,
+      0.1275540844032567,
+      0.044709207420570246,
+      0.011959566925729448,
+      0.044709207420570246,
+      0.1275540844032567,
+      0.1283304910191703,
+      -0.15256670855691806,
+      0.05659386126606957,
+      -0.011463551197229707,
+      0.0015156315265898578,
+      -0.00014302454023207325,
+      1.0183052561562759e-05,
+      0.7853975951790318
+    ],
+    "converged": true,
+    "residual": 6.23570832692039e-16,
+    "iterations": 4,
+    "metrics": {
+      "evaluator_agreement": {
+        "max_abs": 0.0,
+        "rmse": 0.0
+      },
+      "synthesis": {
+        "max_abs": 1.5543122344752192e-15,
+        "rmse": 5.146152749686567e-16
+      },
+      "baseline_application": {
+        "max_abs": 5.000000052879372e-08,
+        "rmse": 3.4212100587229587e-08
+      },
+      "pyqsp_readout_difference": {
+        "max_abs": 1.0547118733938987e-15,
+        "rmse": 2.8560394139248507e-16
+      }
+    }
+  },
+  "matlab_qsppack": {
+    "status": "pending",
+    "executed": false
+  },
+  "acceptance": {
+    "evaluator_tolerance": 1e-10,
+    "coefficient_tolerance": 1e-12,
+    "checks": {
+      "solver_converged": true,
+      "phase_count": true,
+      "bounded_polynomial": true,
+      "synthesis": true,
+      "baseline_accuracy": true,
+      "package_agreement": true,
+      "unitarity": true,
+      "python_qsppack": true
+    }
+  },
+  "passed": true,
+  "generation_fingerprint": "3260861e9993c92c30f1f0f2b6799123a2ab7739f6e25375227bb76f57c8240a",
+  "artifact_sha256": {
+    "results/stage2/cosine_d0020_response.csv": "1627996a2e5f7a1a1be9f7aab1418511874e471a3a331dd54f37ce33c3cf46d3",
+    "results/stage2/cosine_d0020_audit.csv": "9e87cf63fc58a148df700a1d571251e50e9a8f976956d42da04504b537b607f6",
+    "results/stage2/cosine_d0020_solver.log": "7f66c86efed0e6a470f43538c28b00acc96990229462bd14eda78097fdd7adff"
+  }
+}

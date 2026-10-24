@@ -1,0 +1,43 @@
+
+=== linear ===
+[sym_qsp] Iterative optimization to err 1.000e-12 or max_iter 100.
+iter: 001 --- err: 2.057e-02
+iter: 002 --- err: 1.336e-04
+iter: 003 --- err: 5.951e-09
+iter: 004 --- err: 5.551e-17
+[sym_qsp] Stop criteria satisfied.
+
+=== cosine ===
+7.032460664471805
+R=3
+[PolyCosineTX] rescaling by 0.5.
+[sym_qsp] Iterative optimization to err 1.000e-12 or max_iter 100.
+iter: 001 --- err: 2.057e-02
+iter: 002 --- err: 1.336e-04
+iter: 003 --- err: 5.946e-09
+iter: 004 --- err: 1.054e-16
+[sym_qsp] Stop criteria satisfied.
+
+=== sine ===
+7.032460664471805
+R=3
+[PolySineTX] rescaling by 0.5.
+[sym_qsp] Iterative optimization to err 1.000e-12 or max_iter 100.
+iter: 001 --- err: 3.640e-02
+iter: 002 --- err: 3.270e-04
+iter: 003 --- err: 2.604e-08
+iter: 004 --- err: 1.210e-16
+[sym_qsp] Stop criteria satisfied.
+
+=== smoothed_sign ===
+[pyqsp.poly.PolySign] degree=15, delta=3.0
+[PolyTaylorSeries] (Cheb) max 0.8999696085753963 is at -0.9832569109980431: normalizing
+[PolyTaylorSeries] (Cheb) average error = 4.8046504171825044e-05 in the domain [-1, 1] using degree 15
+[sym_qsp] Iterative optimization to err 1.000e-12 or max_iter 100.
+iter: 001 --- err: 2.719e-01
+iter: 002 --- err: 5.204e-02
+iter: 003 --- err: 3.473e-03
+iter: 004 --- err: 1.593e-05
+iter: 005 --- err: 2.988e-10
+iter: 006 --- err: 7.022e-16
+[sym_qsp] Stop criteria satisfied.

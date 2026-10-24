@@ -1,6 +1,6 @@
 # Stage 2 — Phase Library Concept
 
-**Status: conceptual documentation only. Stage 2 implementation and data generation have not started. Confirm with Anish before starting that work.**
+**Status: implementation authorized by Anish on 2026-10-23. The Python workflow now generates and verifies 21 core baseline cases; original MATLAB execution and the supervisor checkpoint remain pending.** See [implementation and results](../src/qsp_finite_precision/stage2/README.md), [the library index](../data/phases/README.md), and [the measurable README summary](../README.md#stage-2-measured-baseline-results). The explanations below describe the concepts and requirements; they do not establish completion of the remaining checkpoint.
 
 Source: Professor Itay Hen's [original project description](../references/QSP_project.docx), sections “Stage 2: a library of real phase lists” and “Checkpoint,” reviewed on 2026-10-23. The [PDF export](../references/QSP_project.pdf) contains the same assignment. The requirements below come from that description; proposed implementation choices are labeled separately.
 
@@ -53,11 +53,11 @@ flowchart TD
 | Hamiltonian simulation | $\cos(\tau x)$ and $\sin(\tau x)$ | Evolution time $\tau$ | Use Jacobi–Anger polynomial approximations. Cosine is even; sine is odd. Record truncation error and any amplitude scaling. |
 | Thresholding / amplification | Sign or step approximation, scaled to maximum 0.9 | Sharpness / inverse gap | Specify the target and application domain. Keep global polynomial boundedness separate from accuracy outside the transition region. |
 
-The assignment asks for degrees from about 10 to 500, spaced roughly logarithmically. Record the **achieved** polynomial degree and phase count, not only a requested setting. Respect parity when selecting the cases. The precise parameter/degree sweep remains a design choice to confirm before implementation.
+The assignment asks for degrees from about 10 to 500, spaced roughly logarithmically. Record the **achieved** polynomial degree and phase count, not only a requested setting. Respect parity when selecting the cases. The implemented sweep and its target parameters are recorded in [the configuration](../experiments/stage2/config.json); they are implementation choices rather than numerical settings prescribed by the professor.
 
 Increasing evolution time makes cosine and sine more oscillatory. A sharper sign transition is also harder to approximate. A useful sweep varies those target parameters while recording degree and residual; simply attaching a larger degree label to an unchanged polynomial does not create a distinct higher-degree target.
 
-For a sign target, a possible application domain is $[-1,-\gamma]\cup[\gamma,1]$. The value of $\gamma$ and the accuracy requirement have not been selected. A smooth erf surrogate may help construct a polynomial, but it must not silently replace the desired sign target when reporting application error. A generic step mixes even and odd parts, so its construction must account for the fixed-parity QSP response. See [[learning/07 - Why QSP Matters and Core Targets]].
+For a sign target, the implemented application domain is $[-1,-\gamma]\cup[\gamma,1]$, with $\delta=\max(3,d/6)$ and $\gamma=2/\delta$. The chosen maximum baseline-error goal is 1e-2 in native circuit units. A smooth erf surrogate constructs the polynomial, while the application error is measured against $0.9\operatorname{sign}(x)$. A generic step mixes even and odd parts, so its construction must account for the fixed-parity QSP response. See [[learning/07 - Why QSP Matters and Core Targets]].
 
 ## Work needed for each library case
 
@@ -101,7 +101,7 @@ The assignment explicitly requires target, parameters, degree, solver, and resid
 - Target scale; approximation, synthesis, and overall baseline residuals; evaluation grid and units.
 - Regeneration configuration; cross-check implementation/version and status; representative phase and response plots.
 
-These are planned fields, not a claim that a schema or library generator has already been implemented. Additional response/error reference graphs and RMSE tables can follow our documentation style; the source specifically requires phase-index plots and residuals.
+These fields are implemented in the phase archives and manifest. Response/error reference graphs and RMSE tables supplement the phase-index plots and residuals specifically required by the source. The implementation guide records the actual file schema and verification procedure.
 
 ## Completion and supervisor checkpoint
 
@@ -115,14 +115,15 @@ Before Stage 3, Professor Hen must review:
 
 Python `qsppack` and original MATLAB QSPPACK are separate implementations. Python checks may support validation, but the original MATLAB numerical cross-check remains part of the plan. Documentation or local implementation progress does not establish completion of that check or the supervisor review.
 
-## Choices still to confirm before starting work
+## Recorded implementation choices and remaining checks
 
-- The first demonstration case and the target parameter / degree sweep.
-- Approximation accuracy goals, scaling strategy, and boundedness-validation method.
-- Sign versus step construction, sharpness values, and application gaps.
-- File format and naming, regeneration entry point, and MATLAB cross-check procedure.
+- Seven approximately logarithmic degrees per waveform, with even/odd parity respected; target difficulty varies with degree.
+- Cosine/sine scale 0.5 and a numerically estimated omitted coefficient tail of 1e-7; sign scale 0.9 with an explicit degree-dependent gap.
+- A theta-grid / second-derivative numerical boundedness estimate with an arithmetic margin; it is not an interval-arithmetic certificate.
+- Round-trip binary64 JSON phase files, CSV curves and summary, per-case reference graphs, a source/version manifest, and a reload verifier.
+- The original MATLAB runner and input file are prepared; actual MATLAB execution and Professor Hen's review still need to occur.
 
-Scaled inversion, eigenstate/bandpass filters, degrees up to 2,000, and later quantization extensions remain outside the initial core library. Anish has requested confirmation before implementation; this document does not start that work or mark learning milestones complete.
+Scaled inversion, eigenstate/bandpass filters, degrees up to 2,000, and later quantization extensions remain outside the initial core library. Implementation was explicitly authorized for this stage; learning-mastery checkboxes and supervisor approval have not been changed.
 
 ## Supporting lessons
 

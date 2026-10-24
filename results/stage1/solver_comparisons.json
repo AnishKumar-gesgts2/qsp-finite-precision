@@ -1,0 +1,792 @@
+{
+  "python": "3.11.9",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "versions": {
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "pyqsp": "0.2.0",
+    "qsppack": "0.4.0",
+    "matplotlib": "3.11.2"
+  },
+  "grid": {
+    "points": 1025,
+    "description": "513 Chebyshev-Lobatto points with exact zero plus 512 uniform midpoints"
+  },
+  "tolerances": {
+    "evaluator": 5e-13,
+    "polynomial": 1e-10,
+    "coefficient_l1": 1e-12
+  },
+  "source_sha256": {
+    "pyqsp.angle_sequence": "0c714ab074557095ab72f5d0c505131303acd45b24f5903b44c1dbd88a89fe2e",
+    "pyqsp.response": "a14c14e40c3bb560fd81e64915ab180b03aa996fa041705bee11a3d4a8b72e06",
+    "pyqsp.sym_qsp_opt": "4d8889dc44344dc27d50e14c6586860ab5f77597d2e72c0935201d568079f9bf",
+    "pyqsp.poly": "1a626b66f6265087b2209adf28f56cc415a3154556dd77b1529e7c698f68b3e9",
+    "qsppack.solver": "50f868becf57b30488720a9455c5694e2642ee17899908d0b43d76bb31b7511d",
+    "qsppack.utils": "f854496e65b2d44aa928bbd53f80f22c9667ddf24f2ec9a0d020d5cd42c73d12",
+    "local.forward": "d73028da8ec4942c042bcb4c612d179e3968cb2075dac051e65c3080af6068b9",
+    "local.conventions": "c3e809d03488dba327b1705d02edc6ea77ace5e45f44e9141b59ad75aa71563e",
+    "experiment": "9ccdc0c1f39603551bc96d076e1e263e57425acd412123dd6476b41ae511357f"
+  },
+  "matlab_source_inspected_commit": "7bc7b7622e05039e4c2cdda7d5739e99c3752be6",
+  "matlab_executed": false,
+  "scope": "Unrounded binary64, low-degree convention validation. Python QSPPACK is a separate implementation with shared algorithm lineage; not a MATLAB execution or Stage 2 library.",
+  "examples": [
+    {
+      "name": "linear",
+      "generator": "explicit_linear_coefficients",
+      "generator_parameters": {
+        "slope": 0.5
+      },
+      "generator_scale": 1.0,
+      "degree": 1,
+      "parity": 1,
+      "chebyshev_coefficients": [
+        0.0,
+        0.5
+      ],
+      "full_phases": [
+        0.26179938779914946,
+        0.26179938779914946
+      ],
+      "reduced_phases": [
+        0.26179938779914946
+      ],
+      "metrics": {
+        "complex_amplitude_difference": 0.0,
+        "full_unitary_spectral_difference": 0.0,
+        "reduced_expansion_difference": 0.0,
+        "solver_polynomial_residual": 1.1102230246251565e-16,
+        "returned_coefficient_l1_residual": 0.0,
+        "unitarity_residual": 4.702341919524974e-16,
+        "polynomial_vs_smooth_function_residual": 0.0
+      },
+      "qsppack_checks": [
+        {
+          "targetPre": true,
+          "typePhi": "full",
+          "phases": [
+            0.5235987755982989,
+            0.5235987755982989
+          ],
+          "converged": true,
+          "solver_value": 5.551115123125783e-17,
+          "iterations": 4,
+          "evaluator_difference": 0.0,
+          "polynomial_residual": 1.1102230246251565e-16,
+          "passed": true,
+          "original_function_error": {
+            "max_abs": 1.1102230246251565e-16,
+            "rmse": 6.087715680094451e-17
+          },
+          "evaluator_rmse": 0.0,
+          "polynomial_rmse": 6.087715680094451e-17
+        },
+        {
+          "targetPre": true,
+          "typePhi": "reduced",
+          "phases": [
+            -0.2617993877991494
+          ],
+          "converged": true,
+          "solver_value": 5.551115123125783e-17,
+          "iterations": 4,
+          "evaluator_difference": 0.0,
+          "polynomial_residual": 1.1102230246251565e-16,
+          "passed": true,
+          "original_function_error": {
+            "max_abs": 1.1102230246251565e-16,
+            "rmse": 6.087715680094451e-17
+          },
+          "evaluator_rmse": 0.0,
+          "polynomial_rmse": 6.087715680094451e-17
+        },
+        {
+          "targetPre": false,
+          "typePhi": "full",
+          "phases": [
+            0.2617993877991494,
+            0.2617993877991494
+          ],
+          "converged": true,
+          "solver_value": 5.551115123125783e-17,
+          "iterations": 4,
+          "evaluator_difference": 1.1102230246251565e-16,
+          "polynomial_residual": 5.551115123125783e-17,
+          "passed": true,
+          "original_function_error": {
+            "max_abs": 5.551115123125783e-17,
+            "rmse": 2.9603588664418955e-17
+          },
+          "evaluator_rmse": 4.751311379064265e-17,
+          "polynomial_rmse": 2.9603588664418955e-17
+        },
+        {
+          "targetPre": false,
+          "typePhi": "reduced",
+          "phases": [
+            0.2617993877991494
+          ],
+          "converged": true,
+          "solver_value": 5.551115123125783e-17,
+          "iterations": 4,
+          "evaluator_difference": 1.1102230246251565e-16,
+          "polynomial_residual": 5.551115123125783e-17,
+          "passed": true,
+          "original_function_error": {
+            "max_abs": 5.551115123125783e-17,
+            "rmse": 2.9603588664418955e-17
+          },
+          "evaluator_rmse": 4.751311379064265e-17,
+          "polynomial_rmse": 2.9603588664418955e-17
+        }
+      ],
+      "passed": true,
+      "reference_function_label": "f(x) = 0.5 x",
+      "reference_graph": "linear_reference.png",
+      "original_function_errors": {
+        "polynomial": {
+          "max_abs": 0.0,
+          "rmse": 0.0
+        },
+        "local_reconstruction": {
+          "max_abs": 1.1102230246251565e-16,
+          "rmse": 5.05000751141715e-17
+        },
+        "pyqsp_reconstruction": {
+          "max_abs": 1.1102230246251565e-16,
+          "rmse": 5.05000751141715e-17
+        },
+        "phase_vs_polynomial": {
+          "max_abs": 1.1102230246251565e-16,
+          "rmse": 5.05000751141715e-17
+        }
+      },
+      "evaluator_agreement_errors": {
+        "Local vs pyqsp (complex)": {
+          "max_abs": 0.0,
+          "rmse": 0.0
+        },
+        "QSP Re/full: local vs package": {
+          "max_abs": 0.0,
+          "rmse": 0.0
+        },
+        "QSP Re/reduced: local vs package": {
+          "max_abs": 0.0,
+          "rmse": 0.0
+        },
+        "QSP Im/full: local vs package": {
+          "max_abs": 1.1102230246251565e-16,
+          "rmse": 4.751311379064265e-17
+        },
+        "QSP Im/reduced: local vs package": {
+          "max_abs": 1.1102230246251565e-16,
+          "rmse": 4.751311379064265e-17
+        }
+      }
+    },
+    {
+      "name": "cosine",
+      "generator": "PolyCosineTX",
+      "generator_parameters": {
+        "tau": 2.0,
+        "epsilon": 0.001
+      },
+      "generator_scale": 0.5,
+      "degree": 6,
+      "parity": 0,
+      "chebyshev_coefficients": [
+        0.11194538957061781,
+        0.0,
+        -0.35283402861563773,
+        0.0,
+        0.03399571980756843,
+        0.0,
+        -0.0012024289717899928
+      ],
+      "full_phases": [
+        -0.0006265453321158613,
+        0.017744543028118103,
+        -0.18267349135520175,
+        0.12148371292423608,
+        -0.18267349135520175,
+        0.017744543028118103,
+        -0.0006265453321158613
+      ],
+      "reduced_phases": [
+        0.06074185646211804,
+        -0.18267349135520175,
+        0.017744543028118103,
+        -0.0006265453321158613
+      ],
+      "metrics": {
+        "complex_amplitude_difference": 0.0,
+        "full_unitary_spectral_difference": 0.0,
+        "reduced_expansion_difference": 0.0,
+        "solver_polynomial_residual": 4.996003610813204e-16,
+        "returned_coefficient_l1_residual": 4.7271214720367993e-17,
+        "unitarity_residual": 1.5006418367988385e-15,
+        "polynomial_vs_smooth_function_residual": 2.243303438598243e-05
+      },
+      "qsppack_checks": [
+        {
+          "targetPre": true,
+          "typePhi": "full",
+          "phases": [
+            0.7860247087295642,
+            -0.017744543028118096,
+            0.18267349135520178,
+            -0.1214837129242361,
+            0.18267349135520178,
+            -0.017744543028118096,
+            0.7860247087295642
+          ],
+          "converged": true,
+          "solver_value": 1.0538445116559103e-16,
+          "iterations": 4,
+          "evaluator_difference": 0.0,
+          "polynomial_residual": 4.996003610813204e-16,
+          "passed": true,
+          "original_function_error": {
+            "max_abs": 4.486606877218691e-05,
+            "rmse": 3.1410954579553524e-05
+          },
+          "evaluator_rmse": 0.0,
+          "polynomial_rmse": 1.3721564227663427e-16
+        },
+        {
+          "targetPre": true,
+          "typePhi": "reduced",
+          "phases": [
+            -0.06074185646211805,
+            0.18267349135520178,
+            -0.017744543028118096,
+            0.0006265453321158728
+          ],
+          "converged": true,
+          "solver_value": 1.0538445116559103e-16,
+          "iterations": 4,
+          "evaluator_difference": 0.0,
+          "polynomial_residual": 4.996003610813204e-16,
+          "passed": true,
+          "original_function_error": {
+            "max_abs": 4.486606877218691e-05,
+            "rmse": 3.1410954579553524e-05
+          },
+          "evaluator_rmse": 0.0,
+          "polynomial_rmse": 1.3721564227663427e-16
+        },
+        {
+          "targetPre": false,
+          "typePhi": "full",
+          "phases": [
+            -0.0006265453321158728,
+            0.017744543028118096,
+            -0.18267349135520178,
+            0.1214837129242361,
+            -0.18267349135520178,
+            0.017744543028118096,
+            -0.0006265453321158728
+          ],
+          "converged": true,
+          "solver_value": 1.0538445116559103e-16,
+          "iterations": 4,
+          "evaluator_difference": 4.996003610813204e-16,
+          "polynomial_residual": 4.440892098500626e-16,
+          "passed": true,
+          "original_function_error": {
+            "max_abs": 4.4866068772075884e-05,
+            "rmse": 3.141095457955431e-05
+          },
+          "evaluator_rmse": 1.161068473520956e-16,
+          "polynomial_rmse": 9.829962343874903e-17
+        },
+        {
+          "targetPre": false,
+          "typePhi": "reduced",
+          "phases": [
+            0.06074185646211805,
+            -0.18267349135520178,
+            0.017744543028118096,
+            -0.0006265453321158728
+          ],
+          "converged": true,
+          "solver_value": 1.0538445116559103e-16,
+          "iterations": 4,
+          "evaluator_difference": 4.996003610813204e-16,
+          "polynomial_residual": 4.440892098500626e-16,
+          "passed": true,
+          "original_function_error": {
+            "max_abs": 4.4866068772075884e-05,
+            "rmse": 3.141095457955431e-05
+          },
+          "evaluator_rmse": 1.161068473520956e-16,
+          "polynomial_rmse": 9.829962343874903e-17
+        }
+      ],
+      "passed": true,
+      "reference_function_label": "f(x) = cos(2x)",
+      "reference_graph": "cosine_reference.png",
+      "original_function_errors": {
+        "polynomial": {
+          "max_abs": 4.486606877196486e-05,
+          "rmse": 3.141095457955455e-05
+        },
+        "local_reconstruction": {
+          "max_abs": 4.486606877229793e-05,
+          "rmse": 3.14109545795652e-05
+        },
+        "pyqsp_reconstruction": {
+          "max_abs": 4.486606877229793e-05,
+          "rmse": 3.14109545795652e-05
+        },
+        "phase_vs_polynomial": {
+          "max_abs": 9.992007221626409e-16,
+          "rmse": 2.3810293931232276e-16
+        }
+      },
+      "evaluator_agreement_errors": {
+        "Local vs pyqsp (complex)": {
+          "max_abs": 0.0,
+          "rmse": 0.0
+        },
+        "QSP Re/full: local vs package": {
+          "max_abs": 0.0,
+          "rmse": 0.0
+        },
+        "QSP Re/reduced: local vs package": {
+          "max_abs": 0.0,
+          "rmse": 0.0
+        },
+        "QSP Im/full: local vs package": {
+          "max_abs": 9.992007221626409e-16,
+          "rmse": 2.322136947041912e-16
+        },
+        "QSP Im/reduced: local vs package": {
+          "max_abs": 9.992007221626409e-16,
+          "rmse": 2.322136947041912e-16
+        }
+      }
+    },
+    {
+      "name": "sine",
+      "generator": "PolySineTX",
+      "generator_parameters": {
+        "tau": 2.0,
+        "epsilon": 0.001
+      },
+      "generator_scale": 0.5,
+      "degree": 7,
+      "parity": 1,
+      "chebyshev_coefficients": [
+        0.0,
+        0.5767248077568736,
+        0.0,
+        -0.12894324947440208,
+        0.0,
+        0.007039629755871686,
+        0.0,
+        -0.00017494407486827413
+      ],
+      "full_phases": [
+        -9.650598289944282e-05,
+        0.0038782152978501768,
+        -0.07080148518239697,
+        0.3030072734139346,
+        0.3030072734139346,
+        -0.07080148518239697,
+        0.0038782152978501768,
+        -9.650598289944282e-05
+      ],
+      "reduced_phases": [
+        0.3030072734139346,
+        -0.07080148518239697,
+        0.0038782152978501768,
+        -9.650598289944282e-05
+      ],
+      "metrics": {
+        "complex_amplitude_difference": 0.0,
+        "full_unitary_spectral_difference": 0.0,
+        "reduced_expansion_difference": 0.0,
+        "solver_polynomial_residual": 3.885780586188048e-16,
+        "returned_coefficient_l1_residual": 1.2880321809127793e-16,
+        "unitarity_residual": 1.805668826053599e-15,
+        "polynomial_vs_smooth_function_residual": 2.5140920224542285e-06
+      },
+      "qsppack_checks": [
+        {
+          "targetPre": true,
+          "typePhi": "full",
+          "phases": [
+            0.7854946693803477,
+            -0.0038782152978501616,
+            0.07080148518239696,
+            -0.3030072734139346,
+            -0.3030072734139346,
+            0.07080148518239696,
+            -0.0038782152978501616,
+            0.7854946693803477
+          ],
+          "converged": true,
+          "solver_value": 1.209969624493823e-16,
+          "iterations": 4,
+          "evaluator_difference": 0.0,
+          "polynomial_residual": 4.996003610813204e-16,
+          "passed": true,
+          "original_function_error": {
+            "max_abs": 5.028184044852946e-06,
+            "rmse": 3.5290677352574783e-06
+          },
+          "evaluator_rmse": 0.0,
+          "polynomial_rmse": 1.5776911387061312e-16
+        },
+        {
+          "targetPre": true,
+          "typePhi": "reduced",
+          "phases": [
+            -0.3030072734139346,
+            0.07080148518239696,
+            -0.0038782152978501616,
+            9.650598289948134e-05
+          ],
+          "converged": true,
+          "solver_value": 1.209969624493823e-16,
+          "iterations": 4,
+          "evaluator_difference": 0.0,
+          "polynomial_residual": 4.996003610813204e-16,
+          "passed": true,
+          "original_function_error": {
+            "max_abs": 5.028184044852946e-06,
+            "rmse": 3.5290677352574783e-06
+          },
+          "evaluator_rmse": 0.0,
+          "polynomial_rmse": 1.5776911387061312e-16
+        },
+        {
+          "targetPre": false,
+          "typePhi": "full",
+          "phases": [
+            -9.650598289948134e-05,
+            0.0038782152978501616,
+            -0.07080148518239696,
+            0.3030072734139346,
+            0.3030072734139346,
+            -0.07080148518239696,
+            0.0038782152978501616,
+            -9.650598289948134e-05
+          ],
+          "converged": true,
+          "solver_value": 1.209969624493823e-16,
+          "iterations": 4,
+          "evaluator_difference": 3.885780586188048e-16,
+          "polynomial_residual": 4.996003610813204e-16,
+          "passed": true,
+          "original_function_error": {
+            "max_abs": 5.028184045019479e-06,
+            "rmse": 3.5290677352503933e-06
+          },
+          "evaluator_rmse": 1.152585389255041e-16,
+          "polynomial_rmse": 1.3114621969649103e-16
+        },
+        {
+          "targetPre": false,
+          "typePhi": "reduced",
+          "phases": [
+            0.3030072734139346,
+            -0.07080148518239696,
+            0.0038782152978501616,
+            -9.650598289948134e-05
+          ],
+          "converged": true,
+          "solver_value": 1.209969624493823e-16,
+          "iterations": 4,
+          "evaluator_difference": 3.885780586188048e-16,
+          "polynomial_residual": 4.996003610813204e-16,
+          "passed": true,
+          "original_function_error": {
+            "max_abs": 5.028184045019479e-06,
+            "rmse": 3.5290677352503933e-06
+          },
+          "evaluator_rmse": 1.152585389255041e-16,
+          "polynomial_rmse": 1.3114621969649103e-16
+        }
+      ],
+      "passed": true,
+      "reference_function_label": "f(x) = sin(2x)",
+      "reference_graph": "sine_reference.png",
+      "original_function_errors": {
+        "polynomial": {
+          "max_abs": 5.028184044908457e-06,
+          "rmse": 3.5290677352457304e-06
+        },
+        "local_reconstruction": {
+          "max_abs": 5.028184044963968e-06,
+          "rmse": 3.5290677352567066e-06
+        },
+        "pyqsp_reconstruction": {
+          "max_abs": 5.028184044963968e-06,
+          "rmse": 3.5290677352567066e-06
+        },
+        "phase_vs_polynomial": {
+          "max_abs": 7.771561172376096e-16,
+          "rmse": 2.481254542877554e-16
+        }
+      },
+      "evaluator_agreement_errors": {
+        "Local vs pyqsp (complex)": {
+          "max_abs": 0.0,
+          "rmse": 0.0
+        },
+        "QSP Re/full: local vs package": {
+          "max_abs": 0.0,
+          "rmse": 0.0
+        },
+        "QSP Re/reduced: local vs package": {
+          "max_abs": 0.0,
+          "rmse": 0.0
+        },
+        "QSP Im/full: local vs package": {
+          "max_abs": 7.771561172376096e-16,
+          "rmse": 2.305170778510082e-16
+        },
+        "QSP Im/reduced: local vs package": {
+          "max_abs": 7.771561172376096e-16,
+          "rmse": 2.305170778510082e-16
+        }
+      }
+    },
+    {
+      "name": "smoothed_sign",
+      "generator": "PolySign",
+      "generator_parameters": {
+        "degree": 15,
+        "delta": 3.0,
+        "max_scale": 0.9
+      },
+      "generator_scale": 0.8999696085753963,
+      "degree": 15,
+      "parity": 1,
+      "chebyshev_coefficients": [
+        0.0,
+        1.1124587264856272,
+        0.0,
+        -0.2936596317347648,
+        0.0,
+        0.11216924129485159,
+        0.0,
+        -0.04189289965766242,
+        0.0,
+        0.014301220039777303,
+        0.0,
+        -0.004396429647227329,
+        0.0,
+        0.0012168534528468756,
+        0.0,
+        -0.00030462463028219756
+      ],
+      "full_phases": [
+        -0.00029072531920851203,
+        0.001068975791988718,
+        -0.0037819213242006678,
+        0.012124592305790528,
+        -0.034936480222979766,
+        0.09169850223816876,
+        -0.23262262890051089,
+        0.7265011124509618,
+        0.7265011124509618,
+        -0.23262262890051089,
+        0.09169850223816876,
+        -0.034936480222979766,
+        0.012124592305790528,
+        -0.0037819213242006678,
+        0.001068975791988718,
+        -0.00029072531920851203
+      ],
+      "reduced_phases": [
+        0.7265011124509618,
+        -0.23262262890051089,
+        0.09169850223816876,
+        -0.034936480222979766,
+        0.012124592305790528,
+        -0.0037819213242006678,
+        0.001068975791988718,
+        -0.00029072531920851203
+      ],
+      "metrics": {
+        "complex_amplitude_difference": 0.0,
+        "full_unitary_spectral_difference": 0.0,
+        "reduced_expansion_difference": 0.0,
+        "solver_polynomial_residual": 1.7763568394002505e-15,
+        "returned_coefficient_l1_residual": 2.1429255939175995e-16,
+        "unitarity_residual": 3.773694085399035e-15,
+        "polynomial_vs_smooth_function_residual": 8.677696816866698e-05
+      },
+      "qsppack_checks": [
+        {
+          "targetPre": true,
+          "typePhi": "full",
+          "phases": [
+            0.7856888887166569,
+            -0.0010689757919888489,
+            0.003781921324200555,
+            -0.012124592305790641,
+            0.03493648022297975,
+            -0.09169850223816883,
+            0.23262262890051102,
+            -0.7265011124509622,
+            -0.7265011124509622,
+            0.23262262890051102,
+            -0.09169850223816883,
+            0.03493648022297975,
+            -0.012124592305790641,
+            0.003781921324200555,
+            -0.0010689757919888489,
+            0.7856888887166569
+          ],
+          "converged": true,
+          "solver_value": 7.021835370102369e-16,
+          "iterations": 6,
+          "evaluator_difference": 0.0,
+          "polynomial_residual": 1.5543122344752192e-15,
+          "passed": true,
+          "original_function_error": {
+            "max_abs": 9.64221095265394e-05,
+            "rmse": 5.755638591941323e-05
+          },
+          "evaluator_rmse": 0.0,
+          "polynomial_rmse": 4.071589959403441e-16
+        },
+        {
+          "targetPre": true,
+          "typePhi": "reduced",
+          "phases": [
+            -0.7265011124509622,
+            0.23262262890051102,
+            -0.09169850223816883,
+            0.03493648022297975,
+            -0.012124592305790641,
+            0.003781921324200555,
+            -0.0010689757919888489,
+            0.0002907253192085588
+          ],
+          "converged": true,
+          "solver_value": 7.021835370102369e-16,
+          "iterations": 6,
+          "evaluator_difference": 0.0,
+          "polynomial_residual": 1.5543122344752192e-15,
+          "passed": true,
+          "original_function_error": {
+            "max_abs": 9.64221095265394e-05,
+            "rmse": 5.755638591941323e-05
+          },
+          "evaluator_rmse": 0.0,
+          "polynomial_rmse": 4.071589959403441e-16
+        },
+        {
+          "targetPre": false,
+          "typePhi": "full",
+          "phases": [
+            -0.0002907253192085588,
+            0.0010689757919888489,
+            -0.003781921324200555,
+            0.012124592305790641,
+            -0.03493648022297975,
+            0.09169850223816883,
+            -0.23262262890051102,
+            0.7265011124509622,
+            0.7265011124509622,
+            -0.23262262890051102,
+            0.09169850223816883,
+            -0.03493648022297975,
+            0.012124592305790641,
+            -0.003781921324200555,
+            0.0010689757919888489,
+            -0.0002907253192085588
+          ],
+          "converged": true,
+          "solver_value": 7.021835370102369e-16,
+          "iterations": 6,
+          "evaluator_difference": 8.881784197001252e-16,
+          "polynomial_residual": 1.4432899320127035e-15,
+          "passed": true,
+          "original_function_error": {
+            "max_abs": 9.642210952648389e-05,
+            "rmse": 5.755638591940892e-05
+          },
+          "evaluator_rmse": 2.9008673650259616e-16,
+          "polynomial_rmse": 4.859834853933357e-16
+        },
+        {
+          "targetPre": false,
+          "typePhi": "reduced",
+          "phases": [
+            0.7265011124509622,
+            -0.23262262890051102,
+            0.09169850223816883,
+            -0.03493648022297975,
+            0.012124592305790641,
+            -0.003781921324200555,
+            0.0010689757919888489,
+            -0.0002907253192085588
+          ],
+          "converged": true,
+          "solver_value": 7.021835370102369e-16,
+          "iterations": 6,
+          "evaluator_difference": 8.881784197001252e-16,
+          "polynomial_residual": 1.4432899320127035e-15,
+          "passed": true,
+          "original_function_error": {
+            "max_abs": 9.642210952648389e-05,
+            "rmse": 5.755638591940892e-05
+          },
+          "evaluator_rmse": 2.9008673650259616e-16,
+          "polynomial_rmse": 4.859834853933357e-16
+        }
+      ],
+      "passed": true,
+      "reference_function_label": "f(x) = erf(3x)",
+      "reference_graph": "smoothed_sign_reference.png",
+      "original_function_errors": {
+        "polynomial": {
+          "max_abs": 9.642210952659491e-05,
+          "rmse": 5.7556385919410614e-05
+        },
+        "local_reconstruction": {
+          "max_abs": 9.642210952670593e-05,
+          "rmse": 5.7556385919419606e-05
+        },
+        "pyqsp_reconstruction": {
+          "max_abs": 9.642210952670593e-05,
+          "rmse": 5.7556385919419606e-05
+        },
+        "phase_vs_polynomial": {
+          "max_abs": 1.973796473207721e-15,
+          "rmse": 5.409291894857848e-16
+        }
+      },
+      "evaluator_agreement_errors": {
+        "Local vs pyqsp (complex)": {
+          "max_abs": 0.0,
+          "rmse": 0.0
+        },
+        "QSP Re/full: local vs package": {
+          "max_abs": 0.0,
+          "rmse": 0.0
+        },
+        "QSP Re/reduced: local vs package": {
+          "max_abs": 0.0,
+          "rmse": 0.0
+        },
+        "QSP Im/full: local vs package": {
+          "max_abs": 9.868982366038606e-16,
+          "rmse": 3.223294806163376e-16
+        },
+        "QSP Im/reduced: local vs package": {
+          "max_abs": 9.868982366038606e-16,
+          "rmse": 3.223294806163376e-16
+        }
+      }
+    }
+  ],
+  "passed": true
+}

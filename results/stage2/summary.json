@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "python": "3.11.9",
+  "versions": {
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "pyqsp": "0.2.0",
+    "qsppack": "0.4.0",
+    "matplotlib": "3.11.2"
+  },
+  "configured_cases": 21,
+  "successful_cases": 21,
+  "failures": [],
+  "python_validation_passed": true,
+  "stage2_complete": false,
+  "matlab_qsppack": {
+    "status": "pending",
+    "executed": false,
+    "input_file": "results/stage2/matlab_input.json"
+  },
+  "supervisor_checkpoint": "pending; required before Stage 3",
+  "config_sha256": "80519b3b2d3439508c2d0552ec2f652cdd11a5dc8bba6d454d71851db79682ec",
+  "assignment_sha256": "e50843a55608fe0abe090aa6a6bac70064057172d3198892a16277768deffd2c",
+  "science_source_sha256": {
+    "src/qsp_finite_precision/stage1/forward.py": "d73028da8ec4942c042bcb4c612d179e3968cb2075dac051e65c3080af6068b9",
+    "src/qsp_finite_precision/stage1/conventions.py": "c3e809d03488dba327b1705d02edc6ea77ace5e45f44e9141b59ad75aa71563e",
+    "src/qsp_finite_precision/stage2/targets.py": "b23a2f3899c67e878c88d2f262f787d8041bab6830be394034708e8681b0d54a",
+    "src/qsp_finite_precision/stage2/library.py": "9740eedf1400300bc56db828d96d0ba37add29a0c34e6d478876880dac70de64"
+  },
+  "builder_sha256": "f8b1b2444ffb039fa7d00804a35ec691b73c9627ef932da4aadbf15a81d71f4a",
+  "cases": [
+    {
+      "case_id": "cosine_d0010",
+      "file": "data/phases/stage2/cosine_d0010.json",
+      "sha256": "fc5834e7b80d30297177b9976a4cbf56feee4541be25ba44afc63d4af9ad7121"
+    },
+    {
+      "case_id": "cosine_d0020",
+      "file": "data/phases/stage2/cosine_d0020.json",
+      "sha256": "cb22d7044b374cf4bc8ce7c2714204626b5cd17d6b855d6eac55c228e53a2c0a"
+    },
+    {
+      "case_id": "cosine_d0040",
+      "file": "data/phases/stage2/cosine_d0040.json",
+      "sha256": "8a2fb2c270d776c73730106fd3184a05b0319de5a370223ad0e8292582c3b38f"
+    },
+    {
+      "case_id": "cosine_d0080",
+      "file": "data/phases/stage2/cosine_d0080.json",
+      "sha256": "8b6c93cda497c587b11aef95c41ecdd55c7f01558167b737f9d3398107981f1e"
+    },
+    {
+      "case_id": "cosine_d0160",
+      "file": "data/phases/stage2/cosine_d0160.json",
+      "sha256": "c1a264e380e0e6acc6bb109565b5c0ea5679a4651732e3b619dea55d53ab8d8d"
+    },
+    {
+      "case_id": "cosine_d0320",
+      "file": "data/phases/stage2/cosine_d0320.json",
+      "sha256": "7351aa28c7854182ee073af5fc199cc68281edbaca5975cdce370ebb4a61b2be"
+    },
+    {
+      "case_id": "cosine_d0500",
+      "file": "data/phases/stage2/cosine_d0500.json",
+      "sha256": "42e829a53d9267068d858266ca6321fbb81bfb75e5dfc1e1b06b0bb1887d68d4"
+    },
+    {
+      "case_id": "sine_d0011",
+      "file": "data/phases/stage2/sine_d0011.json",
+      "sha256": "6bfae5af042c170d069edb5c6cd0d081e9842f9e660ad9eb866e3b1b9051f868"
+    },
+    {
+      "case_id": "sine_d0021",
+      "file": "data/phases/stage2/sine_d0021.json",
+      "sha256": "b9c87091ddc7d43741e1e169cc28523e8b7cc142d4c37bb0f12da83a59c11122"
+    },
+    {
+      "case_id": "sine_d0041",
+      "file": "data/phases/stage2/sine_d0041.json",
+      "sha256": "d68713b236d54780276cea3329da5fe1956cb9024b279f514634521edfea71ff"
+    },
+    {
+      "case_id": "sine_d0081",
+      "file": "data/phases/stage2/sine_d0081.json",
+      "sha256": "e8e41a3369048ad70e4cb9f566c11e51e444d6e81f1cc9e89f41f5c3cede3654"
+    },
+    {
+      "case_id": "sine_d0161",
+      "file": "data/phases/stage2/sine_d0161.json",
+      "sha256": "c897a6505f9a5aa5b5aad3ca23c70503674bbfcfef61954dd65e410bcc9ca23c"
+    },
+    {
+      "case_id": "sine_d0321",
+      "file": "data/phases/stage2/sine_d0321.json",
+      "sha256": "97785cdce2d8d77d8641e30c62de486c57373f92fe0d4fd1d3b3986cf7cb6b3f"
+    },
+    {
+      "case_id": "sine_d0499",
+      "file": "data/phases/stage2/sine_d0499.json",
+      "sha256": "6c303cd5c61c1626893f63a471e7fa823862372d7c7592a0d5cce0ebbcc51144"
+    },
+    {
+      "case_id": "sign_d0011",
+      "file": "data/phases/stage2/sign_d0011.json",
+      "sha256": "e295227456c3b065ce40a1d5384260c9a6f8e9b8507a2f0e11a2c85643ddfe0b"
+    },
+    {
+      "case_id": "sign_d0021",
+      "file": "data/phases/stage2/sign_d0021.json",
+      "sha256": "de6f67ef1d24869d9a8b9034def6d005f35339e12a7325203f29e1f0c122e037"
+    },
+    {
+      "case_id": "sign_d0041",
+      "file": "data/phases/stage2/sign_d0041.json",
+      "sha256": "7edeb8ace32e9bf436a2c409191dbdb774a25c3cb5d7feb9952fbb5bacbbf573"
+    },
+    {
+      "case_id": "sign_d0081",
+      "file": "data/phases/stage2/sign_d0081.json",
+      "sha256": "2f8c0bd40ccce668ea1590ed2ee8d03a2769dd2352f80c010714b4f1a74a6ea3"
+    },
+    {
+      "case_id": "sign_d0161",
+      "file": "data/phases/stage2/sign_d0161.json",
+      "sha256": "0367792c68a939be7e9131509ee3fd61eb5f9b1c717c1f3fa74e8a04f527f43c"
+    },
+    {
+      "case_id": "sign_d0321",
+      "file": "data/phases/stage2/sign_d0321.json",
+      "sha256": "d3a69eb4719d1ba6b3a3fe06e6eb658b3e70c12d91961dc947df903470d89382"
+    },
+    {
+      "case_id": "sign_d0499",
+      "file": "data/phases/stage2/sign_d0499.json",
+      "sha256": "85f70fde86fc5afa3226ed8cb774d20a6180b9db6246f6cd293712940ec4eaa9"
+    }
+  ],
+  "aggregate": {
+    "synthesis_max": 5.007105841059456e-14,
+    "pyqsp_agreement_max": 0.0,
+    "coefficient_l1_max": 1.4110623877185304e-14,
+    "python_qsppack_agreement_max": 0.0
+  }
+}

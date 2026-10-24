@@ -2,6 +2,8 @@
 
 **Anish Kumar · Professor Itay Hen**
 
+The [original project description](references/QSP_project.docx) is the authoritative assignment. Check its stage requirements before new work; [Assignment Alignment](notes/Assignment%20Alignment.md) maps the required outputs, current boundaries, and deferred extensions.
+
 ## Project goal
 
 Measure how storing quantum signal processing (QSP) phase angles at finite precision changes the accuracy of the realized circuit. Using phase lists from production solvers for realistic target functions, this classical numerical study will determine how rounding error scales with polynomial degree and bit precision, whether correlated errors approach coherent linear growth rather than square-root growth, and how noise-shaped quantization improves accuracy.
@@ -36,8 +38,8 @@ Each stage gets its own code package and README under `src/qsp_finite_precision/
 
 | Stage | Code and documentation | Scope | Status |
 | --- | --- | --- | --- |
-| 1 | [stage1/](src/qsp_finite_precision/stage1/README.md) | **Part A:** forward evaluator. **Part B:** solver comparisons and full convention validation. | Part A implemented; Part B pending |
-| 2 | `src/qsp_finite_precision/stage2/` (planned) | Target polynomials, solver phases, and metadata; phase library in `data/phases/` | Pending |
+| 1 | [stage1/](src/qsp_finite_precision/stage1/README.md) | **Part A:** forward evaluator. **Part B:** pyqsp comparisons and solver-convention validation. | Complete for pinned Python packages; MATLAB source mapping documented |
+| 2 | [stage2/](src/qsp_finite_precision/stage2/README.md) | Target polynomials, solver phases, and metadata; phase library in `data/phases/` | Python library verified: 21 cases; original MATLAB and supervisor checkpoint pending |
 | 3 | `src/qsp_finite_precision/stage3/` (planned) | Quantization schemes; rounded phases in `data/quantized/` | Pending |
 | 4 | `src/qsp_finite_precision/stage4/` (planned) | Error measurements; tables in `results/` | Pending |
 | 5 | `src/qsp_finite_precision/stage5/` (planned) | Scaling analysis and plots; final writing in `report/` | Pending |
@@ -60,7 +62,31 @@ U, P = evaluate_qsp([0.2, 0.7, -0.4], x)
 # U.shape == (101, 2, 2); P.shape == (101,)
 ```
 
-The [Stage 1 README](src/qsp_finite_precision/stage1/README.md) contains the Part A Mermaid pseudocode diagram, mathematical definitions, and remaining validation work.
+The [Stage 1 README](src/qsp_finite_precision/stage1/README.md) contains the implementation diagrams and mathematical definitions. [The Stage 1B README](experiments/stage1/README.md) embeds reference graphs and error tables for the three built-in examples and linear diagnostic, plus the locked environment and regeneration commands for all 12 tests, 104 identity checks, and 16 Python QSPPACK convention comparisons.
+
+<!-- BEGIN STAGE 2 RESULTS -->
+
+## Stage 2 measured baseline results
+
+**21/21 configured cases generated and independently reloaded**; 3,421 full-precision phases saved. No phases were quantized. The counts and metrics below come from the saved [manifest](results/stage2/summary.json) and [results CSV](results/stage2/library_summary.csv).
+
+| Target | Cases | Degrees | Worst target error on application domain | Worst synthesis error on full interval |
+| --- | ---: | --- | ---: | ---: |
+| Cosine | 7 | 10–500 | 5.000e-08 | 3.915e-14 |
+| Sine | 7 | 11–499 | 5.000e-08 | 5.007e-14 |
+| Sign | 7 | 11–499 | 4.784e-03 | 4.019e-14 |
+
+Errors above are sampled maxima in native scaled circuit units. Hamiltonian targets use scale 0.5; the sign target is 0.9 times sign(x) on each recorded gap-excluded domain. The sign polynomial is constructed from a smooth erf surrogate, but target errors are measured against the sign function itself. The target-accuracy acceptance goals (1e-6 for cosine/sine; 1e-2 for sign) are documented implementation choices, not tolerances specified by the professor.
+
+All 21 returned-phase coefficient checks and supplementary Python QSPPACK checks passed. Maximum pyqsp/local complex-amplitude difference on the recorded audit grids: 0.000e+00. Reload verification checks archive hashes, full phase counts, reconstruction, and curve/metric consistency.
+
+![Stage 2 overview](figures/stage2/overview.png)
+
+[Stage 2 implementation and results guide](src/qsp_finite_precision/stage2/README.md) · [Browse all cases, phase plots, and response/error graphs](data/phases/README.md) · [Regeneration commands](experiments/stage2/README.md)
+
+**Remaining checkpoint:** original MATLAB QSPPACK execution is pending (a runner and input file are supplied); Python QSPPACK is supplementary. Professor Hen's required review before Stage 3 is also pending. This is a working Python baseline library, not a claim that those two checks have been completed.
+
+<!-- END STAGE 2 RESULTS -->
 
 ## Repository layout
 
@@ -69,7 +95,7 @@ The [Stage 1 README](src/qsp_finite_precision/stage1/README.md) contains the Par
 | references/ | Original project description and PDF copy |
 | notes/ | Research dashboard, conventions, decisions, and progress |
 | notes/learning/ | Lessons from mathematical foundations through QSP and finite-precision analysis |
-| src/qsp_finite_precision/ | Research code separated into stage packages; Stage 1 Part A currently implemented |
+| src/qsp_finite_precision/ | Stage 1 evaluator/conventions and Stage 2 core-library implementation |
 | tests/ | Checks organized by stage |
 | experiments/ | Experiment configurations and reproducibility instructions |
 | data/phases/ | Full-precision phase library and metadata |
@@ -78,7 +104,7 @@ The [Stage 1 README](src/qsp_finite_precision/stage1/README.md) contains the Par
 | figures/ | Generated analysis figures |
 | report/ | Written research report |
 
-Stage 1 Part A is implemented with NumPy and basic evaluator checks. Solver-response comparisons, the complete convention note, experiment measurements, and scientific results are pending. Record solver versions and lock the expanded environment when adding solver comparisons.
+Stage 1 is validated against pyqsp 0.2.0 and Python QSPPACK 0.4.0, with [response overlays](figures/stage1/solver_comparisons.png), [recorded metrics](results/stage1/solver_comparisons.json), and the [convention note](notes/Conventions.md). Stage 2 now supplies a verified Python phase library and its baseline results above. MATLAB QSPPACK was source-inspected, not executed; the original MATLAB comparison and supervisor checkpoint remain pending. Quantization experiments and finite-precision scaling results have not started.
 
 ## Project description
 

@@ -1,4 +1,4 @@
-"""Core evaluator checks only; full Stage 1 Part B validation is pending."""
+"""Core evaluator checks; package convention checks are in test_conventions."""
 
 import unittest
 

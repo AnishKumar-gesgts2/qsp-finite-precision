@@ -17,9 +17,9 @@ Begin at [[learning/00 - What the Project Asks|Lesson 00 — What the Project As
 
 ## Current work
 
-**Stage 1 — Forward evaluation and conventions**
+**Stage 2 — Python library verified; MATLAB cross-check and supervisor checkpoint pending**
 
-Reproduce solver response curves, validate the evaluator, and record the phase conventions in [[Conventions]]. See [[Roadmap]] for the full plan.
+The [core library index](../data/phases/README.md) now contains 21 unrounded cosine, sine, and sign cases with phase plots, response/error graphs, and saved residuals. See [the measured README summary](../README.md#stage-2-measured-baseline-results) and [Stage 2 methods](../src/qsp_finite_precision/stage2/README.md). Next, execute the prepared original MATLAB QSPPACK cross-check and review the regenerable results with Professor Hen before Stage 3. See [[Roadmap]] for the full plan.
 
 ## Workspace
 

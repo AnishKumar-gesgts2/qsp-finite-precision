@@ -1,6 +1,6 @@
 # Stage 1: forward QSP evaluation and conventions
 
-**Part A implemented:** evaluate a supplied phase list at many signal inputs. **Part B in progress:** sampled mathematical checks now pass through degree 500; reproducing 2–3 pyqsp examples and writing the one-page pyqsp/QSPPACK convention mapping remain pending. These checks do not establish completion of Stage 1.
+**Parts A and B implemented and validated for the pinned Python packages.** The evaluator reproduces three built-in pyqsp examples plus a linear diagnostic, and the convention adapters agree with Python QSPPACK's full/reduced and real/imaginary readouts. Sampled mathematical checks pass through degree 500. The original MATLAB QSPPACK mapping was source-inspected; MATLAB execution remains a Stage 2 cross-check. These results validate the stated implementations on sampled cases, not every input or future high-degree solver case.
 
 ## Part A: inputs, convention, and outputs
 
@@ -89,7 +89,7 @@ U, P = evaluate_qsp([0.2, 0.7, -0.4], x)
 print(U.shape, P.shape)  # (101, 2, 2) (101,)
 ```
 
-The core checks cover analytic degree-zero and degree-one matrices, a degree-two polynomial, batched versus scalar trigonometric evaluation, empty input shapes, and invalid inputs. The scalar comparison uses a separate input loop and explicit entries for each combined signal/phase factor. It is an implementation check, not a solver comparison. Development verification uses Python 3.11 and NumPy 2.3.3.
+The six core checks cover analytic degree-zero and degree-one matrices, a degree-two polynomial, batched versus scalar trigonometric evaluation, empty input shapes, and invalid inputs. The scalar comparison uses a separate input loop and explicit entries for each combined signal/phase factor. Six additional convention/integration tests are in `test_conventions.py`. Development verification uses Python 3.11; the latest full validation run uses NumPy 2.4.6.
 
 ## Part B: mathematical checks
 
@@ -101,7 +101,7 @@ python experiments/stage1/check_identities.py
 
 The [experiment script](../../../experiments/stage1/check_identities.py) writes [the results table](../../../results/stage1/mathematical_checks.csv). It checks degrees 0, 1, 2, 3, 10, 31, 100, and 500, with three random phase lists per degree (seed 20261022). Each list is evaluated at 513 Chebyshev-Lobatto inputs including both endpoints. Each degree also gets an all-zero-phase check against NumPy's Chebyshev recurrence. The random-list checks cover unitarity, the endpoint identity, boundedness, and parity: 104 recorded checks total, in addition to the six Part A unit tests.
 
-First run: all 104 checks passed using NumPy 2.3.3. Largest observed discrepancies:
+First run: all 104 checks passed using NumPy 2.3.3. Re-run with NumPy 2.4.6: all passed with the same largest discrepancies. Largest observed discrepancies:
 
 | Check | Discrepancy measured | Largest value |
 | --- | --- | --- |
@@ -113,12 +113,39 @@ First run: all 104 checks passed using NumPy 2.3.3. Largest observed discrepanci
 
 The absolute pass threshold is a conservative 1e-10 for this experiment, not a theoretical error bound or a measured accuracy floor. These are finite sampled checks, not a proof over all phase lists and input values. Chebyshev comparison includes numerical error in the reference recurrence as well as the evaluator. Exact parity agreement is specific to this implementation and tested inputs; the table does not establish arbitrary-precision accuracy or package-convention agreement.
 
-## Part B: remaining Stage 1 work
+## Part B: solver comparisons and conventions
 
-- Reproduce 2–3 built-in pyqsp examples using identical phases, inputs, and matching readouts.
-- Extend mathematical checks if package comparisons reveal an unresolved issue or require a different degree range.
-- Record solver-comparison discrepancies, justified tolerances, response plots, and solver versions.
-- Complete the one-page convention note and verify the pyqsp and QSPPACK mappings before using solver phases in later stages. The project-wide tracking note is [Conventions](../../../notes/Conventions.md).
+[The Stage 1B README](../../../experiments/stage1/README.md) contains the **individual reference graphs and maximum/RMSE error tables for every example**, including each Python QSPPACK readout, plus regeneration instructions and the dependency lock. Each graph shows the original function, target polynomial, phase-reconstructed response, full phase sequence, and separate approximation/reconstruction errors. Run `python experiments/stage1/compare_solvers.py` in that environment. The [convention note](../../../notes/Conventions.md) specifies coefficient ordering, phase signs, symmetric expansion, endpoint offsets, and selected amplitudes.
+
+```mermaid
+flowchart TD
+    G["Built-in generator<br/>cosine, sine, or smoothed sign"] --> C["Target Chebyshev coefficients<br/>Record scale and parity"]
+    C --> S["pyqsp symmetric synthesis<br/>Return full and reduced phases"]
+    S --> P["Full phases + identical input grid"]
+    P --> L["Our evaluator<br/>Complex P and full U"]
+    P --> R["pyqsp response and unitary<br/>Complex P and full U"]
+    L --> D["Compare complex P and full U<br/>Then compare Im P with polynomial"]
+    R --> D
+    C --> Q["Python QSPPACK Newton<br/>Full/reduced and real/imaginary"]
+    Q --> M["Map phases into our evaluator<br/>Compare with package get_entry"]
+    D --> O["Save phases, versions, residuals,<br/>curves, convergence, and source hashes"]
+    M --> O
+```
+
+| Example | Degree | Maximum complex P difference vs pyqsp | Evaluated target-polynomial residual |
+| --- | --- | --- | --- |
+| Linear diagnostic, 0.5x, scale=1 | 1 | 0 | 1.11e-16 |
+| Cosine, tau=2, epsilon=1e-3, scale=0.5 | 6 | 0 | 5.00e-16 |
+| Sine, tau=2, epsilon=1e-3, scale=0.5 | 7 | 0 | 3.89e-16 |
+| Smoothed sign, delta=3, maximum-scale option=0.9 | 15 | 0 | 1.78e-15 |
+
+Each uses 1,025 inputs: 513 Chebyshev-Lobatto points including exact zero and both endpoints, plus 512 uniform midpoints. Full-unitary differences were also zero on these examples. All 16 Python QSPPACK synthesis/readout combinations converged and matched the mapped evaluator within 8.89e-16. The [JSON report](../../../results/stage1/solver_comparisons.json) stores actual phases, scales, thresholds, native scaled residuals, and original-function error statistics; the [CSV](../../../results/stage1/solver_responses.csv) stores the curves and pointwise errors.
+
+The overview below uses original-function units: the polynomial and reconstructed readouts are divided by the generator scale (0.5 for cosine/sine, approximately 0.89997 for the erf example, and 1 for the linear diagnostic). This display conversion makes comparison with the original functions meaningful. Native circuit-unit residuals in the table above are retained separately. For the individual phase plots and detailed error tables, see the [Stage 1B reference graphs](../../../experiments/stage1/README.md#reference-graphs-and-error-metrics).
+
+![Solver response comparisons](../../../figures/stage1/solver_comparisons.png)
+
+Agreement to a polynomial is distinct from approximation of the underlying function. The built-in sign example uses a smooth erf surrogate; the core gap-domain sign targets remain Stage 2 work. No phases were quantized, the packages share algorithmic lineage, and these low-degree solver comparisons do not establish a rigorous accuracy floor. MATLAB QSPPACK has not been executed.
 
 ## Boundary with later stages
 
