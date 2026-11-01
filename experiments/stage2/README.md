@@ -36,6 +36,7 @@ The recorded comparison uses the same computer and pinned package versions. It i
 
 ## Browse the results
 
+- [Representative phase-angle plots and fixed edge zooms](../../notes/Stage%202%20-%20Phase%20Structure.md): low, middle, and high degrees for each family. Regenerate these directly from saved archives with `.\.venv\Scripts\python.exe experiments/stage2/plot_phase_structure.py`; no synthesis or rounding is performed.
 - [Measured README summary](../../README.md#stage-2-measured-baseline-results).
 - [All phase archives and individual reference graphs](../../data/phases/README.md).
 - [One-row-per-case results CSV](../../results/stage2/library_summary.csv).

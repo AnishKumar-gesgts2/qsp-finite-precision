@@ -41,5 +41,6 @@ Keep these separate from the core when proposing ideas or allocating time. The o
 - Isolated, pinned Python environment and source hashes for reproducibility.
 - Python QSPPACK compatibility checks in addition to the original MATLAB source review.
 - A simple linear diagnostic, per-example phase graphs, RMSE alongside maximum errors, and reversal of generator scaling for display in original-function units.
+- [Representative Stage 2 phase sequences and fixed edge zooms](Stage%202%20-%20Phase%20Structure.md) make the required visual inspection easier. They are descriptive and do not replace later rounding-error correlation measurements.
 
 These additions do not replace source requirements. Native scaled residuals are retained, and no phase rounding is performed in Stage 1.

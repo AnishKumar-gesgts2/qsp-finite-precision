@@ -34,6 +34,8 @@ The study isolates phase-storage error. Solver approximation residuals, numerica
 
 Extensions include scaled inversion, eigenstate/bandpass filters, degrees up to 2,000, decimal grids, dithering, and symmetry-preserving noise shaping. These follow a reproducible core result.
 
+[Representative Stage 2 phase-angle plots](notes/Stage%202%20-%20Phase%20Structure.md) compare low, middle, and high degree for each family, with fixed edge zooms to inspect regions that look flat at full scale. They supplement the overview's median neighboring-difference summary; they do not measure rounding-error correlations.
+
 ## Stage map
 
 Each stage gets its own code package and README under `src/qsp_finite_precision/`, with matching checks under `tests/stageN/`. Planned paths are created when their implementation begins; shared outputs retain the existing data/results/figures layout.

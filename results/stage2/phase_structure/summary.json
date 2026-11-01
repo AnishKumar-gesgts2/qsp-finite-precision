@@ -1,0 +1,185 @@
+{
+  "source": "Saved Stage 2 pyqsp full phases; no phase synthesis or quantization performed.",
+  "selection": "Low, middle (fourth of seven), and high degree in each saved family.",
+  "zoom_rule": "First ceil(20% of phase count), at least 3 phases; independently scaled y axis.",
+  "full_scale": "Common symmetric y limits within each family; actual integer phase indices.",
+  "script_sha256": "3d3f450130b8f790f7f173cbe0d0264d5e51f78fa2c7ce62b1c5fd1977f99426",
+  "cases": [
+    {
+      "case_id": "cosine_d0010",
+      "family": "cosine",
+      "degree": 10,
+      "phase_count": 11,
+      "archive": "data/phases/stage2/cosine_d0010.json",
+      "archive_sha256": "475d0d5eebd8ec15546d509a823fe229142060032f2f84caf3fe8ca9a2f799fb",
+      "parameters": {
+        "tau": 2.6331108705813997
+      },
+      "zoom_start_index": 0,
+      "zoom_end_index": 2,
+      "zoom_phase_min": -0.0029926926674630613,
+      "zoom_phase_max": 9.807697697133036e-05,
+      "adjacent_threshold_radians": 1e-08,
+      "longest_adjacent_run_phases": 1,
+      "interpretation": "Adjacent-pair threshold only; not a rounding-error measurement."
+    },
+    {
+      "case_id": "cosine_d0080",
+      "family": "cosine",
+      "degree": 80,
+      "phase_count": 81,
+      "archive": "data/phases/stage2/cosine_d0080.json",
+      "archive_sha256": "efd2af95dbc35de338302589f1c618b52881694d72df3631f6b1eaf5535a1535",
+      "parameters": {
+        "tau": 58.237389833875106
+      },
+      "zoom_start_index": 0,
+      "zoom_end_index": 16,
+      "zoom_phase_min": -0.0847198683910503,
+      "zoom_phase_max": 0.08906472722023168,
+      "adjacent_threshold_radians": 1e-08,
+      "longest_adjacent_run_phases": 1,
+      "interpretation": "Adjacent-pair threshold only; not a rounding-error measurement."
+    },
+    {
+      "case_id": "cosine_d0500",
+      "family": "cosine",
+      "degree": 500,
+      "phase_count": 501,
+      "archive": "data/phases/stage2/cosine_d0500.json",
+      "archive_sha256": "d10a8dc0591730915fbf9168d9648d267f2d1cb7e5c644987f5e430b251f007c",
+      "parameters": {
+        "tau": 455.96959481193164
+      },
+      "zoom_start_index": 0,
+      "zoom_end_index": 100,
+      "zoom_phase_min": -0.04627751939876323,
+      "zoom_phase_max": 0.04380194723601022,
+      "adjacent_threshold_radians": 1e-08,
+      "longest_adjacent_run_phases": 1,
+      "interpretation": "Adjacent-pair threshold only; not a rounding-error measurement."
+    },
+    {
+      "case_id": "sine_d0011",
+      "family": "sine",
+      "degree": 11,
+      "phase_count": 12,
+      "archive": "data/phases/stage2/sine_d0011.json",
+      "archive_sha256": "01421c1408c3208fb337254b9cb983f21ca5d0876372e30677dc340271f630c3",
+      "parameters": {
+        "tau": 3.1504307235849582
+      },
+      "zoom_start_index": 0,
+      "zoom_end_index": 2,
+      "zoom_phase_min": -0.0018396318867213574,
+      "zoom_phase_max": 6.76042680127237e-05,
+      "adjacent_threshold_radians": 1e-08,
+      "longest_adjacent_run_phases": 2,
+      "interpretation": "Adjacent-pair threshold only; not a rounding-error measurement."
+    },
+    {
+      "case_id": "sine_d0081",
+      "family": "sine",
+      "degree": 81,
+      "phase_count": 82,
+      "archive": "data/phases/stage2/sine_d0081.json",
+      "archive_sha256": "a4bb670757c2c813c8732e66adb915279dfdf4e8d0c744b5deaaaa891ab7d37a",
+      "parameters": {
+        "tau": 59.123645443605426
+      },
+      "zoom_start_index": 0,
+      "zoom_end_index": 16,
+      "zoom_phase_min": -0.08592023833903778,
+      "zoom_phase_max": 0.08771723246645637,
+      "adjacent_threshold_radians": 1e-08,
+      "longest_adjacent_run_phases": 2,
+      "interpretation": "Adjacent-pair threshold only; not a rounding-error measurement."
+    },
+    {
+      "case_id": "sine_d0499",
+      "family": "sine",
+      "degree": 499,
+      "phase_count": 500,
+      "archive": "data/phases/stage2/sine_d0499.json",
+      "archive_sha256": "37a25710913cbd13ce3774f221c89316fb7406251fc5c586c127b9c11e9353cf",
+      "parameters": {
+        "tau": 455.00140745002653
+      },
+      "zoom_start_index": 0,
+      "zoom_end_index": 99,
+      "zoom_phase_min": -0.04390553405593906,
+      "zoom_phase_max": 0.046313829112888685,
+      "adjacent_threshold_radians": 1e-08,
+      "longest_adjacent_run_phases": 2,
+      "interpretation": "Adjacent-pair threshold only; not a rounding-error measurement."
+    },
+    {
+      "case_id": "sign_d0011",
+      "family": "sign",
+      "degree": 11,
+      "phase_count": 12,
+      "archive": "data/phases/stage2/sign_d0011.json",
+      "archive_sha256": "bd21d7d435e931890a06eeddebf3875a7726442d68b2bb308087413430caa3e4",
+      "parameters": {
+        "delta": 3.0,
+        "gap": 0.6666666666666666,
+        "inverse_gap": 1.5
+      },
+      "zoom_start_index": 0,
+      "zoom_end_index": 2,
+      "zoom_phase_min": -0.034857651426736594,
+      "zoom_phase_max": 0.012271325004925972,
+      "adjacent_threshold_radians": 1e-08,
+      "longest_adjacent_run_phases": 2,
+      "interpretation": "Adjacent-pair threshold only; not a rounding-error measurement."
+    },
+    {
+      "case_id": "sign_d0081",
+      "family": "sign",
+      "degree": 81,
+      "phase_count": 82,
+      "archive": "data/phases/stage2/sign_d0081.json",
+      "archive_sha256": "2071dc692f6b6bcca043ce06613e26e5b8538af03175f4a17fce02ccce843177",
+      "parameters": {
+        "delta": 13.5,
+        "gap": 0.14814814814814814,
+        "inverse_gap": 6.75
+      },
+      "zoom_start_index": 0,
+      "zoom_end_index": 16,
+      "zoom_phase_min": -0.0005933030478264214,
+      "zoom_phase_max": 0.0008063841772932529,
+      "adjacent_threshold_radians": 1e-08,
+      "longest_adjacent_run_phases": 2,
+      "interpretation": "Adjacent-pair threshold only; not a rounding-error measurement."
+    },
+    {
+      "case_id": "sign_d0499",
+      "family": "sign",
+      "degree": 499,
+      "phase_count": 500,
+      "archive": "data/phases/stage2/sign_d0499.json",
+      "archive_sha256": "25a2835c67271a6ebfd5c39576d445dcda19f8bafdf97a47eb8c11ccd6e6c9bb",
+      "parameters": {
+        "delta": 83.16666666666667,
+        "gap": 0.02404809619238477,
+        "inverse_gap": 41.583333333333336
+      },
+      "zoom_start_index": 0,
+      "zoom_end_index": 99,
+      "zoom_phase_min": -0.0001264402683751815,
+      "zoom_phase_max": 0.00013284869163259644,
+      "adjacent_threshold_radians": 1e-08,
+      "longest_adjacent_run_phases": 2,
+      "interpretation": "Adjacent-pair threshold only; not a rounding-error measurement."
+    }
+  ],
+  "plotted_phase_values": 1781,
+  "figures": {
+    "figures/stage2/phase_structure/cosine.png": "e1221b8db43bf3bae4edddc99a49a9b2ff6f44bda5f155bf2f77373f2ff5346d",
+    "figures/stage2/phase_structure/sign.png": "2d34001cacc12d5ab7de97fb6d76df611bf00cb82635e1186c611226721b8e9b",
+    "figures/stage2/phase_structure/sine.png": "3b8d231a9b4d0c1cf86db1dd22ee451f1da88255fadad0f7636b4ab1975feb3c"
+  },
+  "points_sha256": "cc09f20e27ce73a578967db292ad28f9e6e86e573e22cc89cca97b958bcbc7d7",
+  "limits": "Descriptive phase structure only. Correlated rounding, sensitivity, and error scaling remain later measurements."
+}

@@ -14,6 +14,7 @@ Learning preparation: follow [[learning/Learning Path|Learning Path]] and record
 - [x] Stage 2 Python deliverables: generate, inspect, document, and archive the two core phase families. Original MATLAB execution is separately recorded as unable to complete, so full technical completion is not claimed.
   - [x] Generate and independently reload 21 Python baseline cases across degrees about 10–500; save full phases, target parameters, coefficients, versions, convergence, and separate residuals.
   - [x] Publish per-case original/reconstructed response graphs, phase-index plots, error tables, library index, and a measurable project README summary.
+  - [x] Add [representative phase-index comparisons and fixed edge zooms](Stage%202%20-%20Phase%20Structure.md) for low, middle, and high degree in each family. These describe unrounded phase structure, not rounding correlations.
   - [x] Validate every case against its package response and supplementary Python QSPPACK output.
   - [x] Regenerate both stages from a separate clone/new pinned environment and compare all 21 rebuilt phase lists and curves; see the [checkpoint guide](Stage%202%20-%20Checkpoint%20Guide.md).
   - [x] Package the pinned original QSPPACK source and all inputs for local MATLAB or MATLAB Online; preparation is not execution evidence.
