@@ -11,4 +11,6 @@
 /results/stage2/matlab/*.csv text eol=lf
 /results/stage2/matlab/README.md text eol=lf
 /results/stage2/rebuild-validation/*.log text eol=lf
+/results/stage2/phase_structure/*.csv text eol=lf
+/results/stage2/phase_structure/*.json text eol=lf
 /experiments/stage2/*.json text eol=lf
