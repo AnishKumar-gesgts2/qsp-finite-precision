@@ -1,6 +1,6 @@
-# Alignment with Professor Hen's original assignment
+# Alignment with the original assignment
 
-Source reviewed: **2026-10-24**. Authority: [the original project description](../references/QSP_project.docx), authored by Professor Itay Hen on September 26, 2026; [PDF export](../references/QSP_project.pdf). Section names below refer to that document. This note is a navigation and status aid, not a replacement specification.
+Source reviewed: **2026-10-24**. Authority: the original project description (local), retained locally with its PDF export. Section names below refer to that document. This note is a navigation and status aid, not a replacement specification.
 
 Before each new stage and completion claim, reread the corresponding source section and its output requirement. When package behavior or an implementation convenience suggests a change, keep the source requirement visible and label the change explicitly.
 

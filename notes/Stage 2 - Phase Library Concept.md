@@ -2,7 +2,7 @@
 
 **Status: Python deliverables complete, with 21 verified core baseline cases. Original MATLAB execution was unable to complete; Anish authorized documenting that limitation on 2026-10-24. The supervisor checkpoint remains pending.** See [implementation and results](../src/qsp_finite_precision/stage2/README.md), [the library index](../data/phases/README.md), [delivery note](Stage%202%20-%20Delivery%20Note.md), and [the measurable README summary](../README.md#stage-2-measured-baseline-results). The explanations below do not establish completion of the remaining checkpoint.
 
-Source: Professor Itay Hen's [original project description](../references/QSP_project.docx), sections “Stage 2: a library of real phase lists” and “Checkpoint,” reviewed on 2026-10-23. The [PDF export](../references/QSP_project.pdf) contains the same assignment. The requirements below come from that description; proposed implementation choices are labeled separately.
+Source: the original project description (local), sections “Stage 2: a library of real phase lists” and “Checkpoint,” reviewed on 2026-10-23. The PDF export (local) contains the same assignment. The requirements below come from that description; proposed implementation choices are labeled separately.
 
 ## Goal and connection to the research question
 
@@ -42,7 +42,7 @@ flowchart TD
     E --> L["Save full-precision phases,<br/>coefficients, metadata, and residuals"]
     L --> V["Plot phase angles against index<br/>Inspect plateaus and other structure"]
     V --> Q["Complete original MATLAB QSPPACK<br/>cross-check and regeneration checks"]
-    Q --> H["Review convention note, solver outputs,<br/>and core library with Professor Hen"]
+    Q --> H["Review convention note, solver outputs,<br/>and core library with the project supervisor"]
     H --> R["Stage 3: phase quantization<br/>after the required checkpoint"]
 ```
 
@@ -109,7 +109,7 @@ The [checkpoint guide](Stage%202%20-%20Checkpoint%20Guide.md) collects the imple
 
 Stage 2's output is a directory of phase files with metadata for both core families across the required degree range, with residuals and representative phase plots. Failures and unexecuted checks must be recorded explicitly.
 
-Before Stage 3, Professor Hen must review:
+The pending checkpoint calls for review of:
 
 1. The Stage 1 convention note.
 2. Reproduction of each solver's own output.
@@ -123,7 +123,7 @@ Python `qsppack` and original MATLAB QSPPACK are separate implementations. Pytho
 - Cosine/sine scale 0.5 and a numerically estimated omitted coefficient tail of 1e-7; sign scale 0.9 with an explicit degree-dependent gap.
 - A theta-grid / second-derivative numerical boundedness estimate with an arithmetic margin; it is not an interval-arithmetic certificate.
 - Round-trip binary64 JSON phase files, CSV curves and summary, per-case reference graphs, a source/version manifest, and a reload verifier.
-- The original MATLAB runner and input file are prepared; actual MATLAB execution and Professor Hen's review still need to occur.
+- The original MATLAB runner and input file are prepared; actual MATLAB execution and the pending review still need to occur.
 
 Scaled inversion, eigenstate/bandpass filters, degrees up to 2,000, and later quantization extensions remain outside the initial core library. Implementation was explicitly authorized for this stage; learning-mastery checkboxes and supervisor approval have not been changed.
 

@@ -187,16 +187,16 @@ def publish_summary(manifest, cases, root=ROOT):
                       f"Worst native MATLAB/local evaluator difference: {matlab['evaluator_max']:.3e}; "
                       f"worst MATLAB synthesis error: {matlab['synthesis_max']:.3e}. "
                       "[MATLAB data and graphs](results/stage2/matlab/README.md). "
-                      "**Professor Hen's supervisor checkpoint remains pending before Stage 3.**")
+                      "**The review checkpoint remains pending before Stage 3.**")
     elif matlab.get("status") == "unable_to_complete":
         checkpoint = ("**Python Stage 2 deliverables complete; original MATLAB cross-check unable to complete.** "
                       "MATLAB Online failed before code execution; [the attempt record](results/stage2/matlab_execution_status.json) "
                       "documents the limitation. MATLAB test code and publication tools are prepared, not executed evidence. "
-                      "Professor Hen's checkpoint remains pending before Stage 3.")
+                      "the review checkpoint remains pending before Stage 3.")
     else:
         checkpoint = ("**Remaining technical check:** original MATLAB QSPPACK execution is pending. "
                       "The supplied runner/input bundle is preparation; Python QSPPACK is supplementary. "
-                      "Professor Hen's required review before Stage 3 also remains pending.")
+                      "the required review before Stage 3 also remains pending.")
     groups = {family:[c for c in cases if c["target"]["family"]==family] for family in FAMILIES}
     lines = ["<!-- BEGIN STAGE 2 RESULTS -->", "", "## Stage 2 measured baseline results", "",
              f"**{len(cases)}/{manifest['configured_cases']} configured cases generated and independently reloaded**; {sum(len(c['full_phases']) for c in cases):,} full-precision phases saved. No phases were quantized. The counts and metrics below come from the saved [manifest](results/stage2/summary.json) and [results CSV](results/stage2/library_summary.csv).", "",
@@ -336,7 +336,7 @@ def main():
                   python_validation_passed=not failures,stage2_complete=False,
                   matlab_qsppack=dict(status="pending",executed=False,input_file="results/stage2/matlab_input.json"),
                   supervisor_checkpoint="pending; required before Stage 3",config_sha256=sha(config_path),
-                  assignment_sha256=sha(ROOT/"references/QSP_project.docx"),
+                  assignment_sha256=(sha(ROOT/"references/QSP_project.docx") if (ROOT/"references/QSP_project.docx").exists() else None),
                   science_source_sha256=science_sources,builder_sha256=sha(__file__),cases=entries,
                   aggregate=dict(synthesis_max=max(c["metrics"]["synthesis"]["max_abs"] for c in cases),
                                  pyqsp_agreement_max=max(c["metrics"]["pyqsp_evaluator_agreement"]["max_abs"] for c in cases),

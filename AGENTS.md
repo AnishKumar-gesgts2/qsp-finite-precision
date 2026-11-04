@@ -1,6 +1,6 @@
 # Project authority and scope
 
-- Professor Itay Hen's original assignment, `references/QSP_project.docx` (September 26, 2026), is the authoritative project specification. `references/QSP_project.pdf` is its local PDF export. READMEs, roadmap notes, chat plans, and package examples are summaries or implementation choices and do not override the original description.
+- The original assignment, `references/QSP_project.docx` (September 26, 2026), is the authoritative project specification when available locally. `references/QSP_project.pdf` is its local PDF export; both are excluded from the public checkout. READMEs, roadmap notes, chat plans, and package examples are summaries or implementation choices and do not override the original description.
 - Before implementing a new stage, changing scope, or declaring a milestone complete, reread the relevant stage and output requirements in the original document. Review its core/extension distinction and checkpoint when applicable. Use `notes/Assignment Alignment.md` as a source map, not a substitute for rereading the source.
 - Preserve the entire core assignment: all five stages, both core target families, and the specified measurements and analysis questions. Do not replace the scientific question with solver benchmarking, evaluator validation, or a new phase-synthesis algorithm.
 - Distinguish the professor's explicit requirements from our implementation choices and optional additions. `Stage 1A` and `Stage 1B` are internal subdivisions of his Stage 1.

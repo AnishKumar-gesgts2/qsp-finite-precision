@@ -1,5 +1,7 @@
 # Regenerate and verify the Stage 2 library
 
+The original project brief is retained locally and is optional for regeneration in a public checkout. The existing results record the original builder hash; the audit verifies that historical builder from Git if the current publication code differs. This check requires the historical commit to be present in the clone and reports separately whether the local brief was checked.
+
 Use Python 3.11 and the pinned environment already used for Stage 1B. From the repository root in PowerShell:
 
 ```powershell

@@ -11,6 +11,7 @@ import importlib.metadata
 import json
 from pathlib import Path
 import re
+import subprocess
 from urllib.parse import unquote
 import zipfile
 
@@ -39,10 +40,20 @@ def audit(root):
     manifest=json.loads((root/"results/stage2/summary.json").read_text())
     for name,expected in manifest["science_source_sha256"].items():
         if digest(root/name)!=expected:raise ValueError(f"Scientific source hash mismatch: {name}")
-    for name,key in [("experiments/stage2/build_library.py","builder_sha256"),
-                     ("experiments/stage2/config.json","config_sha256"),
-                     ("references/QSP_project.docx","assignment_sha256")]:
+    for name,key in [("experiments/stage2/config.json","config_sha256")]:
         if digest(root/name)!=manifest[key]:raise ValueError(f"Recorded source/config hash mismatch: {name}")
+    builder = root/"experiments/stage2/build_library.py"
+    builder_matches = digest(builder) == manifest["builder_sha256"]
+    if not builder_matches:
+        # The published results predate privacy edits. Verify their builder in
+        # the historical commit without claiming the current file is identical.
+        old = subprocess.run(["git", "show", "e2e4291:experiments/stage2/build_library.py"],
+                             cwd=root, capture_output=True, check=True).stdout
+        if hashlib.sha256(old).hexdigest() != manifest["builder_sha256"]:
+            raise ValueError("Recorded historical builder hash mismatch")
+    assignment = root/"references/QSP_project.docx"
+    if assignment.exists() and manifest.get("assignment_sha256") and digest(assignment)!=manifest["assignment_sha256"]:
+        raise ValueError("Recorded local project description hash mismatch")
     for name,version in manifest["versions"].items():
         if importlib.metadata.version(name)!=version:raise ValueError(f"Package version mismatch: {name}")
     reconstructed=verify(root)
@@ -95,6 +106,8 @@ def audit(root):
                 core_cases=reconstructed["verified_cases"],full_precision_phases=reconstructed["full_precision_phases"],
                 readable_pngs=len(images),local_markdown_links_checked=checked_links,broken_local_links=[],
                 mermaid_blocks_found=mermaid_blocks,matlab_bundle_integrity_passed=True,
+                current_builder_matches_manifest=builder_matches,
+                private_project_description_checked=assignment.exists() and bool(manifest.get("assignment_sha256")),
                 prepared_matlab_core_cases=21,prepared_matlab_convention_checks=8,
                 matlab_executed=bool(manifest["matlab_qsppack"].get("executed")),
                 all_technical_requirements_passed=bool(matlab_passed and manifest.get("technical_complete")),

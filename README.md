@@ -2,7 +2,7 @@
 
 **Anish Kumar · Professor Itay Hen**
 
-The [original project description](references/QSP_project.docx) is the authoritative assignment. Check its stage requirements before new work; [Assignment Alignment](notes/Assignment%20Alignment.md) maps the required outputs, current boundaries, and deferred extensions.
+The [project scope](notes/Assignment%20Alignment.md) maps the required outputs, current boundaries, and deferred extensions. The original project brief is retained locally and is not included in the current public checkout.
 
 ## Project goal
 
@@ -28,7 +28,7 @@ The study isolates phase-storage error. Solver approximation residuals, numerica
 4. **Measurements:** evaluate error on Chebyshev grids, record application-domain metrics, and spot-check high-degree cases with extended precision.
 5. **Analysis:** produce scaling fits, correlation and location analyses, scheme comparisons, precision-budget plots, and an 8–12 page report.
 
-**Checkpoint:** the original assignment calls for Professor Hen to review the convention note, reproduced solver output, and regenerable core phase library before Stage 3. That review remains pending; the user authorized the experimental Stage 3 run below in advance of it.
+**Checkpoint:** review of the convention note, reproduced solver output, and regenerable core phase library remains pending. The experimental Stage 3 run proceeded in advance of that review.
 
 [The Stage 2 checkpoint guide](notes/Stage%202%20-%20Checkpoint%20Guide.md) collects the evidence and remaining original MATLAB requirement. A separate clone and new pinned environment regenerated all 21 Python cases: **maximum difference from the published phases and reconstructed curves was 0.0**, for both pyqsp and Python QSPPACK. [The rebuild comparison](results/stage2/rebuild_comparison.json) retains that result and its tested revision. The current **22 tests pass**, and all **104 identity checks pass**. The [artifact audit](results/stage2/artifact_audit.json) checks phase/data coverage, numerical reconstruction, hashes, 28 reference/diagnostic PNGs, and local documentation links. Original MATLAB execution is [recorded as unable to complete](results/stage2/matlab_execution_status.json); the [portable bundle](results/stage2/qsp-stage2-matlab.zip) remains ready for a working session. [Delivery note](notes/Stage%202%20-%20Delivery%20Note.md).
 
@@ -88,7 +88,7 @@ All 21 returned-phase coefficient checks and supplementary Python QSPPACK checks
 
 [Stage 2 implementation and results guide](src/qsp_finite_precision/stage2/README.md) · [Browse all cases, phase plots, and response/error graphs](data/phases/README.md) · [Regeneration commands](experiments/stage2/README.md)
 
-**Python Stage 2 deliverables complete; original MATLAB cross-check unable to complete.** MATLAB Online failed before code execution; [the attempt record](results/stage2/matlab_execution_status.json) documents the limitation. MATLAB test code and publication tools are prepared, not executed evidence. Professor Hen's checkpoint remains pending.
+**Python Stage 2 deliverables complete; original MATLAB cross-check unable to complete.** MATLAB Online failed before code execution; [the attempt record](results/stage2/matlab_execution_status.json) documents the limitation. MATLAB test code and publication tools are prepared, not executed evidence. The review checkpoint remains pending.
 
 <!-- END STAGE 2 RESULTS -->
 
@@ -102,7 +102,7 @@ For the pyqsp degree-500 cosine case at 16 bits, sampled maximum unitary errors 
 
 [Sign response comparison](figures/stage3/sign_response_comparison.png) · [Methods, conventions, verification and regeneration](experiments/stage3/README.md) · [Numerical results](results/stage3/measurements.csv)
 
-The three Stage 3 tests and saved-output verifier passed, and a same-environment rerun reproduced phase JSON files and the CSV byte for byte. Full Stage 4 still needs autocorrelations, sensitivity profiles and 30-digit spot checks; Stage 5 analysis and the report remain open. The experimental run is not Professor Hen's approval.
+The three Stage 3 tests and saved-output verifier passed, and a same-environment rerun reproduced phase JSON files and the CSV byte for byte. Full Stage 4 still needs autocorrelations, sensitivity profiles and 30-digit spot checks; Stage 5 analysis and the report remain open. The experimental run does not imply review approval.
 
 ## Repository layout
 
@@ -124,10 +124,7 @@ Stage 1 is validated against pyqsp 0.2.0 and Python QSPPACK 0.4.0, with [respons
 
 ## Project description
 
-- [Project description (PDF)](references/QSP_project.pdf)
-- [Original email attachment (DOCX)](references/QSP_project.docx)
-
-Professor Itay Hen authored the project description, dated September 26, 2026. The email attachment was a DOCX; the PDF is a local export of that document.
+- [Project scope and stage requirements](notes/Assignment%20Alignment.md)
 
 ## Obsidian and Git
 

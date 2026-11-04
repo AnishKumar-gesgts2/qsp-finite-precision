@@ -1,6 +1,6 @@
 # Roadmap
 
-[Professor Hen's original description](../references/QSP_project.docx) is authoritative. Before each stage and completion claim, reread its corresponding section; use [[Assignment Alignment]] to track required outputs, extensions, and the supervisor checkpoint.
+The original project description is retained locally. Before each stage and completion claim, consult its corresponding section when available; use [[Assignment Alignment]] to track required outputs, extensions, and the review checkpoint.
 
 Learning preparation: follow [[learning/Learning Path|Learning Path]] and record understanding in [[learning/Learning Progress|Learning Progress]]. Lessons 01–06 provide the mathematical foundations, 07–09 prepare Stages 1–2, and 10–13 prepare the quantization and analysis stages. Reading a lesson does not mark an implementation milestone complete.
 
@@ -19,7 +19,7 @@ Learning preparation: follow [[learning/Learning Path|Learning Path]] and record
   - [x] Regenerate both stages from a separate clone/new pinned environment and compare all 21 rebuilt phase lists and curves; see the [checkpoint guide](Stage%202%20-%20Checkpoint%20Guide.md).
   - [x] Package the pinned original QSPPACK source and all inputs for local MATLAB or MATLAB Online; preparation is not execution evidence.
 - [ ] Original MATLAB QSPPACK numerical cross-check: **unable to complete in MATLAB Online** before code execution. The user authorized deferral on 2026-10-24; [attempt record](../results/stage2/matlab_execution_status.json). Python QSPPACK does not silently replace it.
-- [ ] Review the Stage 2 checkpoint with Professor Hen.
+- [ ] Review the Stage 2 checkpoint with the project supervisor.
 - [x] Stage 3: implement and run the three core quantization schemes experimentally under user authorization; [methods and results](../experiments/stage3/README.md). Supervisor checkpoint remains pending.
 - [ ] Stage 4: measure separate error metrics and validate numerical precision.
 - [ ] Stage 5: analyze scaling, correlations, noise shaping, and required bits.

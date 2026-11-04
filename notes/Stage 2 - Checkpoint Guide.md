@@ -1,8 +1,8 @@
 # Stage 2 checkpoint guide
 
-**Delivery status:** the Python baseline library, data, graphs, documentation, and clean regeneration are complete. **Original MATLAB execution is recorded as unable to complete; Professor Hen's review remains pending.** Anish authorized deferral after online connection failures on 2026-10-24. Full technical completion remains false. The user separately authorized an experimental Stage 3 run despite the pending checkpoint; see [its methods and limits](../experiments/stage3/README.md). This is not supervisor approval. See the [attempt record](../results/stage2/matlab_execution_status.json), [[Stage 2 - Delivery Note]], and [prepared publication workflow](../experiments/stage2/README.md#current-online-execution-issue).
+**Delivery status:** the Python baseline library, data, graphs, documentation, and clean regeneration are complete. **Original MATLAB execution is recorded as unable to complete; the pending review remains pending.** Anish authorized deferral after online connection failures on 2026-10-24. Full technical completion remains false. The user separately authorized an experimental Stage 3 run despite the pending checkpoint; see [its methods and limits](../experiments/stage3/README.md). This is not supervisor approval. See the [attempt record](../results/stage2/matlab_execution_status.json), [[Stage 2 - Delivery Note]], and [prepared publication workflow](../experiments/stage2/README.md#current-online-execution-issue).
 
-Authority: Professor Hen's [original assignment](../references/QSP_project.docx), Stage 2 and the checkpoint immediately afterward. This page collects the review evidence; it does not replace the assignment or record approval.
+Authority: the original assignment (local), Stage 2 and the checkpoint immediately afterward. This page collects the review evidence; it does not replace the assignment or record approval.
 
 ## Review the three required items
 
@@ -45,7 +45,7 @@ To repeat the check, follow [the regeneration instructions](../experiments/stage
 3. Save its actual `matlab_output.json` into `results/stage2/`, then run `experiments/stage2/verify_matlab.py` with the project's Python environment.
 4. Run the prepared `publish_matlab.py` step to verify the report and produce its CSVs, phase archives, graphs, and measured README/manifest update. Inspect these outputs, then update the alignment note and roadmap. Do not mark this check complete from the prepared ZIP, Python results, or an Octave run. Technical Stage 2 completion and the later supervisor checkpoint are tracked separately.
 
-## Items for Professor Hen's review
+## Items for the pending review
 
 - Confirm the convention/readout mapping and the actual solver-output comparisons once MATLAB has run.
 - Confirm that the chosen evolution times, sign gaps, amplitude scales, and baseline-error goals provide an appropriate core library for the storage-error study.

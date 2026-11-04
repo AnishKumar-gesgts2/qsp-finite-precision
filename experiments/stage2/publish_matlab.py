@@ -212,7 +212,7 @@ def write_result_guide(root, verified):
               "Publication verifies source/input identity, coverage, convergence, phase counts, both native-response grids, "
               "full-grid synthesis, target accuracy, and unitarity before completion is recorded. "
               "A later library regeneration reruns publication against the actual report and current inputs; stale reports fail. "
-              "Professor Hen's checkpoint remains pending before Stage 3.", ""]
+              "the review checkpoint remains pending before Stage 3.", ""]
     (root/"results/stage2/matlab/README.md").write_text("\n".join(lines),encoding="utf-8")
 
 

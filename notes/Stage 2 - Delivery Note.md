@@ -8,7 +8,7 @@ Do the core full-precision phase lists reproduce their target polynomials, have 
 
 ## Configuration
 
-Authority: Professor Hen's [original Stage 2 requirements and supervisor checkpoint](../references/QSP_project.docx), reread before this closeout. The library uses the [recorded configuration](../experiments/stage2/config.json), pyqsp 0.2.0, supplementary Python QSPPACK 0.4.0, NumPy 2.4.6, and SciPy 1.17.1. The [manifest](../results/stage2/summary.json) retains scientific source hashes, exact settings, scales, domains, and versions.
+Authority: the original Stage 2 requirements and supervisor checkpoint (local), reread before this closeout. The library uses the [recorded configuration](../experiments/stage2/config.json), pyqsp 0.2.0, supplementary Python QSPPACK 0.4.0, NumPy 2.4.6, and SciPy 1.17.1. The [manifest](../results/stage2/summary.json) retains scientific source hashes, exact settings, scales, domains, and versions.
 
 - Seven even cosine degrees from 10 to 500, and seven odd sine/sign degrees from 11 to 499: 21 cases and 3,421 full phases.
 - Hamiltonian targets use scale 0.5; evolution time varies with degree. Sign uses maximum 0.9, an erf polynomial construction, and explicit gap-excluded application domains.
@@ -46,7 +46,7 @@ $$
 
 The existing function-approximation error can exceed this additional change without preventing its direct measurement. Numerical **evaluation** error must be much smaller than the smallest change we claim to resolve. If each evaluated response has absolute numerical error at most $\varepsilon$, the difference has error at most $2\varepsilon$. This is a conditional error bound, not a measured or certified value of $\varepsilon$ for our implementation.
 
-Package agreement and small synthesis residuals alone do not certify that numerical error floor. Professor Hen's Stage 4 high-degree spot-checks with at least 30-digit mpmath remain required future work. No detectable-error threshold, rounding advantage, coherent accumulation, or scaling exponent is inferred from Stage 2.
+Package agreement and small synthesis residuals alone do not certify that numerical error floor. The Stage 4 high-degree spot-checks with at least 30-digit mpmath remain required future work. No detectable-error threshold, rounding advantage, coherent accumulation, or scaling exponent is inferred from Stage 2.
 
 At the recorded 1e-8-radian adjacency threshold, cosine lists have no qualifying neighboring pair; odd-degree sine/sign lists contain only the forced identical center pair. Target difficulty varies with degree, so later scaling interpretations must account for that covariation.
 
@@ -58,4 +58,4 @@ Anish explicitly authorized recording MATLAB as unable to complete and proceedin
 
 ## Next step
 
-Review the [checkpoint evidence and limitation](Stage%202%20-%20Checkpoint%20Guide.md) with Professor Hen. A working MATLAB session can later run the pinned bundle and publish its actual results. Begin Stage 3 only after the required supervisor checkpoint. Learning-mastery records remain unchanged.
+Review the [checkpoint evidence and limitation](Stage%202%20-%20Checkpoint%20Guide.md) with the project supervisor. A working MATLAB session can later run the pinned bundle and publish its actual results. Begin Stage 3 only after the required supervisor checkpoint. Learning-mastery records remain unchanged.

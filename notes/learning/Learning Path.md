@@ -2,7 +2,7 @@
 
 Learn the project from the ground up. Start with Lesson 00; you do not need a quantum computing course first. The aim is to understand what each mathematical object does, then use it in the finite-precision study.
 
-These are teaching notes, not completed research results. The assignment in [[../../references/QSP_project.pdf|Professor Hen's project description]] defines the research scope. The lessons supply explanations, small examples, and exercises to prepare you for it.
+These are teaching notes, not completed research results. The assignment in the project description defines the research scope. The lessons supply explanations, small examples, and exercises to prepare you for it.
 
 ## How we will learn
 
@@ -50,7 +50,7 @@ Allow about 20–40 minutes for an initial discussion, with additional time for 
 
 The lesson equations follow the convention in the local project description; worked examples and elementary derivations are provided here for instruction. Package-specific facts should be checked against the installed version when implementation begins.
 
-- [[../../references/QSP_project.pdf|Project description]] and [[../../references/QSP_project.docx|original DOCX]] — project scope, core methods, and starred reading list.
+- Project description and original DOCX — project scope, core methods, and starred reading list.
 - [Martyn et al., A Grand Unification of Quantum Algorithms](https://arxiv.org/abs/2105.02859) — the assigned tutorial connecting QSP to quantum algorithms.
 - [Lin, Lecture Notes on Quantum Algorithms for Scientific Computation](https://arxiv.org/abs/2201.08309) — the assigned mathematical background.
 - [pyqsp repository](https://github.com/ichuang/pyqsp) — current package conventions and examples.

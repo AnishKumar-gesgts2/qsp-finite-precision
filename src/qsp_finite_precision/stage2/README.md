@@ -1,10 +1,10 @@
 # Stage 2: full-precision core phase library
 
-The Python deliverables are complete: realistic solver-generated phase lists for both core application families, residuals, graphs, data, and regeneration evidence. Original MATLAB QSPPACK execution was **unable to complete** because MATLAB Online disconnected before code execution; [the attempt record](../../../results/stage2/matlab_execution_status.json) preserves that limitation. Professor Hen's supervisor checkpoint remains pending, and Stage 3 has not started.
+The Python deliverables are complete: realistic solver-generated phase lists for both core application families, residuals, graphs, data, and regeneration evidence. Original MATLAB QSPPACK execution was **unable to complete** because MATLAB Online disconnected before code execution; [the attempt record](../../../results/stage2/matlab_execution_status.json) preserves that limitation. The review checkpoint remains pending; an experimental Stage 3 run was subsequently authorized and completed.
 
 [Measured summary in the project README](../../../README.md#stage-2-measured-baseline-results) · [Browse all cases and graphs](../../../data/phases/README.md) · [Summary CSV](../../../results/stage2/library_summary.csv) · [Manifest](../../../results/stage2/summary.json) · [Reload verification](../../../results/stage2/verification.json)
 
-The authoritative requirements are “Stage 2: a library of real phase lists” and “Checkpoint” in [Professor Hen's original description](../../../references/QSP_project.docx). The target parameters and numerical acceptance thresholds below are implementation choices that make those requirements reproducible; they are not additional instructions from the professor.
+The authoritative requirements are “Stage 2: a library of real phase lists” and “Checkpoint” in the original project description (local). The target parameters and numerical acceptance thresholds below are implementation choices that make those requirements reproducible; they are not additional instructions from the professor.
 
 ## Inputs, outputs, and workflow
 
@@ -49,7 +49,7 @@ flowchart TD
     READY -- No --> LIMITED["Deliver validated Python work and disclose unavailable check<br/>Full technical completion remains false"]
     DONE --> REVIEW["Separate supervisor checkpoint<br/>Conventions, solver reproduction, core library, and regeneration"]
     LIMITED --> REVIEW
-    REVIEW --> APPROVED{"Professor review recorded?"}
+    REVIEW --> APPROVED{"Review recorded?"}
     APPROVED -- No --> WAIT["Stage 3 remains blocked"]
     APPROVED -- Yes --> NEXT["Stage 3: quantize the same saved baseline phases"]
 ```
@@ -145,13 +145,13 @@ The [checkpoint guide](../../../notes/Stage%202%20-%20Checkpoint%20Guide.md) col
 
 The original MATLAB runtime is unavailable locally, and the free online session failed before code execution. On 2026-10-24 Anish authorized documenting this check as unable to complete and proceeding with cleanup. [The supplied runner](../../../experiments/stage2/crosscheck_matlab.m) consumes exported coefficients and both input grids, checks six original MATLAB source hashes, and is prepared to save phases and native responses. [The verifier](../../../experiments/stage2/verify_matlab.py) checks actual reports. No original MATLAB numerical results or MATLAB-derived graphs are claimed. Python QSPPACK has shared algorithmic lineage and remains supplementary.
 
-The manifest currently retains `stage2_complete: false`, pending original MATLAB execution. The prepared publisher sets `technical_complete` and `stage2_complete` only after the actual report passes and its data/figures are published. These fields describe technical Stage 2 completion. The supervisor checkpoint is tracked separately and must remain pending until review is recorded; `ready_for_stage3` remains false. Before Stage 3, review the Stage 1 convention note, reproduced solver outputs, and this regenerable library with Professor Hen.
+The manifest currently retains `stage2_complete: false`, pending original MATLAB execution. The prepared publisher sets `technical_complete` and `stage2_complete` only after the actual report passes and its data/figures are published. These fields describe technical Stage 2 completion. The review checkpoint remains pending and the historical manifest retains `ready_for_stage3: false`; a later user-authorized experimental Stage 3 run does not imply review approval.
 
 The successful Python checks and MATLAB cross-check have different roles from the later numerical-precision assessment. Rounding error will compare each rounded response with its **own unrounded baseline**. Existing function-approximation and solver residuals stay separate. Ordinary-precision package agreement does not certify how small a rounding effect can be resolved; the assignment's Stage 4 high-degree checks with at least 30-digit mpmath remain future work.
 
 ## Sources
 
-- [Original assignment](../../../references/QSP_project.docx), Stage 2 and checkpoint.
+- Original assignment (local), Stage 2 and checkpoint.
 - [pyqsp README](https://github.com/ichuang/pyqsp): symmetric readout and documented direct Newton interface; installed version 0.2.0 is used.
 - [Original MATLAB QSPPACK](https://github.com/qsppack/QSPPACK/tree/7bc7b7622e05039e4c2cdda7d5739e99c3752be6) and [Python QSPPACK documentation](https://qsppack.readthedocs.io/en/latest/getting_started.html).
 - [Concept guide](../../../notes/Stage%202%20-%20Phase%20Library%20Concept.md) and [convention note](../../../notes/Conventions.md).

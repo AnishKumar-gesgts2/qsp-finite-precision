@@ -30,7 +30,7 @@ For sigma-delta, $e_j=u_j-\widehat\phi_j$ and $\delta\phi_j=\widehat\phi_j-\phi_
 
 ## Evidence boundaries and project scope
 
-The original assignment in [[../../references/QSP_project.pdf]] is authoritative. Preserve both core families, all five stages, and the Stage 2 supervisor checkpoint. Adjust pacing instead of silently narrowing the question. Keep optional inversion, filters, degree 2,000, dithering, decimal grids, and symmetry-preserving schemes labeled as extensions.
+The original assignment in project description (local) is authoritative. Preserve both core families, all five stages, and the Stage 2 supervisor checkpoint. Adjust pacing instead of silently narrowing the question. Keep optional inversion, filters, degree 2,000, dithering, decimal grids, and symmetry-preserving schemes labeled as extensions.
 
 Distinguish target approximation, phase synthesis, phase storage, floating-point evaluation, and hardware gate-synthesis errors. Check package-specific claims against the actual version before implementing. Do not claim that a solver mapping is validated just because a tutorial defines it.
 
