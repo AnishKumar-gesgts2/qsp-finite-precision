@@ -2,6 +2,14 @@
 
 Use [[templates/Experiment Note|Experiment Note]] to record a reproducible experiment, or add dated progress entries here.
 
+## 2026-11-04 — Experimental Stage 3 quantization
+
+- With the user's authorization, ran the core quantization experiment while the supervisor checkpoint remains pending. Original MATLAB QSPPACK was not executed; the Python port is supplementary.
+- Quantized 21 cases from each of two Python solvers at six bit depths with nearest, last-phase sum correction, and first-order sigma-delta: 756 configurations. Saved phase words, rounding errors, source hashes, sampled output metrics, and two graphs. See [methods and regeneration](../experiments/stage3/README.md).
+- Stage 3 tests and the saved-output verifier passed; a second run reproduced phase JSON and CSV bytes in the same environment. A separate reviewer checked coverage, source hashes, endpoint identity, full-matrix comparisons, sampled error bounds, and the plotted data. These checks do not establish continuous-domain or high-precision accuracy.
+- At 16 bits for degree-500 pyqsp cosine, sampled maximum unitary errors were 0.00235084, 0.00243138, and 0.00355334 for nearest, corrected, and sigma-delta, respectively. Sigma-delta need not improve the global maximum. Target parameters vary with degree, so the graphs do not establish a fixed-difficulty scaling law.
+- Stage 4 autocorrelations, sensitivities and high-precision checks, Stage 5 analysis and the final report remain open. Professor Hen's review has not been obtained.
+
 ## 2026-10-24 — Stage 2 delivery audit and original MATLAB limitation
 
 - Reread the original Stage 1–2 requirements and checkpoint. Preserved the full core project, separate error definitions, and supervisor gate before Stage 3.

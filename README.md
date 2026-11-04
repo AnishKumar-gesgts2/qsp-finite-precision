@@ -28,7 +28,7 @@ The study isolates phase-storage error. Solver approximation residuals, numerica
 4. **Measurements:** evaluate error on Chebyshev grids, record application-domain metrics, and spot-check high-degree cases with extended precision.
 5. **Analysis:** produce scaling fits, correlation and location analyses, scheme comparisons, precision-budget plots, and an 8–12 page report.
 
-**Checkpoint:** review the convention note, reproduced solver output, and regenerable core phase library with Professor Hen before beginning Stage 3.
+**Checkpoint:** the original assignment calls for Professor Hen to review the convention note, reproduced solver output, and regenerable core phase library before Stage 3. That review remains pending; the user authorized the experimental Stage 3 run below in advance of it.
 
 [The Stage 2 checkpoint guide](notes/Stage%202%20-%20Checkpoint%20Guide.md) collects the evidence and remaining original MATLAB requirement. A separate clone and new pinned environment regenerated all 21 Python cases: **maximum difference from the published phases and reconstructed curves was 0.0**, for both pyqsp and Python QSPPACK. [The rebuild comparison](results/stage2/rebuild_comparison.json) retains that result and its tested revision. The current **22 tests pass**, and all **104 identity checks pass**. The [artifact audit](results/stage2/artifact_audit.json) checks phase/data coverage, numerical reconstruction, hashes, 28 reference/diagnostic PNGs, and local documentation links. Original MATLAB execution is [recorded as unable to complete](results/stage2/matlab_execution_status.json); the [portable bundle](results/stage2/qsp-stage2-matlab.zip) remains ready for a working session. [Delivery note](notes/Stage%202%20-%20Delivery%20Note.md).
 
@@ -44,8 +44,8 @@ Each stage gets its own code package and README under `src/qsp_finite_precision/
 | --- | --- | --- | --- |
 | 1 | [stage1/](src/qsp_finite_precision/stage1/README.md) | **Part A:** forward evaluator. **Part B:** pyqsp comparisons and solver-convention validation. | Complete for pinned Python packages; MATLAB source mapping documented |
 | 2 | [stage2/](src/qsp_finite_precision/stage2/README.md) | Target polynomials, solver phases, metadata, data, and graphs | Python deliverables complete: 21 cases; original MATLAB unable to complete; supervisor checkpoint pending |
-| 3 | `src/qsp_finite_precision/stage3/` (planned) | Quantization schemes; rounded phases in `data/quantized/` | Pending |
-| 4 | `src/qsp_finite_precision/stage4/` (planned) | Error measurements; tables in `results/` | Pending |
+| 3 | [stage3.py](src/qsp_finite_precision/stage3.py) · [experiment guide](experiments/stage3/README.md) | Quantization schemes; rounded phases in `data/quantized/` | Experimental implementation and run complete; supervisor checkpoint pending |
+| 4 | [exploratory measurements](results/stage3/measurements.csv) | Error measurements; tables in `results/` | Partial: sampled metrics saved; autocorrelation, sensitivity and high-precision checks remain |
 | 5 | `src/qsp_finite_precision/stage5/` (planned) | Scaling analysis and plots; final writing in `report/` | Pending |
 
 ### Stage 1 quick start
@@ -88,9 +88,21 @@ All 21 returned-phase coefficient checks and supplementary Python QSPPACK checks
 
 [Stage 2 implementation and results guide](src/qsp_finite_precision/stage2/README.md) · [Browse all cases, phase plots, and response/error graphs](data/phases/README.md) · [Regeneration commands](experiments/stage2/README.md)
 
-**Python Stage 2 deliverables complete; original MATLAB cross-check unable to complete.** MATLAB Online failed before code execution; [the attempt record](results/stage2/matlab_execution_status.json) documents the limitation. MATLAB test code and publication tools are prepared, not executed evidence. Professor Hen's checkpoint remains pending before Stage 3.
+**Python Stage 2 deliverables complete; original MATLAB cross-check unable to complete.** MATLAB Online failed before code execution; [the attempt record](results/stage2/matlab_execution_status.json) documents the limitation. MATLAB test code and publication tools are prepared, not executed evidence. Professor Hen's checkpoint remains pending.
 
 <!-- END STAGE 2 RESULTS -->
+
+## Stage 3 experimental results
+
+The user authorized an experimental run before the pending supervisor checkpoint. We rounded 21 cosine, sine, and sign cases from each of two Python phase lists using three schemes and six bit depths: **756 configurations**. The [phase files](data/quantized/stage3/) retain grid words, rounded phases, error sequences and source hashes. The [results table](results/stage3/measurements.csv) and saved curves compare each rounded circuit with its own unrounded baseline on degree-dependent Chebyshev grids. Python QSPPACK is supplementary; original MATLAB was not run.
+
+For the pyqsp degree-500 cosine case at 16 bits, sampled maximum unitary errors were 0.00235084 (nearest), 0.00243138 (last-phase sum correction), and 0.00355334 (sigma-delta). Sigma-delta's endpoint error bound does not guarantee an improvement in the global maximum. The maximum sampled 32-bit unitary error across all configurations was 5.61e-8. These are binary64 sampled observations, not continuous-domain guarantees or fixed-difficulty scaling results: target parameters vary with degree.
+
+![Stage 3 sampled 16-bit unitary errors](figures/stage3/unitary_error_16bit.png)
+
+[Sign response comparison](figures/stage3/sign_response_comparison.png) · [Methods, conventions, verification and regeneration](experiments/stage3/README.md) · [Numerical results](results/stage3/measurements.csv)
+
+The three Stage 3 tests and saved-output verifier passed, and a same-environment rerun reproduced phase JSON files and the CSV byte for byte. Full Stage 4 still needs autocorrelations, sensitivity profiles and 30-digit spot checks; Stage 5 analysis and the report remain open. The experimental run is not Professor Hen's approval.
 
 ## Repository layout
 
@@ -99,7 +111,7 @@ All 21 returned-phase coefficient checks and supplementary Python QSPPACK checks
 | references/ | Original project description and PDF copy |
 | notes/ | Research dashboard, conventions, decisions, and progress |
 | notes/learning/ | Lessons from mathematical foundations through QSP and finite-precision analysis |
-| src/qsp_finite_precision/ | Stage 1 evaluator/conventions and Stage 2 core-library implementation |
+| src/qsp_finite_precision/ | Forward evaluator, core-library implementation and Stage 3 quantization |
 | tests/ | Checks organized by stage |
 | experiments/ | Experiment configurations and reproducibility instructions |
 | data/phases/ | Full-precision phase library and metadata |
@@ -108,7 +120,7 @@ All 21 returned-phase coefficient checks and supplementary Python QSPPACK checks
 | figures/ | Generated analysis figures |
 | report/ | Written research report |
 
-Stage 1 is validated against pyqsp 0.2.0 and Python QSPPACK 0.4.0, with [response overlays](figures/stage1/solver_comparisons.png), [recorded metrics](results/stage1/solver_comparisons.json), and the [convention note](notes/Conventions.md). Stage 2 supplies the verified Python phase library and baseline results above. Original MATLAB QSPPACK was source-inspected, but its online execution was unable to complete; [the attempt record](results/stage2/matlab_execution_status.json) and [delivery note](notes/Stage%202%20-%20Delivery%20Note.md) preserve that limitation. The supervisor checkpoint remains pending. Quantization experiments and finite-precision scaling results have not started.
+Stage 1 is validated against pyqsp 0.2.0 and Python QSPPACK 0.4.0, with [response overlays](figures/stage1/solver_comparisons.png), [recorded metrics](results/stage1/solver_comparisons.json), and the [convention note](notes/Conventions.md). Stage 2 supplies the Python phase library. Stage 3 contains the experimental quantization run above. Original MATLAB execution and the supervisor checkpoint remain pending; finite-precision scaling analysis has not yet been completed.
 
 ## Project description
 
@@ -123,4 +135,4 @@ Open this repository folder as an Obsidian vault, then open [the research dashbo
 
 In Obsidian's Command Palette use **Vault Git: Pull** before editing and **Vault Git: Commit and push** after editing. The plugin uses this vault folder's Git repository and origin; credentials are provided by the existing GitHub CLI authentication. Workspace layout, caches, and local secrets are excluded from version control.
 
-The repository is private. AnishKumar-gesgts2 owns it; AnishKumar-gesgts is invited with write access. GitHub displays contributor activity after an account authors commits.
+The GitHub repository is public and owned by AnishKumar-gesgts2. GitHub displays contributor activity after an account authors commits.

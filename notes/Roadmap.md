@@ -20,7 +20,7 @@ Learning preparation: follow [[learning/Learning Path|Learning Path]] and record
   - [x] Package the pinned original QSPPACK source and all inputs for local MATLAB or MATLAB Online; preparation is not execution evidence.
 - [ ] Original MATLAB QSPPACK numerical cross-check: **unable to complete in MATLAB Online** before code execution. The user authorized deferral on 2026-10-24; [attempt record](../results/stage2/matlab_execution_status.json). Python QSPPACK does not silently replace it.
 - [ ] Review the Stage 2 checkpoint with Professor Hen.
-- [ ] Stage 3: implement the three core quantization schemes.
+- [x] Stage 3: implement and run the three core quantization schemes experimentally under user authorization; [methods and results](../experiments/stage3/README.md). Supervisor checkpoint remains pending.
 - [ ] Stage 4: measure separate error metrics and validate numerical precision.
 - [ ] Stage 5: analyze scaling, correlations, noise shaping, and required bits.
 - [ ] Produce regenerable figures and the research report.

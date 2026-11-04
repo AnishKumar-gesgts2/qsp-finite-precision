@@ -17,9 +17,9 @@ Begin at [[learning/00 - What the Project Asks|Lesson 00 — What the Project As
 
 ## Current work
 
-**Stage 2 — Python deliverables complete; original MATLAB cross-check unable to complete; supervisor checkpoint pending**
+**Stage 3 — experimental quantization complete; original MATLAB cross-check and supervisor checkpoint pending**
 
-The [core library index](../data/phases/README.md) contains 21 unrounded cosine, sine, and sign cases with phase plots, response/error graphs, and saved residuals. See [the measured README summary](../README.md#stage-2-measured-baseline-results), [Stage 2 methods](../src/qsp_finite_precision/stage2/README.md), and [[Stage 2 - Delivery Note]]. The original MATLAB attempt failed before code execution and is explicitly [recorded as unavailable](../results/stage2/matlab_execution_status.json); its code remains ready for a working session. Review the results and this limitation with Professor Hen before Stage 3. See [[Roadmap]] for the full plan.
+The [core library index](../data/phases/README.md) contains 21 unrounded cosine, sine, and sign cases. The user authorized an experimental Stage 3 run while the supervisor checkpoint remains pending: see the [results summary](../README.md#stage-3-experimental-results), [methods and graphs](../experiments/stage3/README.md), and [[Roadmap]]. The original MATLAB attempt failed before code execution and is [recorded as unavailable](../results/stage2/matlab_execution_status.json). Professor Hen's review has not been obtained.
 
 ## Workspace
 
@@ -39,4 +39,4 @@ The [core library index](../data/phases/README.md) contains 21 unrounded cosine,
 4. Measure unitary, matrix-element, and readout error separately.
 5. Analyze scaling and precision requirements; prepare figures and report.
 
-Use the [Stage 2 checkpoint guide](Stage%202%20-%20Checkpoint%20Guide.md) to review the evidence and remaining MATLAB connection/run requirement. Review the Stage 2 outputs with Professor Hen before beginning quantization.
+Use the [Stage 2 checkpoint guide](Stage%202%20-%20Checkpoint%20Guide.md) to review the evidence and remaining MATLAB connection/run requirement with Professor Hen. The experimental quantization run does not constitute checkpoint approval.

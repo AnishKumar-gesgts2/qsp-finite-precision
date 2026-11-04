@@ -14,3 +14,7 @@
 /results/stage2/phase_structure/*.csv text eol=lf
 /results/stage2/phase_structure/*.json text eol=lf
 /experiments/stage2/*.json text eol=lf
+# Keep generated Phase 3 byte-comparison inputs stable across checkouts.
+/data/quantized/stage3/*.json text eol=lf
+/results/stage3/*.json text eol=lf
+/results/stage3/measurements.csv -text whitespace=cr-at-eol

@@ -1,6 +1,6 @@
 # Stage 2 checkpoint guide
 
-**Delivery status:** the Python baseline library, data, graphs, documentation, and clean regeneration are complete. **Original MATLAB execution is recorded as unable to complete; Professor Hen's review remains pending.** Anish authorized deferral after online connection failures on 2026-10-24. Full technical completion remains false; Stage 3 has not started. See the [attempt record](../results/stage2/matlab_execution_status.json), [[Stage 2 - Delivery Note]], and [prepared publication workflow](../experiments/stage2/README.md#current-online-execution-issue).
+**Delivery status:** the Python baseline library, data, graphs, documentation, and clean regeneration are complete. **Original MATLAB execution is recorded as unable to complete; Professor Hen's review remains pending.** Anish authorized deferral after online connection failures on 2026-10-24. Full technical completion remains false. The user separately authorized an experimental Stage 3 run despite the pending checkpoint; see [its methods and limits](../experiments/stage3/README.md). This is not supervisor approval. See the [attempt record](../results/stage2/matlab_execution_status.json), [[Stage 2 - Delivery Note]], and [prepared publication workflow](../experiments/stage2/README.md#current-online-execution-issue).
 
 Authority: Professor Hen's [original assignment](../references/QSP_project.docx), Stage 2 and the checkpoint immediately afterward. This page collects the review evidence; it does not replace the assignment or record approval.
 
