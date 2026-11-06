@@ -102,6 +102,8 @@ For the pyqsp degree-500 cosine case at 16 bits, sampled maximum unitary errors 
 
 [Sign response comparison](figures/stage3/sign_response_comparison.png) · [Methods, conventions, verification and regeneration](experiments/stage3/README.md) · [Numerical results](results/stage3/measurements.csv)
 
+The [rounding diagnostics](figures/stage3/rounding_diagnostics.png) show how each method changes individual and cumulative phase errors; the [precision sweep](figures/stage3/precision_sweep.png) compares bit depths on fixed phase lists. Across all 756 configurations, sigma-delta cumulative errors stayed within half a grid step. All 126 matching case/solver/scheme groups had smaller sampled maximum unitary error at 32 bits than at 12 bits. See the [core Stage 3 checklist and interpretation](experiments/stage3/README.md#stage-3-requirement-check) and [saved verification receipt](results/stage3/verification.json).
+
 The three Stage 3 tests and saved-output verifier passed, and a same-environment rerun reproduced phase JSON files and the CSV byte for byte. Full Stage 4 still needs autocorrelations, sensitivity profiles and 30-digit spot checks; Stage 5 analysis and the report remain open. The experimental run does not imply review approval.
 
 ## Repository layout

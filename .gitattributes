@@ -18,3 +18,4 @@
 /data/quantized/stage3/*.json text eol=lf
 /results/stage3/*.json text eol=lf
 /results/stage3/measurements.csv -text whitespace=cr-at-eol
+/results/stage3/quantization_diagnostics.csv text eol=lf

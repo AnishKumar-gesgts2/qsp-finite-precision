@@ -1,0 +1,9 @@
+{
+  "configurations": 756,
+  "fixed_list_groups": 126,
+  "groups_with_32bit_less_than_12bit": 126,
+  "maximum_32bit_sampled_unitary_error": 5.6077260503489423e-08,
+  "max_sigma_delta_prefix_error_steps": 0.49993671661700434,
+  "max_corrected_total_error_steps": 0.499429576021157,
+  "scope": "Sampled binary64 storage errors; no fixed-difficulty degree-scaling fit or full Stage 4/5 claim."
+}

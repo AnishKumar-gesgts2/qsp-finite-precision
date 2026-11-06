@@ -2,6 +2,14 @@
 
 Use [[templates/Experiment Note|Experiment Note]] to record a reproducible experiment, or add dated progress entries here.
 
+## 2026-11-06 — Stage 3 requirement audit and interpretation
+
+- Reread the local Stage 3 requirements and confirmed that the existing 756 rounded phase files cover all available core cases, solver lists, six bit depths and three schemes. The previous experiment and two response figures were already published.
+- Added individual/cumulative phase-error diagnostics and a precision sweep on fixed phase lists, with reproducible generation from saved artifacts. Added [the core completion checklist and interpretation](../experiments/stage3/README.md#stage-3-requirement-check).
+- Strengthened the verifier to check the exact configuration set, source hashes, artifact metadata and all 756 diagnostic rows. All three Stage 3 tests and saved-output checks passed; [the verification receipt](../results/stage3/verification.json) records the scope and numerical discrepancies.
+- Sigma-delta's largest cumulative error was 0.499937 grid steps; last-phase correction's largest total error magnitude was 0.499430 steps. All 126 matching groups had lower sampled maximum unitary error at 32 bits than at 12 bits. The data do not establish a universal scheme advantage or fixed-difficulty degree-scaling law.
+- Core experimental Stage 3 is complete; review and original MATLAB checks remain open. Full Stage 4 measurements and Stage 5 analysis are separate future work.
+
 ## 2026-11-04 — Experimental Stage 3 quantization
 
 - With the user's authorization, ran the core quantization experiment while the supervisor checkpoint remains pending. Original MATLAB QSPPACK was not executed; the Python port is supplementary.

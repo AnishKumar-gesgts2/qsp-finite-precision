@@ -1,0 +1,12 @@
+{
+  "rows": 756,
+  "quantized_files": 756,
+  "csv_max_difference": 0.0,
+  "endpoint_identity_max_difference": 8.47401711518217e-14,
+  "high_degree_full_evaluator_max_difference": 3.2978379709607745e-15,
+  "exact_configuration_coverage": true,
+  "baseline_hashes_verified": 21,
+  "diagnostic_rows_verified": 756,
+  "quantizer_source_sha256": "01a135cb6818f888523c48aa69223892fd6f79aa340e8a694f861c71fb1b83f1",
+  "scope": "Core Stage 3 saved-output verification and exploratory binary64 response checks; not full Stage 4/5."
+}

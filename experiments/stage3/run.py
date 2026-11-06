@@ -91,6 +91,9 @@ def main():
                 note='Sampled binary64 exploratory storage errors; not solver/target error or completed Stage 4/5')
     (out / 'metadata.json').write_text(json.dumps(meta,indent=2)+'\n',encoding='utf8',newline='\n')
     plot(rows, out, fig)
+    # These diagnostics use saved artifacts, and can also be refreshed alone.
+    from summarize import main as summarize
+    summarize()
 
 
 def plot(rows, out, fig):
